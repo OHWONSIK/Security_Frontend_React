@@ -1,0 +1,193 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+
+.header{
+    background-color:white;
+    height:30px;
+} 
+
+.교직원{
+    margin-left: 12px;
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.로그인{
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.인증센터{
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.nav-brand_smbank{ 
+    margin-right:150px;
+}
+
+.nav-item_조회{
+    margin-right:100px;
+}
+
+.nav-item_이체{
+    margin-right:100px;
+}
+
+.nav-item_공과금{
+    margin-right:100px;
+}
+
+.nav-item_외환{
+    margin-right:100px;
+}
+
+.divide--line{
+    height: 1px;
+    background-color: #009591;;
+}
+
+.contents-area{
+    position: relative;
+    height:820px;
+}
+
+.section-topcon{
+    position: relative;
+    top:30px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.section-bottomcon{
+    position: relative;
+    top:90px;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    /* padding-bottom: 18px; */
+}
+
+.new-news{
+    line-height: 42px;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    text-align: right;
+}
+
+.right-area{
+    text-align: center;
+    line-height: 180px;
+}
+
+
+.section-middlecon{
+    position: relative;
+    top:60px;
+    background-color: #ecf0f1;
+    height:180px;
+    text-align: center;
+    line-height: 150px;
+    box-sizing: border-box;
+}
+.section-middlecon b{
+    height: 25px;
+    display: block;
+    font-size: 18px;
+    color: #000;
+    letter-spacing: -0.5px;
+    line-height: 150px;
+    padding-bottom: 3px;
+    font-weight: normal;
+}
+
+
+.section-middlecon span{
+    height:120px;
+    line-height:150px;
+    display: block;
+    font-size: 16px;
+    color: #666;
+    letter-spacing: -0.5px;
+    
+} 
+
+.carousel-inner{
+    width:auto;
+    height:400px; /* 이미지 높이 변경 */
+}
+
+.carousel-item{
+    width: auto;
+    height:100%;
+}
+
+.d-block {
+    display:block;
+    width: auto;
+    height: 100%;
+}
+.card{
+    height: auto;
+    width: 100%;
+    color:black;
+    /* border-right:none;
+    border-left:none;
+    border-top:none;
+    border-bottom:none; */
+}
+
+.menu1 ::after{
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 52px;
+    position: absolute;
+    left:500px;
+    top: 62px;
+    background: #dae1e3;
+}
+
+.menu2 ::after{
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 52px;
+    position: absolute;
+    left:750px;
+    top: 62px;
+    background: #dae1e3;
+}
+
+.menu3 ::after{
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 52px;
+    position: absolute;
+    left:1000px;
+    top: 62px;
+    background: #dae1e3;
+}
+
+.foot{
+    border-top: 1px solid #eee;
+    position: relative;
+    height:250px;
+    color:black;
+    background-color: white;
+}
+
+.foot-left{
+    text-align: right;
+} 
