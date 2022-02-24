@@ -42,21 +42,30 @@
 .nav-item_조회{
     margin-right:100px;
     color:#ffff;
+    font-weight: bold;
 }
 
 .nav-item_이체{
     margin-right:100px;
     color:#ffff;
+    font-weight: bold;
 }
 
-.nav-item_공과금{
+.nav-item_지원금{
     margin-right:100px;
     color:#ffff;
+    font-weight: bold;
 }
 
-.nav-item_외환{
+.nav-item_사용내역{
     margin-right:100px;
     color:#ffff;
+    font-weight: bold;
+}
+
+.nav-item_추천상품{
+    color:#ffff;
+    font-weight: bold;
 }
 /* 
 .divide--line{
@@ -66,7 +75,7 @@
 
 .contents-area{
     position: relative;
-    top:0px;
+    height:950px;
 }
 
 .section-topcon{
@@ -96,8 +105,8 @@
 }
 
 .right-area{
-    text-align: center;
-    line-height: 180px;
+    background-color:#0d6efd;
+    --bs-gutter-x: 0rem;
 }
 
 
@@ -151,6 +160,7 @@
     height: auto;
     width: 100%;
     color:black;
+    border: 0px !important;
     /* border-right:none;
     border-left:none;
     border-top:none;
@@ -193,7 +203,6 @@
 .foot{
     border-top: 1px solid #eee;
     position: relative;
-    top:72px;
     height:250px;
     color:black;
     background-color: white;
@@ -202,3 +211,58 @@
 .foot-left{
     text-align: right;
 } 
+
+.card{
+    line-height: 15px;
+}
+
+.login_button{
+    height : 60px; 
+    margin-top : 40px;
+    margin-bottom:1px;
+}
+
+.cert_button{
+    height : 60px; 
+}
+
+.custom-link-list{
+    border-top:1px solid #eee;
+}
+
+.custom-link-list li:hover a {
+    color: #fff000 !important;
+    background: url(../img/link_toggle.png) no-repeat 270px center !important;
+}
+.service-center{
+    padding-left: 30px;
+    text-decoration: none;
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    line-height: 62px;
+    font-weight: 600;
+    font-family: 'Noto Sans KR',sans-serif;
+    background: url(../img/link.png) no-repeat 270px center;
+    
+}
+
+.news1{
+    margin-bottom: 4px;
+}
+
+.news2{
+    margin-bottom: 4px;
+}
+
+.news3{
+    margin-bottom: 4px;
+}
+
+.news4{
+    margin-bottom: 4px;
+}
+
+.news5{
+    margin-bottom: 4px;
+}
