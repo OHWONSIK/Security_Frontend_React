@@ -1,0 +1,56 @@
+
+.smdeposit_list{
+    margin-top:20px;
+}
+
+.deposit_list_link li a{
+    
+    margin-top:10px;
+    font-size:20px;
+    color:black;    
+    text-decoration:none;
+    text-decoration-line:none;
+}
+
+.deposit_list_link li:hover a{
+    color: #0004ff !important;
+}
+
+.deposit_devide_line{
+    margin-top:10px;
+    height:1px;
+    background-color:#009591;
+    width: 100%;
+}
+
+.list_body_left{
+    
+}
+
+.deposit_card_1{
+    margin-top:30px;
+
+}
+
+.deposit_card_2{
+    margin-top:30px;
+}
+
+.deposit_list_link_bottom li a{
+    
+    margin-left:40px;
+    float:left;
+    margin-top:10px;
+    font-size:30px;
+    color:black;    
+    text-decoration:none;
+    text-decoration-line:none;
+}
+
+.deposit_list_link_bottom li:hover a{
+    color: #0004ff !important;
+}
+
+.customer_center{
+    
+}
