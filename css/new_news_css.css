@@ -70,7 +70,7 @@
 
 
 .content-area{
-    height:1000px;
+    height:850px;
 }
 
 .row-section-topcon{
@@ -110,3 +110,15 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.foot{
+    border-top: 1px solid #eee;
+    position: relative;
+    height:250px;
+    color:black;
+    background-color: white;
+}
+
+.foot-left{
+    text-align: right;
+} 
