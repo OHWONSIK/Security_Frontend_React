@@ -1,0 +1,124 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+
+.header{
+    background-color:white;
+    height:30px;
+} 
+
+.교직원{
+    margin-left: 12px;
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.로그인{
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.인증센터{
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.nav-brand_smbank{ 
+    margin-right:150px;
+}
+
+.nav-item_조회{
+    margin-right:100px;
+    font-weight: bold;
+}
+
+.nav-item_이체{
+    margin-right:100px;
+    font-weight: bold;
+}
+
+.nav-item_등록금{
+    margin-right:100px;
+    font-weight: bold;
+}
+
+.nav-item_금융상품{
+    margin-right:100px;
+    font-weight: bold;
+}
+
+.nav-item_공지사항{
+    font-weight: bold;
+}
+
+.d-block {
+    display:block;
+    width: auto;
+    height: 100%;
+}
+
+.divide--line{
+    height: 1px;
+    background-color: #009591;
+}
+
+
+.content-area{
+    height:850px;
+}
+
+.row-section-topcon{
+    margin-top:300px;
+}
+
+.location{
+    float: right;
+    margin-top: 30px !important;
+    margin-bottom: 100px !important;
+}
+
+#header{
+    font-weight: bold;
+    margin-top: 80px;
+}
+
+.new-news-table{
+    text-align: center;
+    color: #555 !important;
+    /* text-decoration: none !important;
+    font-weight: lighter !important; */
+}
+
+.page-move{
+    margin-top:20px;
+    justify-content: center;
+}
+
+.box{
+    background-color: #f1f1f1;
+    text-align: center;
+    margin-top:30px;
+}
+
+.search-form{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.foot{
+    border-top: 1px solid #eee;
+    position: relative;
+    height:250px;
+    color:black;
+    background-color: white;
+}
+
+.foot-left{
+    text-align: right;
+} 

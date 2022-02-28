@@ -1,0 +1,235 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+
+.header{
+    background-color:white;
+    height:30px;
+} 
+
+.교직원{
+    margin-left: 12px;
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.로그인{
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.인증센터{
+    color:#555;
+    text-decoration-line : none;
+    text-decoration : none;
+}
+
+.nav-brand_smbank{ 
+    margin-right:150px;
+}
+
+.nav-item_조회{
+    margin-right:100px;
+    font-weight: bold;
+}
+
+.nav-item_이체{
+    margin-right:100px;
+    font-weight: bold;
+}
+
+.nav-item_등록금{
+    margin-right:100px;
+    font-weight: bold;
+}
+
+.nav-item_금융상품{
+    margin-right:100px;
+    font-weight: bold;
+}
+
+.nav-item_공지사항{
+    font-weight: bold;
+}
+
+.d-block {
+    display:block;
+    width: auto;
+    height: 100%;
+}
+
+.divide--line{
+    height: 1px;
+    background-color: #009591;
+}
+
+.content-area{
+    height:700px;
+}
+
+.divide--line-2{
+    height: 1px;
+    background-color: #0d6efd;
+}
+
+.section-topcon{
+    margin-top:50px !important;
+}
+
+.nav-pills .nav-link{
+    border-radius: 0rem;
+}
+
+.section-middlecon{
+    margin-top:50px !important;
+    height:150px;
+}
+
+.login-form{
+    text-align: center;
+    margin-top:25px;
+}
+
+.login-btn{
+    text-align: center;
+    margin-top:25px;
+}
+
+.id-id{
+    margin-bottom: 0.5rem!important;
+} 
+
+.password-password{
+    margin-bottom: 0.5rem!important;
+}
+
+.row{
+    --bs-gutter-x: 0rem;
+}
+
+.id{
+    width:355.8px;
+    border: 1px solid #c3c3c3;
+}
+
+.password{
+    width:355.8px;
+    border: 1px solid #c3c3c3;
+} 
+
+.mb{
+    margin-bottom: 0.5rem !important;
+}
+
+.login-button{
+    height:104px;
+    text-align: center;
+    
+}
+
+.menubar{
+    margin-left:16px;
+    text-align: center;
+}
+
+.login-menu{
+    width:auto;
+}
+.id-login{
+    list-style:none;
+    margin:0 ;
+    padding:0 ;
+}
+
+.id-login li{
+    width:150px !important;
+    display: inline;
+    margin: 0 0 0 0 ;
+    padding: 0 0 0 0 ;
+    border : 0 ;
+    float: left ;
+}
+.id-login li > a{
+    color: #4b4e5a;
+    text-decoration: none;
+    padding: 5px 25px 5px 0;
+    background: url(../img/btn_login_link.gif) right center no-repeat;
+}
+
+.bottom-box{
+    overflow: hidden;
+    position: relative;
+    margin-top: 31px;
+    padding: 30px 34px 35px;
+    border: 1px solid #ddd;
+    margin-bottom: 60px;
+}
+
+.bottom-box dt{
+    padding-left: 40px;
+    margin-bottom: 12px;
+    font-size: 20px;
+    line-height: 24px;
+    color: #111;
+    font-weight: 300;
+    font-family: 'Noto Sans KR',sans-serif;
+    background: url(../img/ico_info_alarm.png) no-repeat 0 center;
+}
+
+.bottom-box dd{
+    padding-left: 40px;
+}
+
+.bottom-box{
+    margin-top:100px;
+    display: block;
+    margin-bottom: 10px;
+    color: #046fd9;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+}
+
+.bottom-box dd p{
+    color: #4a4e5a;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: -.5px;
+}
+
+.bottom-box .btn-detail-view{
+    position: absolute;
+    text-align: center;
+    left: 370px;
+    top: 30px;
+    padding-left: 12px;
+    padding-right: 9px;
+    text-decoration: none;
+    color: #666;
+    font-size: 13px;
+    line-height: 22px;
+    border: 1px solid #e5e5e5;
+}
+
+.bottom-box .btn-detail-view em {
+    display: block;
+    background: url(../img/bl_detail_arrow.gif) no-repeat 100% 8px;
+    padding-right: 10px;
+}
+
+.foot{
+    border-top: 1px solid #eee;
+    position: relative;
+    height:250px;
+    color:black;
+    background-color: white;
+}
+
+.foot-left{
+    text-align: right;
+} 

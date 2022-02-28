@@ -266,3 +266,13 @@
 .news5{
     margin-bottom: 4px;
 }
+
+.nw_btn_more{
+    background: none;
+    font-size: 11px;
+    line-height: 20px;
+    color: #666;
+    top: 49px;
+    right: 0;
+    padding-left: 0;
+}
