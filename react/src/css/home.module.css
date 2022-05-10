@@ -1,0 +1,99 @@
+.contentTop{
+    padding-top:100px;
+    height:700px;
+}
+
+.cardImage{
+    width: 482.4px;
+    padding-bottom: 60px;
+}
+
+.loginButton{
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.signupButton{
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.contentMiddle{
+    height:300px;
+}
+
+.depositButton{
+    margin: 70px;
+    width:200px;
+    height:200px;
+}
+
+.historyButton{
+    margin: 70px;
+    width:200px;
+    height:200px;
+}
+
+.loanButton{
+    margin: 70px;
+    width:200px;
+    height:200px;
+}
+
+.productButton{
+    margin: 70px;
+    width:200px;
+    height:200px;
+}
+
+.contentBottom{
+    height:300px;
+    margin-top:100px;
+    margin-bottom:200px;
+}
+
+.notice{
+    text-align: right;
+    margin-top:20px;
+}
+
+.seemore{
+    text-align: left;
+    margin-top:20px;
+}
+
+.noticeList{
+    text-align: left;
+    height:500px;
+}
+
+.List1{
+    padding:20px;
+}
+
+.List2{
+    padding:20px;
+}
+
+.List3{
+    padding:20px;
+}
+
+.List4{
+    padding:20px;
+}
+
+.button1{
+    padding-top:25px;
+    padding-bottom:25px;
+}
+
+.button2{
+    padding-top:25px;
+    padding-bottom:25px;
+}
+
+.button3{
+    padding-top:25px;
+    padding-bottom:25px;
+}

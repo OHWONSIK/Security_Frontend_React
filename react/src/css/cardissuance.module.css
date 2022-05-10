@@ -1,0 +1,24 @@
+.contentTop{
+    padding-top:100px;
+}
+
+.guide{
+    padding-top:150px;
+    padding-left:20px;
+}
+
+.application{
+    font-weight: bold;
+}
+
+.textinput{
+    margin-top:117px;
+    height:500px;
+    margin-bottom:50px;
+}
+
+.submitbutton{
+    height:75px;
+    width:145px;
+}
+

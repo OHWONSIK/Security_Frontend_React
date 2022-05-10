@@ -1,0 +1,35 @@
+.contentTop{
+    padding-top:100px;
+}
+
+.nav{
+    padding-left:100px;
+    padding-right:100px;
+    padding-top:50px;
+    padding-bottom:80px;
+}
+
+.contentMiddle{
+    height:1200px;
+}
+
+.box{
+    background-color: gray;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height:700px;
+}
+
+.event{
+    font-weight:bold;
+}
+
+.eventName{
+    font-weight:bold;
+}
+
+.listbutton{
+    height:75px;
+    width:145px;
+}
+

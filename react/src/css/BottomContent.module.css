@@ -1,8 +1,7 @@
 
 .divideLineC{
-    margin-top:50px;
     height:1px; 
-    background-color:black;
+    background-color:blue;
 }
 
 .bottomCont{
@@ -12,8 +11,4 @@
 
 .bottomCont2{
     margin-top:10px;
-}
-
-.marginbottom{
-    margin-bottom:50px;
 }

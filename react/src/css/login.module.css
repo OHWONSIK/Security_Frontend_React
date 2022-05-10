@@ -1,0 +1,47 @@
+.Login{
+    margin-top: 100px;
+}
+
+.divideline{
+    height: 1px;
+    background-color:#0d6efd;
+    margin-left:5px;
+}
+
+.idform{
+    height:70px;
+    margin-top: 50px;
+}
+
+.passwordform{
+    height:70px;
+}
+
+.loginbutton{
+    margin-top: 50px;
+    height:140px;
+    width:145px;
+}
+
+.bottomcontent{
+    margin-top: 20px;
+    margin-bottom: 300px;
+}
+
+.signup{
+    text-align: right;
+}
+
+.findid{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.findpassword{
+    text-align: left;
+}
+
+a{
+    color: inherit;
+    text-decoration: inherit;
+}

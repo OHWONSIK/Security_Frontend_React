@@ -1,0 +1,56 @@
+.nobullet{
+    list-style: none;
+}
+
+.header {
+    height: 35px;
+}
+
+.login {
+    margin-top: 5px;
+    font-size: 20px;
+    float: left;
+}
+
+.certification {
+    margin-top: 5px;
+    margin-left: 50px;
+    font-size: 20px;
+    float: left;
+}
+
+.Navbar {
+    height: 100px;
+    font-size: 20px;
+}
+
+.name {
+    margin-left: 70px;
+    margin-right: 200px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.lookup {
+    margin-right: 150px;
+}
+
+.transper {
+    margin-right: 150px;
+}
+
+.tuition {
+    margin-right: 150px;
+}
+
+.product {
+    margin-right: 150px;
+}
+
+.d-flex {
+    margin-right: 100px;
+}
+
+.divideline {
+    height: 1px;
+    background-color: black;
+}

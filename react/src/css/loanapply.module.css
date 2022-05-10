@@ -1,0 +1,112 @@
+.contentTop{
+    height:1200px;
+    padding-top:100px;
+}
+
+.loanapply{
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 70px;
+}
+
+.loanproduct{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.interestrate{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.maximum{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.loanamount{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.loanproductcheckbox{
+    text-align: left;
+    padding-top:155px;
+}
+
+.productcheck1{
+    transform : scale(1.5);
+    padding-left:50px;
+    padding-right:50px;
+}
+
+.productcheck2{
+    transform : scale(1.5);
+    padding-left:50px;
+    padding-right:50px;
+}
+
+.productcheck3{
+    transform : scale(1.5);
+    padding-left:50px;
+    padding-right:50px;
+} 
+
+.interestrateguide{
+    text-align: left;
+    padding-top:83px;
+}
+
+.maximumguide{
+    text-align: left;
+    padding-top:75px;
+}
+
+.transferamountinput{
+    margin-top: 80px;
+    width:400px;
+    margin-right:0px;
+}
+
+.buttonlist{
+    text-align: left;
+    margin-top: 20px;
+}
+
+.tenmillionbutton{
+    width:120px;
+}
+
+.millionbutton{
+    margin-left:20px;
+    width:120px;
+}
+
+.fivehundredthousandbutton{
+    margin-left:20px;
+    width:120px;
+}    
+
+
+.maximumbutton{
+    margin-left:20px;
+    width:120px;
+}
+
+.correctionbutton{
+    margin-left:20px;
+    width:120px;
+}
+
+.applybutton{
+    margin-top: 50px;
+    height:75px;
+    width:145px;
+    margin-right: 200px;
+}
+
+

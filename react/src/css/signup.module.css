@@ -1,0 +1,142 @@
+.informationinput{
+    text-align: left;
+    font-weight: bold;
+    padding-top:100px;
+    padding-bottom: 70px;
+}
+
+.id{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.password{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.name{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.gender{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.email{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.phonenumber{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.accountnumber{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+
+.accountpassword{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.idinput{
+    margin-top: 250px;
+}
+
+.overlapcheckbutton{
+    margin-top: 250px;
+}
+
+.passwordinput{
+    margin-top: 75px;
+}
+
+.nameinput{
+    margin-top: 75px;
+    width:200px;
+}
+
+.gendercheckbox{
+    text-align: left;
+    margin-top: 78px;
+}
+
+.gendermale{
+    transform : scale(1.5);
+    padding-left:50px;
+    padding-right:50px;
+}
+
+.genderfemale{
+    transform : scale(1.5);
+    padding-left:50px;
+    padding-right:50px;
+}
+
+.emailinput1{
+    margin-top: 68px;
+}
+
+.emailinput2{
+    margin-top: 73px;
+}
+
+.emailinput3{
+    margin-top: 68px;
+}
+
+.phonenumberinput1{
+    margin-top: 70px;
+}
+
+.phonenumberinput2{
+    margin-top: 75px;
+}
+
+.phonenumberinput3{
+    margin-top: 70px;
+}
+
+.phonenumberinput4{
+    margin-top: 75px;
+}
+
+.phonenumberinput5{
+    margin-top: 70px;
+}
+
+.accountnumberinput{
+    margin-top: 75px;
+}
+
+.accountpasswordinput{
+    margin-top: 73px;
+    width:200px;
+}
+
+.signupbutton{
+    height:75px;
+    width:145px;
+    margin-right: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+
+
+
