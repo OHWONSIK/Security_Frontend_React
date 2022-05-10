@@ -1,0 +1,107 @@
+.contentTop{
+    height:1200px;
+    padding-top:100px;
+}
+
+.banktransfer{
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 70px;
+}
+
+.depositinformation{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.depositaccountnumber{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.transferamount{
+    text-align: left;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.receivingaccountkmemo{
+    text-align: left;
+    padding-top:100px;
+    padding-bottom:40px;
+}
+
+.myaccountmemo{
+    text-align: left;
+    padding-top:100px;
+    padding-bottom:40px;
+}
+
+.banklist{
+    width:300px;
+    margin-top: 155px;
+}
+
+.accountinput{
+    margin-top: 75px;
+    width:500px;
+}
+
+.transferamountinput{
+    margin-top: 72px;
+    width:400px;
+    margin-right:0px;
+}
+
+.buttonlist{
+    text-align: left;
+    margin-top: 20px;
+}
+
+.millionbutton{
+    width:120px;
+}
+
+.fivehundredthousandbutton{
+    margin-left:20px;
+    width:120px;
+}
+
+.onehundredthousandbutton{
+    margin-left:20px;
+    width:120px;
+}    
+
+
+.fullamountbutton{
+    margin-left:20px;
+    width:120px;
+}
+
+.correctionbutton{
+    margin-left:20px;
+    width:120px;
+}
+
+.receivingaccountkmemoinput{
+    margin-top: 75px;
+    width:500px;
+    height:100px;
+}
+
+.myaccountmemoinput{
+    margin-top: 75px;
+    width:500px;
+    height:100px;
+    margin-bottom: 50px;
+}
+
+.nextbutton{
+    height:75px;
+    width:145px;
+    margin-right: 200px;
+}
+
+
