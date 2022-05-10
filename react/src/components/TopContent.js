@@ -37,11 +37,11 @@ function TopContent() {
                                         style={{ maxHeight: '100px' }}
                                         navbarScroll
                                     >
-                                        <Nav.Link className={styles.lookup} href="#action1">조회</Nav.Link>
+                                        <Nav.Link className={styles.lookup} href="/Bankstatementpage">조회</Nav.Link>
                                         <Nav.Link className={styles.transper} href="/transfer">이체</Nav.Link>
                                         <Nav.Link className={styles.tuition} href="/loanapply">대출</Nav.Link>
                                         <Nav.Link className={styles.product} href="#action4">금융상품</Nav.Link>
-                                        <Nav.Link className={styles.notice}href="#action5">공지사항</Nav.Link>
+                                        <Nav.Link className={styles.notice}href="/Newnewspage">공지사항</Nav.Link>
 
                                     </Nav>
                                     <Form className="d-flex" >
