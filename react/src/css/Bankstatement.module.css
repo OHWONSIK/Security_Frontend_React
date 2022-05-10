@@ -1,0 +1,53 @@
+.nobullet{
+    margin-top : 50px;
+    margin-bottom : 20px;
+    float:left;
+    list-style:none;
+    font-size:30px;
+}
+
+.leftalign{
+    float:left;
+    margin-right:100px;
+    list-style:none;
+}
+
+.bs_form{
+    margin-left:150px;
+}
+
+
+
+.statement_text{
+    text-align:left;
+    color:black;
+    font-weight:bold;
+    font-size:20px;
+    margin-left:30px;
+    margin-top:40px;
+}
+
+.leftalign2{
+    text-align:right;
+    float:right;
+}
+
+.leftalign3{
+    text-align:left;
+    list-style:none;
+}
+
+.bs_border{ 
+    margin-top:30px;
+    border: 1px solid black;
+    height:450px;
+
+}
+
+.bs_margin{
+    margin-left:200px;
+}
+
+.bs_search{
+    margin-bottom:30px;
+}

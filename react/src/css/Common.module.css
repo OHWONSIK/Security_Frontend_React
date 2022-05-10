@@ -1,0 +1,25 @@
+
+.c_text{
+    margin-top:50px;
+    margin-left:80px;
+    font-size:30px;
+    float:left;
+}
+
+.c_d_text{
+    margin-top:60px;
+    font-size:20px;
+    
+}
+
+.m_text{
+    border:1px solid black;
+    height:600px;
+}
+
+.c_button1{
+    margin-top: 50px;
+    width:100px;
+    height:50px;
+    margin-left:700px;
+}

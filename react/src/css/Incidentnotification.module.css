@@ -1,0 +1,19 @@
+
+.c_text{
+    margin-top:50px;
+    font-size:30px;
+}
+
+.i_text{
+    margin-top:40px;
+    font-size:20px;
+
+}
+
+
+.m_text{
+    border:1px solid black;
+    height:600px;
+    margin-left: 200px;
+    width:1200px;
+}
