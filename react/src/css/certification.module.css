@@ -1,0 +1,28 @@
+.confirm{
+    margin-top: 100px;
+    margin-bottom:50px;
+    text-align: left;
+}
+
+.box{
+    margin-top:70px;
+    border:1px solid;
+    width:100%;
+    height:300px;
+}
+
+.executebutton{
+    margin-top:70px;
+    margin-bottom:100px;
+    height:75px;
+    width:145px;
+}
+
+.canclebutton{
+    margin-top:70px;
+    margin-bottom:100px;
+    margin-left:20px;
+    height:75px;
+    width:145px;
+}
+
