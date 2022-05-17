@@ -5,6 +5,7 @@ import styles from "../css/Bankstatement.module.css";
 import Button from "react-bootstrap/Button";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom";
 
 const Bankstatement = () => {
   return (
@@ -125,7 +126,9 @@ const Bankstatement = () => {
 
           <Col lg={1}>
             <Button variant="primary" size="lg">
-              <div className={styles.leftalign3}>이체</div>
+              <div className={styles.leftalign3}>
+                <Link to="/transfer">이체</Link>
+              </div>
             </Button>{" "}
           </Col>
         </Row>
