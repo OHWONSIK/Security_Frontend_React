@@ -17,8 +17,7 @@ function Signup() {
                     <h5 className={styles.gender}>성별</h5>
                     <h5 className={styles.email}>e-mail</h5>
                     <h5 className={styles.phonenumber}>전화번호</h5>
-                    <h5 className={styles.accountnumber}>계좌번호</h5>
-                    <h5 className={styles.accountpassword}>계좌비밀번호</h5>
+                    <h5 className={styles.findpassword}>비밀번호찾기 질문 / 답변</h5>
                 </Col>
                 <Col lg={4}>
                     <Row>
@@ -85,8 +84,13 @@ function Signup() {
                         </Col>
                         <Col lg={2}></Col>
                     </Row>
-                    <Form.Control className={styles.accountnumberinput} type="accountnumber" placeholder="@빼고 입력해주세요" />
-                    <Form.Control className={styles.accountpasswordinput} type="accountpassword" placeholder="" />
+                    <Form.Select className={styles.findpasswordquestion} aria-label="Default select example">
+                        <option>질문을 선택해주세요.</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </Form.Select>
+                    <Form.Control className={styles.findpasswordanswerinput} type="answer" placeholder="" />
                     <Button className={styles.signupbutton}variant="primary" size="lg" >
                         <Link to="/signupcomplete">가입하기</Link>
                     </Button>

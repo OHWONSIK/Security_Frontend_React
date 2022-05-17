@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Carousel, ListGroup } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../css/home.module.css';
@@ -8,11 +8,11 @@ function Home() {
     return (
         <div className={styles.Home}>
             <Container fluid>
-                
+
                 <Row className={styles.contentTop}>
                     <Col lg={1}></Col>
                     <Col lg={7}>
-                        
+
                         <Carousel>
                             <Carousel.Item>
                                 <img
@@ -20,6 +20,7 @@ function Home() {
                                     src="img/first.svg"
                                     alt="First slide"
                                 />
+
                                 <Carousel.Caption>
                                     <h3>First slide label</h3>
                                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -52,12 +53,12 @@ function Home() {
                         </Carousel>
                     </Col>
                     <Col lg={3}>
-                        
-                        <img className={styles.cardImage} alt="card" src="img/card.png"/>
+
+                        <img className={styles.cardImage} alt="card" src="img/card.png" />
                         <div className="d-grid gap-2">
                             <Button className={styles.loginButton} variant="primary" size="lg">
                                 <Link to="/login">로그인</Link>
-                            </Button>                            
+                            </Button>
                             <Button className={styles.signupButton} variant="primary" size="lg">
                                 <Link to="/signup">회원가입</Link>
                             </Button>
@@ -70,23 +71,23 @@ function Home() {
                     <Col lg={1}></Col>
                     <Col lg={10}>
                         <div>
-                            
+
                             <Button className={styles.depositButton} variant="secondary" size="lg">
-                                <Link to="/Productpage">예적금</Link>    
+                                <Link to="/Productpage">예적금</Link>
                             </Button>
-                            
+
                             <Button className={styles.historyButton} variant="secondary" size="lg">
-                                <Link to="/Quicksearchpage">빠른거래내역</Link>    
+                                <Link to="/Quicksearchpage">빠른거래내역</Link>
                             </Button>
-                            
+
                             <Button className={styles.loanButton} variant="secondary" size="lg">
-                                <Link to="/loanapply">대출</Link>    
+                                <Link to="/loanapply">대출</Link>
                             </Button>
-                            
+
                             <Button className={styles.productButton} variant="secondary" size="lg">
-                                금융상품    
+                                금융상품
                             </Button>
-                            
+
                         </div>
                     </Col>
                     <Col lg={1}></Col>
@@ -100,7 +101,7 @@ function Home() {
                     <Col lg={1}>
                         <div className={styles.seemore}>
                             <Link to="/Newnewspage">+더보기</Link>
-                            
+
                         </div>
                     </Col>
                     <Col lg={4}>

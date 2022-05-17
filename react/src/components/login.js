@@ -15,12 +15,12 @@ function Login() {
               <Nav.Item>
                 <Nav.Link href="/home">아이디/비밀번호</Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              {/* <Nav.Item>
                 <Nav.Link eventKey="link-1">공백</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="link-2">공백</Nav.Link>
-              </Nav.Item>
+              </Nav.Item> */}
             </Nav>
             <div className={styles.divideline}></div>
             

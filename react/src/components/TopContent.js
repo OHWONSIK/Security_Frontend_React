@@ -42,18 +42,8 @@ function TopContent() {
                                         <Nav.Link className={styles.tuition} href="/loanapply">대출</Nav.Link>
                                         <Nav.Link className={styles.product} href="#action4">금융상품</Nav.Link>
                                         <Nav.Link className={styles.notice}href="/Newnewspage">공지사항</Nav.Link>
-
+                                        <Nav.Link className={styles.cardissuance}href="/cardissuance">카드발급</Nav.Link>
                                     </Nav>
-                                    <Form className="d-flex" >
-                                        <Button variant="outline-success">검색</Button>
-                                        <FormControl
-                                            type="search"
-                                            placeholder=""
-                                            className="me-2"
-                                            aria-label="Search"
-                                        />
-
-                                    </Form>
                                 </Navbar.Collapse>
                             </Container>
                         </Navbar>
