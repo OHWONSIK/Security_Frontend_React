@@ -12,13 +12,19 @@ const Eventfinished = () => {
     <div>
       <Nav fill className={styles.nav} variant="pills" defaultActiveKey="/home">
         <Nav.Item>
-          <Nav.Link href="/home">진행중인 이벤트</Nav.Link>
+          <Nav.Link href="/Event" active>
+            진행중인 이벤트
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/home">종료된 이벤트</Nav.Link>
+          <Nav.Link href="/Eventfinishedpage" active>
+            종료된 이벤트
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/home">당첨자 발표</Nav.Link>
+          <Nav.Link href="/Winnerannouncementpage" active>
+            당첨자 발표
+          </Nav.Link>
         </Nav.Item>
       </Nav>
       <Table striped bordered hover>
