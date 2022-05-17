@@ -1,0 +1,12 @@
+.og_box{
+    margin-top:50px;
+    border: 1px solid black;
+    width : 580px;
+    height: 250px;
+}
+
+.pagenav_og{
+    margin-top:30px;
+    align-items:center;
+    margin-left : 280px;  
+}
