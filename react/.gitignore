@@ -3,20 +3,8 @@
 # dependencies
 /node_modules/
 
-/src/components/
-
-/src/page/
-
-/src/css/
-
-/.App.css
-/.App.js
-/.App.test.js
-
 /.pnp
 .pnp.js
-
-
 
 # testing
 /coverage

@@ -10,10 +10,32 @@ function Cardissuance() {
         <Row className={styles.contentTop}>
           <Col lg={3}></Col>
           <Col lg={1}>
+            <h3 className={styles.cardtype}>카드 종류</h3>
             <h3 className={styles.guide}>개인정보 수집 및 이용 동의</h3>
           </Col>
           <Col lg={4}>
             <h2 className={styles.application}>카드발급 신청</h2>
+
+            <Form className={styles.cardcheckbox}>
+              {['checkbox'].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                  <Form.Check className={styles.firstcard}
+                    inline
+                    label="카드1"
+                    name="group1"
+                    type={type}
+                    id={`inline-${type}-1`}
+                  />
+                  <Form.Check className={styles.secondcard}
+                    inline
+                    label="카드2"
+                    name="group1"
+                    type={type}
+                    id={`inline-${type}-2`}
+                  />
+                </div>
+              ))}
+            </Form>
 
             <Form.Control
               className={styles.textinput}
