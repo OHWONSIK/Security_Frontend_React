@@ -12,7 +12,7 @@ const Product = () => {
       <Row xs={1} md={2} className="g-4">
         {Array.from({ length: 6 }).map((_, idx) => (
           <Col>
-            <Card>
+            <Card className={styles.p_card}>
               <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
                 <Card.Title>상품</Card.Title>

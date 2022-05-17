@@ -19,7 +19,7 @@ const leftList = () => {
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/">이벤트</Link>
+          <Link to="/Event">이벤트</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
@@ -49,7 +49,7 @@ const leftList = () => {
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/">대출</Link>
+          <Link to="/loanapply">대출</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
@@ -59,12 +59,12 @@ const leftList = () => {
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/">이체</Link>
+          <Link to="/Transfer">이체</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/">카드발급</Link>
+          <Link to="/Cardissuancepage">카드발급</Link>
           <div className={styles.divideLineC}></div>
         </li>
 

@@ -1,10 +1,12 @@
 
 .divideLineC{
+    margin-top:30px;
     height:1px; 
-    background-color:blue;
+    background-color:black;
 }
 
 .bottomCont{
+    margin-top:20px;
     margin-left: 10px;
     margin-right:20px;
 }

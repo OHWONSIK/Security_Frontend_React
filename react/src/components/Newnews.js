@@ -19,7 +19,9 @@ const Newnews = () => {
         </thead>
         <tbody>
           <tr>
-            <td>10</td>
+            <td>
+              <Link to="/Commonpage">10</Link>
+            </td>
             <td>수신상품 금리 변경 안내</td>
             <td>2022-02-25</td>
           </tr>
