@@ -25,6 +25,7 @@ import Loanapplypage from "./page/loanapplypage";
 import Loancompletepage from "./page/loancompletepage";
 import Transferpage from "./page/transferpage";
 import Transfercompletepage from "./page/transfercompletepage";
+import OngoingEventpage from "./page/OngoingEventpage";
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
           path="/cardissuancecompletepage"
           element={<Cardissuancecompletepage />}
         />
-        <Route path="/event" element={<Eventpage />} />
+        <Route path="/event1" element={<Eventpage />} />
+        <Route path="/event" element={<OngoingEventpage />} />
         <Route path="/certification" element={<Certificationpage />} />
         <Route path="/loanapply" element={<Loanapplypage />} />
         <Route path="/loancomplete" element={<Loancompletepage />} />
