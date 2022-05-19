@@ -26,6 +26,12 @@ import Loancompletepage from "./page/loancompletepage";
 import Transferpage from "./page/transferpage";
 import Transfercompletepage from "./page/transfercompletepage";
 import OngoingEventpage from "./page/OngoingEventpage";
+import Findidpage from "./page/findidpage";
+import Findpasswordpage from "./page/findpasswordpage";
+import Passwordchangepage from "./page/passwordchangepage";
+import Idguidepage from "./page/idguidepage"
+import Temporarypasswordguidepage from "./page/temporarypasswordguidepage"
+
 
 function App() {
   return (
@@ -35,7 +41,7 @@ function App() {
         <Route path="/login" element={<Loginpage />} />
         <Route path="/signup" element={<Signuppage />} />
         <Route path="/signupcomplete" element={<Signupcompletepage />} />
-        <Route path="/cardissuancepage" element={<Cardissuancepage />} />
+        <Route path="/cardissuance" element={<Cardissuancepage />} />
         <Route
           path="/cardissuancecompletepage"
           element={<Cardissuancecompletepage />}
@@ -72,6 +78,26 @@ function App() {
         <Route
           path="/Incidentnotificationpage"
           element={<Incidentnotificationpage />}
+        ></Route>
+        <Route
+          path="/findid"
+          element={<Findidpage />}
+        ></Route>
+        <Route
+          path="/findpassword"
+          element={<Findpasswordpage />}
+        ></Route>
+        <Route
+          path="/passwordchange"
+          element={<Passwordchangepage />}
+        ></Route>
+        <Route
+          path="/idguide"
+          element={<Idguidepage />}
+        ></Route>
+        <Route
+          path="/temporarypasswordguide"
+          element={<Temporarypasswordguidepage />}
         ></Route>
       </Routes>
     </div>
