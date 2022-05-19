@@ -1,0 +1,25 @@
+.findid{
+    margin-top: 100px;
+    margin-bottom: 70px;
+    font-weight: bold;
+}
+
+.findidnotice{
+    margin-bottom: 100px;
+}
+
+.inputname{
+    height: 50px;
+    margin-bottom:50px;
+}
+
+.inputemail{
+    height: 50px;
+    margin-bottom:50px;
+}
+
+.findbutton{
+    height:75px;
+    width:145px;
+    margin-bottom: 100px;
+}

@@ -1,0 +1,25 @@
+.idguide{
+    margin-top: 100px;
+    margin-bottom: 70px;
+    font-weight: bold;
+}
+
+.loginnotice{
+    margin-bottom: 50px;
+}
+
+.id{
+    text-align: right;
+    margin-bottom: 100px;
+}
+
+.idvalue{
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.loginbutton{
+    height:75px;
+    width:200px;
+    margin-bottom: 100px;
+}
