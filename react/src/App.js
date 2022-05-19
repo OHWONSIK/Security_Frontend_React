@@ -29,9 +29,12 @@ import OngoingEventpage from "./page/OngoingEventpage";
 import Findidpage from "./page/findidpage";
 import Findpasswordpage from "./page/findpasswordpage";
 import Passwordchangepage from "./page/passwordchangepage";
-import Idguidepage from "./page/idguidepage"
-import Temporarypasswordguidepage from "./page/temporarypasswordguidepage"
-
+import Idguidepage from "./page/idguidepage";
+import Temporarypasswordguidepage from "./page/temporarypasswordguidepage";
+import CreateAccountpage from "./page/CreateAccountpage";
+import CreateAccount_2page from "./page/CreateAccount_2page";
+import CreateAccount_3page from "./page/CreateAccount_3page";
+import PasswordChangeCompletepage from "./page/PasswordChangeCompletepage";
 
 function App() {
   return (
@@ -79,25 +82,29 @@ function App() {
           path="/Incidentnotificationpage"
           element={<Incidentnotificationpage />}
         ></Route>
-        <Route
-          path="/findid"
-          element={<Findidpage />}
-        ></Route>
-        <Route
-          path="/findpassword"
-          element={<Findpasswordpage />}
-        ></Route>
-        <Route
-          path="/passwordchange"
-          element={<Passwordchangepage />}
-        ></Route>
-        <Route
-          path="/idguide"
-          element={<Idguidepage />}
-        ></Route>
+        <Route path="/findid" element={<Findidpage />}></Route>
+        <Route path="/findpassword" element={<Findpasswordpage />}></Route>
+        <Route path="/passwordchange" element={<Passwordchangepage />}></Route>
+        <Route path="/idguide" element={<Idguidepage />}></Route>
         <Route
           path="/temporarypasswordguide"
           element={<Temporarypasswordguidepage />}
+        ></Route>
+        <Route
+          path="/CreateAccountpage"
+          element={<CreateAccountpage />}
+        ></Route>
+        <Route
+          path="/CreateAccount_2page"
+          element={<CreateAccount_2page />}
+        ></Route>
+        <Route
+          path="/CreateAccount_3page"
+          element={<CreateAccount_3page />}
+        ></Route>
+        <Route
+          path="/PasswordChangeComplete"
+          element={<PasswordChangeCompletepage />}
         ></Route>
       </Routes>
     </div>
