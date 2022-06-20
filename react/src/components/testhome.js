@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Carousel, ListGroup } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../css/home.module.css';
+import styles from '../css/testhome.module.css';
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
-function Home() {
+function Testhome() {
+    const onLogout = () => {
+        sessionStorage.removeItem('loginId')
+        document.location.href = '/'
+    }
 
     const [info, setInfo] = useState([]);
 
@@ -39,11 +43,8 @@ function Home() {
         )
     }
 
-    
-
-
     return (
-        <div className={styles.Home}>
+        <div className={styles.Testhome}>
             <Container fluid>
 
                 <Row className={styles.contentTop}>
@@ -94,7 +95,7 @@ function Home() {
                         <img className={styles.cardImage} alt="card" src="img/card.png" />
                         <div className="d-grid gap-2">
                             <Button className={styles.loginButton} variant="primary" size="lg">
-                                <Link to="/login">로그인</Link>
+                                <Link to onClick ={onLogout}>로그아웃</Link>
                             </Button>
                             <Button className={styles.signupButton} variant="primary" size="lg">
                                 <Link to="/signup">회원가입</Link>
@@ -146,8 +147,7 @@ function Home() {
                             <ListGroup.Item className={styles.List1}>학사제도 안내서 및 교양 교육과정 이수기준</ListGroup.Item>
                             <ListGroup.Item className={styles.List2}>제17회 TOPCIT 정기평가 안내</ListGroup.Item>
                             <ListGroup.Item className={styles.List3}>2022년 8월 졸업예정자 공학인증 안내</ListGroup.Item>
-                            <ListGroup.Item class
-                            Name={styles.List4}>2022년도 SW중심대학사업 SW산학멘토링</ListGroup.Item>
+                            <ListGroup.Item className={styles.List4}>2022년도 SW중심대학사업 SW산학멘토링</ListGroup.Item>
                         </ListGroup> */}
                         <Tr info={info} />
                     </Col>
@@ -172,7 +172,7 @@ function Home() {
     );
 }
 
-export default Home;
+export default Testhome;
 
 
 

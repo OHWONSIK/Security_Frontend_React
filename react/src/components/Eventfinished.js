@@ -12,7 +12,7 @@ const Eventfinished = () => {
     <div>
       <Nav fill className={styles.nav} variant="pills" defaultActiveKey="/home">
         <Nav.Item>
-          <Nav.Link href="/Event" active>
+          <Nav.Link href="/OngoingEvent" active>
             진행중인 이벤트
           </Nav.Link>
         </Nav.Item>

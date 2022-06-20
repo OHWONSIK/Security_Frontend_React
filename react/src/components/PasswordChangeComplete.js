@@ -5,6 +5,12 @@ import styles from "../css/PasswordChangeComplete.module.css";
 import Button from "react-bootstrap/Button";
 
 const PasswordChangeComplete = () => {
+
+  const onLogout = () => {
+    sessionStorage.removeItem('loginId')
+    document.location.href = '/login'
+  }
+
   return (
     <div className={styles.Event}>
       <Row>
@@ -23,7 +29,7 @@ const PasswordChangeComplete = () => {
             새 비밀번호로 로그인 해주세요.{" "}
           </h4>
           <Button className={styles.pc_checkbutton} variant="primary">
-            <Link to="/">확인</Link>
+            <Link to onClick={onLogout}>확인</Link>
           </Button>{" "}
         </Col>
         <Col sm={2}></Col>

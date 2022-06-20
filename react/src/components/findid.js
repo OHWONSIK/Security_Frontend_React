@@ -2,9 +2,48 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../css/findid.module.css';
+import React, { useEffect } from 'react';
 
 
 function Findid() {
+
+    // const [inputName, setInputName] = React.useState('');
+    // const [inputEmail, setInputEmail] = React.useState('');
+
+    // const handleInputName = (e) => {
+    //     setInputName(e.target.value)
+    // }
+
+    // const handleInputEmail = (e) => {
+    //     setInputEmail(e.target.value)
+    // }
+
+    // const onKeyPress = (e) => {
+    //     if (e.key == 'Enter') {
+    //         onClickFind();
+    //     }
+    // }
+
+    // const onClickFind = () => {
+    //     Axios.post('users/login', {
+    //         "loginId": inputId,
+    //         "password": inputPw
+    //     }
+    //     )
+    //         .then(res => {
+    //             if (res.data.checker === true && res.data.data.usingTempPassword === false) {
+    //                 sessionStorage.setItem('loginId', inputId)
+    //                 document.location.href = '/'
+    //             }
+    //             else if (res.data.checker === true && res.data.data.usingTempPassword === true)
+    //                 document.location.href = '/passwordchangepage'
+    //             else
+    //                 alert(res.data.message)
+    //         })
+
+    //         .catch()
+    // }
+
     return (
         <div className={styles.Findid}>
             <Container fluid>

@@ -1,11 +1,17 @@
 import { Row, Col, Nav, Navbar, Container, Form, FormControl, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../css/TopContent.module.css';
+import styles from '../css/testtopcontent.module.css';
 import { Link} from "react-router-dom";
 
-function TopContent() {
+function TesttopContent() {
+
+    const onLogout = () => {
+        sessionStorage.removeItem('loginId')
+        document.location.href = '/'
+    }
+
     return (
-        <div className={styles.TopContent}>
+        <div className={styles.TesttopContent}>
 
             <Container fluid>
                 <Row>
@@ -15,7 +21,7 @@ function TopContent() {
                             <ul className={styles.nobullet}>
                                 
                                 <li className={styles.login}>
-                                    <Link to="/login">로그인</Link>                               
+                                    <Link to onClick ={onLogout}> 로그아웃</Link>                               
                                 </li>
                                 <li className={styles.certification}>
                                     인증센터
@@ -61,4 +67,4 @@ function TopContent() {
     );
 }
 
-export default TopContent;
+export default TesttopContent;
