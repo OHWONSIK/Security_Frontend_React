@@ -7,7 +7,7 @@ import TopContent from "../components/TopContent";
 const Quicksearchpage = () => {
   return (
     <div>
-      <TopContent />
+      {/* <TopContent /> */}
 
       <Container fluid>
         <Row>

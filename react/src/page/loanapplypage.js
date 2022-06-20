@@ -6,7 +6,7 @@ import Loanapply from '../components/loanapply';
 function Loanapplypage() {
   return (
     <div className="Loanapplypage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Loanapply />
       <BottomContent />
     </div>

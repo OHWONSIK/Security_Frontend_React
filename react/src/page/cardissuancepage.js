@@ -6,7 +6,7 @@ import Cardissuance from '../components/cardissuance';
 function Cardissuancepage() {
   return (
     <div className="Cardissuancepage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Cardissuance />
       <BottomContent />
     </div>

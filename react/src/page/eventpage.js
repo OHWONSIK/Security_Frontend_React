@@ -6,7 +6,7 @@ import Event from '../components/event';
 function Eventpage() {
   return (
     <div className="Eventpage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Event />
       <BottomContent />
     </div>

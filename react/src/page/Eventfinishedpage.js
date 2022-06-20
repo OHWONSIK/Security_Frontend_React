@@ -10,7 +10,7 @@ const Eventfinishedpage = () => {
   return (
     <div>
       <Container fluid>
-        <TopContent />
+        {/* <TopContent /> */}
         <Row>
           <Col lg={2}>
             <Leftlist />

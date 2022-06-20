@@ -1,16 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import TopContent from '../components/TopContent';
 import BottomContent from '../components/BottomContent';
-import Loancomplete from '../components/loancomplete';
+import Testhome from '../components/testhome';
 
-function Loancompletepage() {
+function Testhomepage() {
+
+
   return (
-    <div className="Loancompletepage">
+    <div className="Testhomepage">
       {/* <TopContent /> */}
-      <Loancomplete />
+      <Testhome />
       <BottomContent />
     </div>
   );
 }
 
-export default Loancompletepage;
+export default Testhomepage;

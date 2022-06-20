@@ -8,7 +8,7 @@ import TopContent from "../components/TopContent";
 const Bankstatementpage = () => {
   return (
     <div>
-      <TopContent />
+      {/* <TopContent /> */}
 
       <Container fluid>
         <Row>

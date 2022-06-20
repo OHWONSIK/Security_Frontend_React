@@ -6,7 +6,7 @@ import Cardissuancecomplete from '../components/cardissuancecomplete';
 function Cardissuancecompletepage() {
     return (
     <div className="Cardissuancecompletepage">
-    <TopContent />
+    {/* <TopContent /> */}
     <Cardissuancecomplete />
     <BottomContent />
     </div>

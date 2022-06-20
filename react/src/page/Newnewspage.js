@@ -10,7 +10,7 @@ import TopContent from "../components/TopContent";
 const Newnewspage = () => {
   return (
     <div>
-      <TopContent />
+      {/* <TopContent /> */}
       <Container fluid>
         <Row>
           <Col lg={2}>

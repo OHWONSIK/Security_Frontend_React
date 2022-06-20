@@ -7,7 +7,7 @@ import Temporarypasswordguide from '../components/temporarypasswordguide';
 function Temporarypasswordguidepage() {
   return (
     <div className="Temporarypasswordguidepage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Temporarypasswordguide />
       <BottomContent />
     </div>

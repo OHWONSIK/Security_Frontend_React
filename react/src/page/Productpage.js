@@ -8,7 +8,7 @@ import TopContent from "../components/TopContent";
 const Productpage = () => {
   return (
     <div>
-      <TopContent />
+      {/* <TopContent /> */}
       <Container fluid>
         <Row>
           <Col lg={2}>

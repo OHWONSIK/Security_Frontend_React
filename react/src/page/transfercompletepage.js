@@ -6,7 +6,7 @@ import Transfercomplete from '../components/transfercomplete';
 function Transfercompletepage() {
   return (
     <div className="Transfercompletepage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Transfercomplete />
       <BottomContent />
     </div>

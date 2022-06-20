@@ -7,7 +7,7 @@ import Findid from '../components/findid';
 function Findidpage() {
   return (
     <div className="Findidpage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Findid />
       <BottomContent />
     </div>
