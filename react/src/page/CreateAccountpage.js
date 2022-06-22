@@ -9,7 +9,7 @@ import { Row, Col } from "react-bootstrap";
 const CreateAccountpage = () => {
   return (
     <div>
-      <TopContent />
+      {/* <TopContent /> */}
       <Container fluid>
         <Row>
           <Col>

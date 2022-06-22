@@ -19,7 +19,7 @@ const leftList = () => {
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/Event">이벤트</Link>
+          <Link to="/OngoingEvent">이벤트</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
@@ -64,7 +64,7 @@ const leftList = () => {
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/Cardissuancepage">카드발급</Link>
+          <Link to="/cardissuance">카드발급</Link>
           <div className={styles.divideLineC}></div>
         </li>
 

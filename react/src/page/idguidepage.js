@@ -7,7 +7,7 @@ import Idguide from '../components/idguide';
 function Idguidepage() {
   return (
     <div className="Idguidepage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Idguide />
       <BottomContent />
     </div>

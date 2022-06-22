@@ -5,9 +5,11 @@ import BottomContent from '../components/BottomContent';
 import Home from '../components/home';
 
 function Homepage() {
+
+
   return (
     <div className="Homepage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Home />
       <BottomContent />
     </div>

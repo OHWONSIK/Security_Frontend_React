@@ -9,7 +9,7 @@ import Common from "../components/Common";
 const Commonpage = () => {
   return (
     <div>
-      <TopContent />
+      {/* <TopContent /> */}
       <Container fluid>
         <Row>
           <Col lg={2}>

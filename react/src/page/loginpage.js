@@ -7,7 +7,7 @@ import Login from '../components/login';
 function Loginpage() {
   return (
     <div className="Loginpage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Login />
       <BottomContent />
     </div>

@@ -9,7 +9,7 @@ import Customerservice from "../components/Customerservice";
 const Customerservicepage = () => {
   return (
     <div>
-      <TopContent />
+      {/* <TopContent /> */}
       <Container fluid>
         <Row>
           <Col lg={2}>

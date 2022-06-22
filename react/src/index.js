@@ -8,9 +8,9 @@ import { BrowserRouter } from "react-router-dom";
 // id root의 app을 렌더링 시켜준다. ( index.html의 div root 부분)
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    {/* <BrowserRouter> */}
+    <App />
+    {/* </BrowserRouter> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

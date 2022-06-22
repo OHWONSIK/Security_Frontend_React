@@ -6,7 +6,7 @@ import Signupcomplete from '../components/signupcomplete';
 function Signupcompletepage() {
     return (
     <div className="Signupcompletepage">
-    <TopContent />
+    {/* <TopContent /> */}
     <Signupcomplete />
     <BottomContent />
     </div>

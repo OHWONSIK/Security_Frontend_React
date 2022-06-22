@@ -34,7 +34,7 @@
 }
 
 .textinput{
-    margin-top:117px;
+    margin-top:110px;
     height:500px;
     margin-bottom:50px;
 }
@@ -44,3 +44,12 @@
     width:145px;
 }
 
+.accountinput{
+    width:500px;
+    margin-top:70px;
+}
+
+.cardtypeinput{
+    width:250px;
+    margin-top:115px;
+}

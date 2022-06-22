@@ -1,107 +1,116 @@
-.contentTop{
-    height:1200px;
-    padding-top:100px;
+.contentTop {
+    height: 1200px;
+    padding-top: 100px;
 }
 
-.banktransfer{
+.banktransfer {
     text-align: left;
     font-weight: bold;
     padding-bottom: 70px;
 }
 
-.depositinformation{
+.depositinformation {
     text-align: left;
-    padding-top:40px;
-    padding-bottom:40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-.depositaccountnumber{
+.depositaccountnumber {
     text-align: left;
-    padding-top:40px;
-    padding-bottom:40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-.transferamount{
+.withdrawalaccountnumber{
     text-align: left;
-    padding-top:40px;
-    padding-bottom:40px;
+    padding-top: 100px;
+    padding-bottom: 40px;
 }
 
-.receivingaccountkmemo{
+.transferamount {
     text-align: left;
-    padding-top:100px;
-    padding-bottom:40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-.myaccountmemo{
+.receivingaccountkmemo {
     text-align: left;
-    padding-top:100px;
-    padding-bottom:40px;
+    padding-top: 100px;
+    padding-bottom: 40px;
 }
 
-.banklist{
-    width:300px;
-    margin-top: 155px;
+.myaccountmemo {
+    text-align: left;
+    padding-top: 100px;
+    padding-bottom: 40px;
 }
 
-.accountinput{
-    margin-top: 75px;
-    width:500px;
+.banklist {
+    width: 300px;
+    margin-top: 76px;
 }
 
-.transferamountinput{
+.accountinput {
+    margin-top: 68px;
+    margin-bottom: 50px;
+}
+
+.accountinput2 {
+    margin-top: 151px;
+    width: 500px;
+}
+
+.transferamountinput {
     margin-top: 72px;
-    width:400px;
-    margin-right:0px;
+    width: 400px;
+    margin-right: 0;
 }
 
-.buttonlist{
+.buttonlist {
     text-align: left;
     margin-top: 20px;
 }
 
-.millionbutton{
-    width:120px;
+.millionbutton {
+    width: 120px;
 }
 
-.fivehundredthousandbutton{
-    margin-left:20px;
-    width:120px;
+.fivehundredthousandbutton {
+    margin-left: 20px;
+    width: 120px;
 }
 
-.onehundredthousandbutton{
-    margin-left:20px;
-    width:120px;
-}    
-
-
-.fullamountbutton{
-    margin-left:20px;
-    width:120px;
+.onehundredthousandbutton {
+    margin-left: 20px;
+    width: 120px;
 }
 
-.correctionbutton{
-    margin-left:20px;
-    width:120px;
+
+.fullamountbutton {
+    margin-left: 20px;
+    width: 120px;
 }
 
-.receivingaccountkmemoinput{
+.correctionbutton {
+    margin-left: 20px;
+    width: 120px;
+}
+
+.receivingaccountkmemoinput {
+    margin-top: 80px;
+    width: 500px;
+    height: 100px;
+}
+
+.myaccountmemoinput {
     margin-top: 75px;
-    width:500px;
-    height:100px;
-}
-
-.myaccountmemoinput{
-    margin-top: 75px;
-    width:500px;
-    height:100px;
+    width: 500px;
+    height: 100px;
     margin-bottom: 50px;
 }
 
-.nextbutton{
-    height:75px;
-    width:145px;
+.nextbutton {
+    height: 75px;
+    width: 145px;
     margin-right: 200px;
 }
-
-

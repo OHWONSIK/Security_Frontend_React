@@ -6,7 +6,7 @@ import Certification from '../components/certification';
 function Certificationpage() {
   return (
     <div className="Certificationpage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Certification />
       <BottomContent />
     </div>

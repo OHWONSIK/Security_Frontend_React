@@ -7,7 +7,7 @@ import Findpassword from '../components/findpassword';
 function Findpasswordpage() {
   return (
     <div className="Findpasswordpage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Findpassword />
       <BottomContent />
     </div>

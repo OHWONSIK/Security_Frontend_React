@@ -7,7 +7,7 @@ import Passwordchange from '../components/passwordchange';
 function Passwordchangepage() {
   return (
     <div className="Passwordchangepage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Passwordchange />
       <BottomContent />
     </div>

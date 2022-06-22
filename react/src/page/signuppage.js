@@ -6,7 +6,7 @@ import Signup from '../components/signup';
 function Signuppage() {
     return (
     <div className="Signuppage">
-    <TopContent />
+    {/* <TopContent /> */}
     <Signup />
     <BottomContent />
     </div>

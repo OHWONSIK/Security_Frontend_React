@@ -6,7 +6,7 @@ import Transfer from '../components/transfer';
 function Transferpage() {
   return (
     <div className="Transferpage">
-      <TopContent />
+      {/* <TopContent /> */}
       <Transfer />
       <BottomContent />
     </div>

@@ -2,21 +2,108 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../css/cardissuance.module.css";
 import { Router, Route, Routes, Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import Axios from 'axios';
 
 function Cardissuance() {
+
+  const [info2, setInfo2] = React.useState([]);
+  // const [selectCardType, setSelectCardType] = React.useState("");
+
+
+  let accountNumber
+  let cardType
+  let i
+  const handleAccountNum = (e) => {
+    accountNumber = e.target.options[e.target.selectedIndex].value
+    // setAccountNum(e.target.options[e.target.selectedIndex].value)
+    // setAccountNum(accountNum)
+  }
+
+  const handleCardType = (e) => {
+    cardType = e.target.options[e.target.selectedIndex].text
+  };
+
+  useEffect(() => {
+    Axios.get('/users/accounts/inquiry',
+      { params: { userId: sessionStorage.getItem('loginId') } }
+    )
+      .then(res => setInfo2(res.data.data))
+      // .then(res => console.log(res.data.data))
+      .catch(err => console.log(err));
+  }, []);
+
+  const onClickSubmit = () => {
+    if (accountNumber === undefined || accountNumber === "계좌를 선택해주세요")
+      alert('계좌번호를 선택해주세요')
+    else if (cardType === undefined || cardType === "카드종류를 선택해주세요")
+      alert('카드종류를 선택해주세요')
+    else {
+      Axios.post('users/card', {
+        "accountNumber": accountNumber,
+        "cardType": cardType,
+        "loginId": sessionStorage.getItem('loginId')
+      }
+      )
+        .then(res => {
+          if (res.data.checker === true) {
+            document.location.href = 'cardissuancecompletepage'
+          }
+          else
+            alert(res.data.message)
+        })
+
+        .catch()
+    }
+  }
+
+  const Tr2 = ({ info }) => {
+    return (
+      <Form.Select className={styles.accountinput} aria-label="Default select example" onChange={handleAccountNum}>
+        <option>계좌를 선택해주세요</option>
+        {
+          info.map((item, idx) => {
+            return (
+              <Td2 key={item.accountNumber} item={item} />
+            )
+          })
+        }
+      </Form.Select>
+    );
+  };
+
+  const Td2 = ({ item }) => {
+    return (
+      <>
+        <option value={item.accountNumber}>{item.accountNumber}</option>
+      </>
+    )
+  }
+
+
+
   return (
     <div className={styles.Cardissuance}>
       <Container fluid>
         <Row className={styles.contentTop}>
           <Col lg={3}></Col>
           <Col lg={1}>
-            <h3 className={styles.cardtype}>카드 종류</h3>
-            <h3 className={styles.guide}>개인정보 수집 및 이용 동의</h3>
+            <h3 className={styles.cardtype}>계좌번호</h3>
+            <h3 className={styles.cardtype}>카드종류</h3>
+            <h3 className={styles.guide}>개인정보 수집 및 이용동의</h3>
           </Col>
           <Col lg={4}>
             <h2 className={styles.application}>카드발급 신청</h2>
 
-            <Form className={styles.cardcheckbox}>
+            <Tr2 info={info2} />
+            <Form.Select className={styles.cardtypeinput} aria-label="Default select example" onChange={handleCardType}>
+              <option>카드종류를 선택해주세요</option>
+              <option value="1">상명카드1</option>
+              <option value="2">상명카드2</option>
+            </Form.Select>
+
+
+            {/* <Form className={styles.cardcheckbox}>
               {['checkbox'].map((type) => (
                 <div key={`inline-${type}`} className="mb-3">
                   <Form.Check className={styles.firstcard}
@@ -35,12 +122,14 @@ function Cardissuance() {
                   />
                 </div>
               ))}
-            </Form>
+            </Form> */}
 
             <Form.Control
               className={styles.textinput}
               as="textarea"
               rows={3}
+              disabled
+              readOnly
               placeholder=". 개인정보의 수집 및 이용 동의서
  - 이용자가 제공한 모든 정보는 다음의 목적을 위해 활용하며, 하기 목적 이외의 용도로는 사용되지 않습니다.
 ① 개인정보 수집 항목 및 수집·이용 목적
@@ -61,7 +150,7 @@ function Cardissuance() {
             />
 
             <Button className={styles.submitbutton} variant="primary" size="lg">
-              <Link to="/Cardissuancecompletepage">제출</Link>
+              <Link to onClick={onClickSubmit}>제출</Link>
             </Button>
           </Col>
           <Col lg={4}></Col>

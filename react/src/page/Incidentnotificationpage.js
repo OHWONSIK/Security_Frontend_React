@@ -9,7 +9,7 @@ import Incidentnotification from "../components/Incidentnotification";
 const Incidentnotificationpage = () => {
   return (
     <div>
-      <TopContent />
+      {/* <TopContent /> */}
       <Container fluid>
         <Row>
           <Col lg={2}>

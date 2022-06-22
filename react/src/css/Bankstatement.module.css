@@ -16,7 +16,10 @@
     margin-left:150px;
 }
 
-
+.accountInput{
+    text-align: left;
+    margin-top: 55px;
+}
 
 .statement_text{
     text-align:left;

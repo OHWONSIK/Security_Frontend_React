@@ -38,7 +38,7 @@ const Winnerannouncement = () => {
         <tbody>
           <tr>
             <td>10</td>
-            <td>이벤트1</td>
+            <td>이벤트1의 당첨자를 발표합니다.</td>
             <td>2022-02-25</td>
           </tr>
           <tr>

@@ -1,19 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import TopContent from "../components/TopContent";
 import BottomContent from "../components/BottomContent";
-import PasswordChangeComplete from "../components/PasswordChangeComplete";
+import NoLogin from "../components/noLogin";
 import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 
-const PasswordChangeCompletepage = () => {
+const NoLoginpage = () => {
   return (
     <div>
       {/* <TopContent /> */}
       <Container fluid>
         <Row>
           <Col>
-            <PasswordChangeComplete />
+            <NoLogin />
           </Col>
         </Row>
       </Container>
@@ -22,4 +22,4 @@ const PasswordChangeCompletepage = () => {
   );
 };
 
-export default PasswordChangeCompletepage;
+export default NoLoginpage;
