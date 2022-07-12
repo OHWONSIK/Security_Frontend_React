@@ -3,26 +3,25 @@ import { Container } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 // import Pagination from "react-bootstrap/Pagination";
-import Pagination from "./pagination"
+import Pagination from "./pagination";
 import PageItem from "react-bootstrap/PageItem";
 import styles from "../css/Newnews.module.css";
-import Axios from 'axios';
-import { useState, useEffect, useRef } from 'react'
+import Axios from "axios";
+import { useState, useEffect, useRef } from "react";
 import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
-import { Component } from 'react'
+import { Component } from "react";
 
 function Newnews() {
-
   const [info, setInfo] = useState([]);
   const [posts, setPosts] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
 
   useEffect(() => {
-    Axios.get('/cont/news')
-      .then(res => setInfo(res.data.data))
+    Axios.get("/cont/news")
+      .then((res) => setInfo(res.data.data))
       // .then(res => console.log(res.data.data))
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
 
   const indexOfLast = currentPage * postsPerPage;
@@ -33,22 +32,14 @@ function Newnews() {
     return currentPosts;
   }
 
-
-
-
   const Tr = ({ info }) => {
     // let infoReverse = info.slice(0).reverse()
     return (
       <tbody>
-        {
-          info.map((item, idx) => {
-            // console.log(item)
-            return (
-
-              <Td key={item.id} item={item} />
-            )
-          })
-        }
+        {info.map((item, idx) => {
+          // console.log(item)
+          return <Td key={item.id} item={item} />;
+        })}
       </tbody>
     );
   };
@@ -62,10 +53,8 @@ function Newnews() {
           <td className={styles.date}>{item.createdDate}</td>
         </tr>
       </>
-    )
-  }
-
-
+    );
+  };
 
   return (
     <div>
@@ -78,12 +67,16 @@ function Newnews() {
           </tr>
         </thead>
 
-        <Tr info={currentPosts(info.slice(0).reverse())}></Tr>
+        <Tr info={currentPosts(info.slice(0))}></Tr>
       </Table>
       <Row>
         {/* <Col lg={4}></Col>
         <Col lg={4}> */}
-        <Pagination postsPerPage={postsPerPage} totalPosts={info.length} paginate={setCurrentPage}>
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={info.length}
+          paginate={setCurrentPage}
+        >
           {/* <Pagination.First />
         <Pagination.Prev />
         <Pagination.Item active>{1}</Pagination.Item>
@@ -99,6 +92,6 @@ function Newnews() {
       </Row>
     </div>
   );
-};
+}
 
 export default Newnews;
