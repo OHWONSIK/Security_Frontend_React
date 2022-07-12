@@ -42,6 +42,10 @@ import Topcontent from "./components/TopContent"
 import Testtopcontent from "./components/testtopcontent"
 import SelectAccountpage from "./page/selectAccountpage";
 import NoLoginpage from "./page/noLoginpage";
+import InquiryWritepage from "./page/inquiryWritepage";
+import MyInfomation from "./page/myInfomationpage";
+import MyInfomationpage from "./page/myInfomationpage";
+
 
 // import TesttopContent from "./components/testtopcontent";
 
@@ -417,6 +421,10 @@ function App() {
             ></Route>
             <Route path="/selectAccount" element={<NoLoginpage />}></Route>
             <Route path="/noLogin" element={<NoLoginpage />}></Route>
+            <Route path="/qa" element={<InquiryWritepage />}></Route>
+            <Route path="/myinfo" element={<MyInfomationpage />}></Route>
+
+
           </Routes>
         </BrowserRouter>
       )}
