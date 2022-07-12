@@ -1,0 +1,22 @@
+.inquiryWrite{
+    font-size: 35px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.title{
+    margin-top: 100px;
+    text-align: left;
+}
+
+.content{
+    margin-top: 30px;
+    text-align: left;
+}
+
+.completebutton{
+    margin-top: 100px;
+    margin-bottom:200px;
+}
+

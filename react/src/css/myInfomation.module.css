@@ -1,0 +1,108 @@
+.myInfomation{
+    font-size: 35px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.id{
+    text-align: left;
+    margin-top: 100px;
+}
+
+.name{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.age{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.gender{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.email{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.phoneNumber{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.accountNumber{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.cardList{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.loanList{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.Id{
+    text-align: left;
+    margin-top: 190px;
+}
+
+.Name{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.Age{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.Gender{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.Email{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.PhoneNumber{
+    text-align: left;
+    margin-top: 40px;
+}
+
+.AccountNumber{
+    text-align: left;
+    margin-top: 40px;
+    width: 400px;
+}
+
+.CardList{
+    text-align: left;
+    margin-top: 30px;
+    width: 400px;
+}
+
+.LoanList{
+    text-align: left;
+    margin-top: 30px;
+    width: 400px;
+}
+
+.checkbutton{
+    margin-top: 100px;
+    margin-bottom:200px;
+    margin-left:500px;
+    height:75px;
+    width:145px;
+}
+
