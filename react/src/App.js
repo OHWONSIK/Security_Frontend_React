@@ -43,7 +43,7 @@ import Testtopcontent from "./components/testtopcontent"
 import SelectAccountpage from "./page/selectAccountpage";
 import NoLoginpage from "./page/noLoginpage";
 import InquiryWritepage from "./page/inquiryWritepage";
-import MyInfomation from "./page/myInfomationpage";
+import Mypagepage from "./page/Mypagepage.js";
 import MyInfomationpage from "./page/myInfomationpage";
 
 
@@ -303,6 +303,9 @@ function App() {
               element={<PasswordChangeCompletepage />}
             ></Route>
             <Route path="/selectAccount" element={<SelectAccountpage />}></Route>
+            <Route path="/mypage" element={<Mypagepage />}></Route>
+            <Route path="/qapage" element={<InquiryWritepage />}></Route>
+            <Route path="/myinfo" element={<MyInfomationpage />}></Route>
           </Routes>
         </BrowserRouter>
 
@@ -360,6 +363,9 @@ function App() {
               element={<PasswordChangeCompletepage />}
             ></Route>
             <Route path="/selectAccount" element={<CreateAccountpage />}></Route>
+            <Route path="/mypage" element={<Mypagepage />}></Route>
+            <Route path="/qapage" element={<InquiryWritepage />}></Route>
+            <Route path="/myinfo" element={<MyInfomationpage />}></Route>
           </Routes>
         </BrowserRouter>
 
@@ -421,8 +427,9 @@ function App() {
             ></Route>
             <Route path="/selectAccount" element={<NoLoginpage />}></Route>
             <Route path="/noLogin" element={<NoLoginpage />}></Route>
-            <Route path="/qa" element={<InquiryWritepage />}></Route>
-            <Route path="/myinfo" element={<MyInfomationpage />}></Route>
+            <Route path="/mypage" element={<NoLoginpage />}></Route>
+            <Route path="/qapage" element={<NoLoginpage />}></Route>
+            <Route path="/myinfo" element={<NoLoginpage />}></Route>
 
 
           </Routes>
