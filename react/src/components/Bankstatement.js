@@ -133,8 +133,8 @@ const Bankstatement = () => {
           // }
           else {
             for (i = 0; i < res.data.data.length; i++) {
-            // for (i = 0; i < res.data.data.length - (res.data.data.length-10); i++) {
-            
+              // for (i = 0; i < res.data.data.length - (res.data.data.length-10); i++) {
+
 
 
               // console.log(res.data.data[i].sendMoney)
@@ -152,7 +152,7 @@ const Bankstatement = () => {
               transactionDate = res.data.data[i].transactionDate.substring(0, 10)
               transactionTime = res.data.data[i].transactionDate.substring(11, 19)
               amount = res.data.data[i].sendMoney
-            
+
 
               if (amount >= 0) {
                 senderAccount = res.data.data[i].senderAccount
@@ -160,7 +160,7 @@ const Bankstatement = () => {
                 withdrawAmount = '-'
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toReceiverMessage
                 // )
-                infoTest = { "id": i + 1, "transactionDate": transactionDate, "transactionTime": transactionTime, "withdrawAmount": withdrawAmount, "depositAmount": depositAmount, "senderAccount":  senderAccount, "memo": res.data.data[i].toReceiverMessage }
+                infoTest = { "id": i + 1, "transactionDate": transactionDate, "transactionTime": transactionTime, "withdrawAmount": withdrawAmount, "depositAmount": depositAmount, "senderAccount": senderAccount, "memo": res.data.data[i].toReceiverMessage }
                 tempInfoTest.push(infoTest)
 
 
@@ -174,7 +174,7 @@ const Bankstatement = () => {
                 withdrawAmount = Math.abs(amount)
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toSenderMessage
                 // )
-                infoTest = { "id": i + 1, "transactionDate": transactionDate, "transactionTime": transactionTime, "withdrawAmount": withdrawAmount, "depositAmount": depositAmount, "senderAccount":  senderAccount, "memo": res.data.data[i].toSenderMessage }
+                infoTest = { "id": i + 1, "transactionDate": transactionDate, "transactionTime": transactionTime, "withdrawAmount": withdrawAmount, "depositAmount": depositAmount, "senderAccount": senderAccount, "memo": res.data.data[i].toSenderMessage }
                 tempInfoTest.push(infoTest)
               }
               setInfo(tempInfoTest)
@@ -200,7 +200,7 @@ const Bankstatement = () => {
         })
         .catch()
     }
-    else if(/*isAccount === true &&*/(accountNumber === undefined || accountNumber === '계좌를 선택해주세요'))
+    else if (/*isAccount === true &&*/(accountNumber === undefined || accountNumber === '계좌를 선택해주세요'))
       alert('계좌번호를 선택해주세요')
 
     else
@@ -209,13 +209,13 @@ const Bankstatement = () => {
 
   const onClickTransfer = () => {
     if (accountNumber === undefined || accountNumber === '계좌를 선택해주세요')
-            alert('출금계좌를 선택해주세요')
-        else
-            { 
-                console.log(accountNumber)
-                navigate('/transfer',
-                {state: accountNumber} 
-            )}
+      alert('출금계좌를 선택해주세요')
+    else {
+      console.log(accountNumber)
+      navigate('/transfer',
+        { state: accountNumber }
+      )
+    }
   }
 
   useEffect(() => {
@@ -489,14 +489,14 @@ const Bankstatement = () => {
                 <th>거래점</th>
               </tr>
             </thead>
-            <Tr info={currentPosts(info.slice(0).reverse())}></Tr>
-            
-            
+            <Tr info={currentPosts(info.slice(0))}></Tr>
+
+
           </Table>
           <Pagination postsPerPage={postsPerPage} totalPosts={info.length} paginate={setCurrentPage}>
-        </Pagination>
+          </Pagination>
         </Col>
-        
+
 
       </Row>
     </Row>

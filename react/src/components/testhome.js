@@ -21,11 +21,11 @@ function Testhome() {
     }, []);
 
     const Tr = ({ info }) => {
-        let infoReverse = info.slice(-4).reverse()
+        //let infoReverse = info.slice(-4).reverse()
         return (
             <ListGroup className={styles.noticeList} variant="flush">
                 {
-                    infoReverse.map((item, idx) => {
+                    info.slice(0, 4).map((item, idx) => {
                         return (
                             <Td key={item.id} item={item} />
                         )
@@ -98,7 +98,7 @@ function Testhome() {
                                 <Link to onClick ={onLogout}>로그아웃</Link>
                             </Button>
                             <Button className={styles.signupButton} variant="primary" size="lg">
-                                <Link to="/signup">회원가입</Link>
+                                <Link to="/mypage">마이페이지</Link>
                             </Button>
                         </div>
                     </Col>
