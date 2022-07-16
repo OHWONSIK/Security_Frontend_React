@@ -1,10 +1,60 @@
 import Table from "react-bootstrap/Table";
 import styles from "../css/Customerservice.module.css";
-import Pagination from "react-bootstrap/Pagination";
+// import Pagination from "react-bootstrap/Pagination";
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Pagination from "./pagination";
+import Axios from "axios";
 
 const Customerservice = () => {
+  const [info, setInfo] = useState([]);
+  const [posts, setPosts] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+
+  useEffect(() => {
+    Axios.get("/cont/counsels", {
+      params: { userId: sessionStorage.getItem("loginId") },
+    })
+
+      .then((res) => setInfo(res.data.data))
+      // .then(res => console.log(res.data.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const indexOfLast = currentPage * postsPerPage;
+  const indexOfFirst = indexOfLast - postsPerPage;
+  function currentPosts(tmp) {
+    let currentPosts = 0;
+    currentPosts = tmp.slice(indexOfFirst, indexOfLast);
+    return currentPosts;
+  }
+
+  const Tr = ({ info }) => {
+    // let infoReverse = info.slice(0).reverse()
+    return (
+      <tbody>
+        {info.map((item, idx) => {
+          // console.log(item)
+          return <Td key={item.id} item={item} />;
+        })}
+      </tbody>
+    );
+  };
+
+  const Td = ({ item }) => {
+    return (
+      <>
+        <tr>
+          <td className={styles.index}>{item.id}</td>
+          <td className={styles.title}>{item.title}</td>
+          <td className={styles.date}>{item.createdDate}</td>
+        </tr>
+      </>
+    );
+  };
+
   return (
     <div>
       <Table striped bordered hover>
@@ -15,98 +65,17 @@ const Customerservice = () => {
             <th>등록일</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>10</td>
-            <td>비밀글 입니다. </td>
-            <td>2022-05-07</td>
-          </tr>
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-        </tbody>
+        <Tr info={currentPosts(info.slice(0))}></Tr>
       </Table>
       <Row>
         <Col lg={8}>
-          <Pagination size="lg" className={styles.pagenav_cs}>
-            <Pagination.First />
-            <Pagination.Prev />
-            <Pagination.Item active>{1}</Pagination.Item>
-            <Pagination.Item>{2}</Pagination.Item>
-            <Pagination.Item>{3}</Pagination.Item>
-            <Pagination.Item>{4}</Pagination.Item>
-            <Pagination.Item>{5}</Pagination.Item>
-            <Pagination.Next />
-            <Pagination.Last />
-          </Pagination>
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={info.length}
+            paginate={setCurrentPage}
+          ></Pagination>
         </Col>
+
         <Col lg={4}>
           <Button className={styles.write_style} variant="secondary" size="lg">
             <Link to="/qapage">글쓰기</Link>
