@@ -41,6 +41,8 @@ import Testhomepage from "./page/testhomepage";
 import Topcontent from "./components/TopContent"
 import Testtopcontent from "./components/testtopcontent"
 import SelectAccountpage from "./page/selectAccountpage";
+import SelectAccountpage2 from "./page/selectAccountpage2";
+import SelectAccountpage3 from "./page/selectAccountpage3";
 import NoLoginpage from "./page/noLoginpage";
 import InquiryWritepage from "./page/inquiryWritepage";
 import Mypagepage from "./page/Mypagepage.js";
@@ -303,6 +305,8 @@ function App() {
               element={<PasswordChangeCompletepage />}
             ></Route>
             <Route path="/selectAccount" element={<SelectAccountpage />}></Route>
+            <Route path="/selectAccount2" element={<SelectAccountpage2 />}></Route>
+
             <Route path="/mypage" element={<Mypagepage />}></Route>
             <Route path="/qapage" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>
@@ -366,6 +370,7 @@ function App() {
             <Route path="/mypage" element={<Mypagepage />}></Route>
             <Route path="/qapage" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>
+            
           </Routes>
         </BrowserRouter>
 
@@ -430,6 +435,8 @@ function App() {
             <Route path="/mypage" element={<NoLoginpage />}></Route>
             <Route path="/qapage" element={<NoLoginpage />}></Route>
             <Route path="/myinfo" element={<NoLoginpage />}></Route>
+            <Route path="/CreateAccount_2page" element={<NoLoginpage />}></Route>
+
 
 
           </Routes>
