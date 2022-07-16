@@ -12,3 +12,23 @@
 
 }
 
+
+.pagination{
+    justify-content : center; 
+    float:center;
+    text-align: center;
+}
+
+.index{
+    width:10%;
+}
+
+.title{
+    text-align: center;
+    width:70%;
+}
+
+.date{
+    width:15%;
+}
+
