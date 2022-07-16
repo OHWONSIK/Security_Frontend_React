@@ -1,0 +1,15 @@
+.application{
+    margin-top:200px;
+    margin-bottom:100px;
+    font-weight: bold;
+}
+
+.nextbutton{
+    margin-top:100px;
+    height:75px;
+    width:145px;
+}
+
+.accountNumber{
+    margin-top:340px;
+}

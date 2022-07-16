@@ -1,12 +1,16 @@
 import { Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../css/loanapply.module.css';
 import React, { useEffect } from 'react';
 import Axios from 'axios';
 
 
+
 function Loanapply() {
+    const navigate = useNavigate();
+    const location = useLocation()
+    const accountNumber = location.state
     let loanType
     const [inputAmount, setInputAmount] = React.useState('');
 
@@ -41,6 +45,47 @@ function Loanapply() {
             setInputAmount(500000)
         else
             setInputAmount(parseInt(inputAmount) + 500000)
+    }
+
+    const onClickLoan = () => {
+        // setAccountNum(accountNumber)
+        if (loanType === undefined || loanType === '대출종류를 선택해주세요')
+            alert('대출종류를 선택해주세요')
+        else if (inputAmount.length === 0)
+            alert('대출금액이 비어있습니다')
+        else if (inputAmount > 100000000)
+            alert('대출금액을 최대한도 이하로 작성해주세요')
+        else {
+            Axios.post('users/loan', {   
+                    "accountNumber": accountNumber,
+                    "amount": inputAmount,
+                    "loanList": loanType,
+                    "loginId": sessionStorage.getItem('loginId')
+            }
+            )
+                .then(res => {
+
+                    if (res.data.checker === true) {
+
+                        navigate('/loancomplete',
+                            {
+                                state: [
+                                    {
+                                        accountNumber: accountNumber,
+                                        inputAmount: inputAmount,
+                                        loanType: loanType,
+                                        loginId: sessionStorage.getItem('loginId'),
+                                    }
+                                ]
+                            }
+                        )
+                    }
+                    else
+                        alert(res.data.message)
+                })
+
+                .catch()
+        }
     }
 
     console.log(loanType)
@@ -102,18 +147,18 @@ function Loanapply() {
                         <h4 className={styles.maximumguide}>1억원</h4>
 
                         <InputGroup className={styles.transferamountinput}>
-                            <FormControl onChange = {handleInputAmount} value={inputAmount}/>
+                            <FormControl onChange={handleInputAmount} value={inputAmount} />
                             <InputGroup.Text>원</InputGroup.Text>
                         </InputGroup>
                         <div className={styles.buttonlist}>
-                            <Button className={styles.tenmillionbutton} variant="secondary" size="md" onClick = {onClickTenMillion}> 1000만
+                            <Button className={styles.tenmillionbutton} variant="secondary" size="md" onClick={onClickTenMillion}> 1000만
                             </Button>
 
-                            <Button className={styles.millionbutton} variant="secondary" size="md" onClick = {onClickMillion}>
+                            <Button className={styles.millionbutton} variant="secondary" size="md" onClick={onClickMillion}>
                                 100만
                             </Button>
 
-                            <Button className={styles.fivehundredthousandbutton} variant="secondary" size="md" onClick = {onClickFiveHundredThousand}>
+                            <Button className={styles.fivehundredthousandbutton} variant="secondary" size="md" onClick={onClickFiveHundredThousand}>
                                 50만
                             </Button>
 
@@ -126,8 +171,8 @@ function Loanapply() {
                             </Button>
                         </div>
 
-                        <Button className={styles.applybutton} variant="primary" size="lg" >
-                            <Link to="/loancomplete">신청</Link>
+                        <Button className={styles.applybutton} onClick={onClickLoan} variant="primary" size="lg" >
+                            신청
                         </Button>
                     </Col>
                     <Col lg={3}></Col>

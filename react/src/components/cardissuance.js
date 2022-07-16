@@ -1,4 +1,5 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../css/cardissuance.module.css";
 import { Router, Route, Routes, Link } from "react-router-dom";
@@ -8,12 +9,22 @@ import Axios from 'axios';
 function Cardissuance() {
 
   const [info2, setInfo2] = React.useState([]);
+
+  //const [checked, setChecked] = React.useState(false);
+
+
   // const [selectCardType, setSelectCardType] = React.useState("");
 
 
   let accountNumber
   let cardType
   let i
+  let checked = false
+
+  const checkHandler = ({ target }) => {
+    checked = !checked
+  }
+
   const handleAccountNum = (e) => {
     accountNumber = e.target.options[e.target.selectedIndex].value
     // setAccountNum(e.target.options[e.target.selectedIndex].value)
@@ -38,6 +49,10 @@ function Cardissuance() {
       alert('계좌번호를 선택해주세요')
     else if (cardType === undefined || cardType === "카드종류를 선택해주세요")
       alert('카드종류를 선택해주세요')
+
+    else if (checked === false)
+      alert('개인정보 수집 및 이용에 동의해주세요')
+
     else {
       Axios.post('users/card', {
         "accountNumber": accountNumber,
@@ -124,7 +139,7 @@ function Cardissuance() {
               ))}
             </Form> */}
 
-            <Form.Control
+            <Form.Control 
               className={styles.textinput}
               as="textarea"
               rows={3}
@@ -148,6 +163,22 @@ function Cardissuance() {
 귀하가 개인정보의 수집/이용에 동의를 거부하시는 경우에 장학생 선발 과정에 있어 불이익이 발생할 수
 있음을 알려드립니다."
             />
+
+<Form className={styles.agreeCheckbox} onChange={(e) => checkHandler(e)} > 
+      {['checkbox'].map((type) => (
+        <div key={`default-${type}`} className="mb-3">
+          <Form.Check 
+            type={type}
+            id={`default-${type}`}
+            label={`개인정보 수집 및 이용에 동의합니다`}
+          />
+        </div>
+      ))}
+    </Form>
+
+            
+
+            
 
             <Button className={styles.submitbutton} variant="primary" size="lg">
               <Link to onClick={onClickSubmit}>제출</Link>

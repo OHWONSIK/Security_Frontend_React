@@ -24,7 +24,7 @@ function TesttopContent() {
                                     <Link to onClick ={onLogout}> 로그아웃</Link>                               
                                 </li>
                                 <li className={styles.certification}>
-                                    인증센터
+                                <Link to="/mypage">마이페이지</Link>
                                 </li>
                             </ul>
                         </div>
@@ -45,10 +45,10 @@ function TesttopContent() {
                                     >
                                         <Nav.Link className={styles.lookup} href="/Bankstatementpage">조회</Nav.Link>
                                         <Nav.Link className={styles.transper} href="/selectAccount">이체</Nav.Link>
-                                        <Nav.Link className={styles.tuition} href="/loanapply">대출</Nav.Link>
-                                        <Nav.Link className={styles.product} href="#action4">금융상품</Nav.Link>
-                                        <Nav.Link className={styles.notice}href="/Newnewspage">공지사항</Nav.Link>
+                                        <Nav.Link className={styles.tuition} href="/selectAccount2">대출</Nav.Link>
+                                        <Nav.Link className={styles.product} href="/CreateAccount_2page">계좌생성</Nav.Link>
                                         <Nav.Link className={styles.cardissuance}href="/cardissuance">카드발급</Nav.Link>
+                                        <Nav.Link className={styles.notice}href="/Newnewspage">공지사항</Nav.Link>
                                     </Nav>
                                 </Navbar.Collapse>
                             </Container>
