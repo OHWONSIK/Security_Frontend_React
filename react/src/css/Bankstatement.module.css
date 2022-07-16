@@ -6,6 +6,15 @@
     font-size:30px;
 }
 
+.nobullet2{
+    margin-top : 50px;
+    margin-bottom : 20px;
+    margin-left:300px;
+    float:left;
+    list-style:none;
+    font-size:30px;
+}
+
 .leftalign{
     float:left;
     margin-right:100px;

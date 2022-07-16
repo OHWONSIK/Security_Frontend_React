@@ -3,3 +3,32 @@
     margin-left : 280px;    
 }
 
+.write_style{
+    float:right;
+    margin-left:50px;
+
+    width:100px;
+    height:50px;
+
+}
+
+
+.pagination{
+    justify-content : center; 
+    float:center;
+    text-align: center;
+}
+
+.index{
+    width:10%;
+}
+
+.title{
+    text-align: center;
+    width:70%;
+}
+
+.date{
+    width:15%;
+}
+
