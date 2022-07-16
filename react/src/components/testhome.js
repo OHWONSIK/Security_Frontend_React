@@ -98,7 +98,7 @@ function Testhome() {
                                 <Link to onClick ={onLogout}>로그아웃</Link>
                             </Button>
                             <Button className={styles.signupButton} variant="primary" size="lg">
-                                <Link to="/mypage">마이페이지</Link>
+                                <Link to="/">인증센터</Link>
                             </Button>
                         </div>
                     </Col>
