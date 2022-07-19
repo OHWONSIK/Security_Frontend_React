@@ -10,17 +10,32 @@ import Axios from 'axios';
 function Loanapply() {
     const navigate = useNavigate();
     const location = useLocation()
-    const accountNumber = location.state
-    let loanType
+    const accountNumber = location.state[0].accountNumber
+    const loanType = location.state[0].loanType
+    const interestRate = location.state[0].interestRate
+
+    // let loanType
     const [inputAmount, setInputAmount] = React.useState('');
+    // const [info2, setInfo2] = React.useState([]);
+    // const [interestRate, setInterestRate] = React.useState([]);
+
+
+    // useEffect(() => {
+    //     Axios.get('/users/loanlist')
+    //         .then(res => {setInfo2(res.data.data)
+    //             setInterestRate(res.data.data.interestRate)
+    //         })
+    //         // .then(res => console.log(res.data.data))
+    //         .catch(err => console.log(err));
+    // }, []);
 
     const handleInputAmount = (e) => {
         setInputAmount(e.target.value)
     }
 
-    const handleLoanType = (e) => {
-        loanType = e.target.options[e.target.selectedIndex].text
-    };
+    // const handleLoanType = (e) => {
+    //     loanType = e.target.options[e.target.selectedIndex].text
+    // };
 
     const onClickReset = () => {
         setInputAmount('')
@@ -48,10 +63,11 @@ function Loanapply() {
     }
 
     const onClickLoan = () => {
+        // console.log(setInfo2)
         // setAccountNum(accountNumber)
-        if (loanType === undefined || loanType === '대출종류를 선택해주세요')
-            alert('대출종류를 선택해주세요')
-        else if (inputAmount.length === 0)
+        // if (loanType === undefined || loanType === '대출종류를 선택해주세요')
+        //     alert('대출종류를 선택해주세요')
+        if (inputAmount.length === 0)
             alert('대출금액이 비어있습니다')
         else if (inputAmount > 100000000)
             alert('대출금액을 최대한도 이하로 작성해주세요')
@@ -88,7 +104,32 @@ function Loanapply() {
         }
     }
 
-    console.log(loanType)
+    // const Tr2 = ({ info }) => {
+    //     return (
+    //         <Form.Select className={styles.loantypeinput} aria-label="Default select example" onChange={handleLoanType}>
+    //             <option>대출종류를 선택해주세요</option>
+    //             {
+    //                 info.map((item, idx) => {
+    //                     return (
+    //                         <Td2 key={item.title} item={item} />
+    //                     )
+    //                 })
+    //             }
+    //         </Form.Select>
+    //     );
+    // };
+
+    // const Td2 = ({ item }) => {
+    //     return (
+    //         <>
+    //             <option value={item.title}>{item.title}</option>
+    //         </>
+    //     )
+    // }
+
+    // console.log(loanType)
+
+    console.log(interestRate)
 
     return (
         <div className="Loanapply">
@@ -103,46 +144,8 @@ function Loanapply() {
                         <h5 className={styles.loanamount}>대출금액</h5>
                     </Col>
                     <Col lg={5}>
-                        <Form.Select className={styles.loantypeinput} aria-label="Default select example" onChange={handleLoanType}>
-                            <option>대출종류를 선택해주세요</option>
-                            <option value="1">상명등록금대출</option>
-                            <option value="2">상명신용대출</option>
-                            <option value="3">상명비상금대출</option>
-                        </Form.Select>
-                        {/* <Form className={styles.loanproductcheckbox}>
-                    {['checkbox'].map((type) => (
-                        <div key={`inline-${type}`} className="lg-3">
-                        <Form.Check
-                            className={styles.productcheck1}
-                            inline
-                            label="상명 신용대출"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-1`}
-
-                            
-                        />
-                        <Form.Check
-                            className={styles.productcheck2}
-                            inline
-                            label="상명 비상금대출"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-2`}
-                        />
-                        <Form.Check
-                            className={styles.productcheck3}
-                            inline
-                            label="상명 등록금대출"
-                            name="group3"
-                            type={type}
-                            id={`inline-${type}-3`}
-                        />
-                        </div>
-                    ))}
-                    </Form> */}
-
-                        <h4 className={styles.interestrateguide}>3.7%</h4>
+                    {/* <Tr2 info={info2} /> */}
+                        <h4 className={styles.interestrateguide}>{interestRate}</h4>
 
                         <h4 className={styles.maximumguide}>1억원</h4>
 
