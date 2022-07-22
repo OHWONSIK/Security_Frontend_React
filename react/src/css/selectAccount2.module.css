@@ -1,6 +1,6 @@
-.application{
-    margin-top:200px;
-    margin-bottom:100px;
+.loanapply{
+    margin-top:100px;
+    /* margin-bottom:100px; */
     font-weight: bold;
 }
 
@@ -11,5 +11,16 @@
 }
 
 .accountNumber{
-    margin-top:340px;
+    margin-top:200px;
+}
+
+.accountinput{
+margin-top: 337px;
+}
+
+.loanType{
+    margin-top: 50px;
+}
+.loantypeinput{
+margin-top: 48px;
 }
