@@ -123,18 +123,16 @@ const Bankstatement = () => {
       // )
       Axios.post("/users/transactions/inquiry", {
         accountNumber: accountNumber,
-        endDate: "2022-06-30-23:59:59",
-        startDate: "2022-05-02-00:00:00",
+        endDate: endDate,
+        startDate: startDate,
       })
         .then((res) => {
-          if (Object.keys(res.data.data).length === 0)
+          if (Object.keys(res.data.data).length === 0) {
             console.log("거래내역이 존재하지 않습니다.");
-          // else if (Object.keys(res.data.data).length === 1){
-          //     transactionDate = res.data.data[0].transactionDate.substring(0,10)
-          //     console.log('1번째 거래내역 = ' + ' 거래날짜:' + transactionDate + '보낸사람계좌:'
-          //       + res.data.data[0].senderAccount + ' 보낸사람계좌:' + res.data.data[0].receiverAccount  + ' 거래금액:' + res.data.data[0].sendMoney + '받는통장 메모:' + res.data.data[0].toReceiverMessage + '보낸통장 메모:' + res.data.data[0].toSenderMessage)
-          // }
-          else {
+            setInquireNum(0);
+            tempInfoTest = [];
+            setInfo(tempInfoTest);
+          } else {
             for (i = 0; i < res.data.data.length; i++) {
               // for (i = 0; i < res.data.data.length - (res.data.data.length-10); i++) {
 
@@ -164,6 +162,7 @@ const Bankstatement = () => {
                 senderAccount = res.data.data[i].senderAccount;
                 depositAmount = amount;
                 withdrawAmount = "-";
+
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toReceiverMessage
                 // )
                 infoTest = {
@@ -305,6 +304,7 @@ const Bankstatement = () => {
             <ul className={styles.nobullet}>
               <li>조회 시작일</li>
               <DatePicker
+                dateFormat="yyyy년 MM월 dd일"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
               />
@@ -312,6 +312,7 @@ const Bankstatement = () => {
             <ul className={styles.nobullet2}>
               <li>조회 종료일</li>
               <DatePicker
+                dateFormat="yyyy년 MM월 dd일"
                 selected={endDate}
                 onChange={(date) => setendDate(date)}
               />
