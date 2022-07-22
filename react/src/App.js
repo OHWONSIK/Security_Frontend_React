@@ -47,6 +47,10 @@ import NoLoginpage from "./page/noLoginpage";
 import InquiryWritepage from "./page/inquiryWritepage";
 import Mypagepage from "./page/Mypagepage.js";
 import MyInfomationpage from "./page/myInfomationpage";
+import CardListpage from "./page/cardListpage";
+import LoanListpage from "./page/loanListpage";
+
+
 
 
 // import TesttopContent from "./components/testtopcontent";
@@ -310,6 +314,8 @@ function App() {
             <Route path="/mypage" element={<Mypagepage />}></Route>
             <Route path="/qapage" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>
+            <Route path="/cardlist" element={<CardListpage />}></Route>
+            <Route path="/loanList" element={<LoanListpage />}></Route>
           </Routes>
         </BrowserRouter>
 
@@ -366,7 +372,8 @@ function App() {
               path="/PasswordChangeComplete"
               element={<PasswordChangeCompletepage />}
             ></Route>
-            <Route path="/selectAccount" element={<CreateAccountpage />}></Route>
+              <Route path="/selectAccount" element={<CreateAccountpage />}></Route>
+              <Route path="/selectAccount2" element={<CreateAccountpage />}></Route>
             <Route path="/mypage" element={<Mypagepage />}></Route>
             <Route path="/qapage" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>

@@ -12,12 +12,46 @@ function Loanapply() {
     const location = useLocation()
     const accountNumber = location.state[0].accountNumber
     const loanType = location.state[0].loanType
-    const interestRate = location.state[0].interestRate
+    const [loanIndex, setLoanIndex] = React.useState('');
+    // const interestRate = location.state[0].interestRate
 
     // let loanType
     const [inputAmount, setInputAmount] = React.useState('');
     // const [info2, setInfo2] = React.useState([]);
-    // const [interestRate, setInterestRate] = React.useState([]);
+    const [interestRate, setInterestRate] = React.useState([]);
+    let i
+
+    useEffect(() => {
+
+        // console.log(accountNumber, loanType, loanIndex)
+        // if (loanType === '상명등록금대출') {
+        //     setInterestRate('1.7%')
+        //     setLoanIndex(1)
+        // }
+        // else if (loanType === '상명신용대출') {
+        //     setInterestRate('3.7%')
+        //     setLoanIndex(2)
+        // }
+        // else if (loanType === '상명비상금대출') {
+        //     setInterestRate('5.7%')
+        //     setLoanIndex(3)
+        // }
+
+        Axios.get(
+            "/users/loanlist",
+        )
+            .then((res) => {
+                for (i = 0; i < res.data.data.length; i++) {
+                    if (loanType == res.data.data[i].interestType) {
+                        setInterestRate(res.data.data[i].interestRate)
+                        setLoanIndex(res.data.data[i].id)
+                    }
+                }
+            })
+            .catch();
+        
+        
+    }, []);
 
 
     // useEffect(() => {
@@ -67,15 +101,17 @@ function Loanapply() {
         // setAccountNum(accountNumber)
         // if (loanType === undefined || loanType === '대출종류를 선택해주세요')
         //     alert('대출종류를 선택해주세요')
+
+        console.log(Number(accountNumber), inputAmount, loanType)
         if (inputAmount.length === 0)
             alert('대출금액이 비어있습니다')
         else if (inputAmount > 100000000)
             alert('대출금액을 최대한도 이하로 작성해주세요')
         else {
-            Axios.post('users/loan', {   
+            Axios.post('users/loans', {   
                     "accountNumber": accountNumber,
                     "amount": inputAmount,
-                    "loanList": loanType,
+                    "loanList": loanIndex,
                     "loginId": sessionStorage.getItem('loginId')
             }
             )
@@ -89,8 +125,9 @@ function Loanapply() {
                                     {
                                         accountNumber: accountNumber,
                                         inputAmount: inputAmount,
-                                        loanType: loanType,
+                                        loanType: loanIndex,
                                         loginId: sessionStorage.getItem('loginId'),
+                                        interestRate: interestRate
                                     }
                                 ]
                             }
@@ -100,7 +137,7 @@ function Loanapply() {
                         alert(res.data.message)
                 })
 
-                .catch()
+                .catch(err => console.log(err))
         }
     }
 
@@ -129,8 +166,6 @@ function Loanapply() {
 
     // console.log(loanType)
 
-    console.log(interestRate)
-
     return (
         <div className="Loanapply">
             <Container fluid>
@@ -144,7 +179,9 @@ function Loanapply() {
                         <h5 className={styles.loanamount}>대출금액</h5>
                     </Col>
                     <Col lg={5}>
-                    {/* <Tr2 info={info2} /> */}
+                        {/* <Tr2 info={info2} /> */}
+                        <h4 className={styles.loantypeguide}>{loanType}</h4>
+
                         <h4 className={styles.interestrateguide}>{interestRate}</h4>
 
                         <h4 className={styles.maximumguide}>1억원</h4>

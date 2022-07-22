@@ -12,9 +12,10 @@ function SelectAccount2() {
     const navigate = useNavigate();
     let accountNumber
     const [info, setInfo] = React.useState([]);
-    const [interestRate, setInterestRate] = React.useState([]);
+    // const [interestRate, setInterestRate] = React.useState([]);
     let loanType
-    const [index, setIndex] = React.useState([]);
+    // const [index, setIndex] = React.useState([]);
+    let index
 
 
 
@@ -37,18 +38,18 @@ function SelectAccount2() {
             .catch(err => console.log(err));
     }, []);
 
-    useEffect(() => {
-        Axios.get('/users/loanlist/'+index, { params: { id: index } })
-            .then(res => {
-                console.log(index)
-                console.log('test')
-                // setInfo(res.data.data)
-                setInterestRate(res.data.data.interestRate)
-                console.log(interestRate)
-            })
-            // .then(res => console.log(res.data.data))
-            .catch(err => console.log(err));
-    }, []);
+    // useEffect(() => {
+    //     Axios.get('/users/loanlist/'+index, { params: { id: index } })
+    //         .then(res => {
+    //             console.log(index)
+    //             console.log('test')
+    //             // setInfo(res.data.data)
+    //             setInterestRate(res.data.data.interestRate)
+    //             console.log(interestRate)
+    //         })
+    //         // .then(res => console.log(res.data.data))
+    //         .catch(err => console.log(err));
+    // }, [index]);
 
     const handleAccountNum = (e) => {
         accountNumber = e.target.options[e.target.selectedIndex].value
@@ -58,7 +59,9 @@ function SelectAccount2() {
 
     const handleLoanType = (e) => {
         loanType = e.target.options[e.target.selectedIndex].text
-        setIndex(e.target.options[e.target.selectedIndex].index)        
+        // setIndex(e.target.options[e.target.selectedIndex].index)    
+        index = e.target.options[e.target.selectedIndex].index
+        console.log(index)    
     };
 
     const onClickNext = () => {
@@ -70,13 +73,14 @@ function SelectAccount2() {
             alert('대출종류를 선택해주세요')
         else {
             console.log(accountNumber)
+            console.log(loanType)
             navigate('/loanapply',
                 {
                     state: [
                         {
                             accountNumber: accountNumber,
                             loanType: loanType,
-                            interestRate: interestRate
+                            // interestRate: interestRate
                         }
                     ]
                 }
@@ -87,7 +91,7 @@ function SelectAccount2() {
     const Tr = ({ info }) => {
         return (
             <Form.Select className={styles.loantypeinput} aria-label="Default select example" onChange={handleLoanType}>
-                <option>대출종류를 선택해주세요</option>
+                <option>대출상품을 선택해주세요</option>
                 {
                     info.map((item, idx) => {
                         return (
@@ -136,10 +140,13 @@ function SelectAccount2() {
                 <Row>
                     <Col lg={3}></Col>
                     <Col lg={1}>
+                        <h2 className={styles.loanapply}>대출신청</h2>
                         <h3 className={styles.accountNumber}>계좌번호</h3>
+                        <h3 className={styles.loanType}>대출상품</h3>
+
                     </Col>
                     <Col lg={4}>
-                        <h2 className={styles.application}>대출 계좌번호 선택</h2>
+                        
                         <Tr2 info={info2} />
                         <Tr info={info} />
                         <Button className={styles.nextbutton} variant="primary" size="lg" onClick={onClickNext}>다음
