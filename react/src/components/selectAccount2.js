@@ -11,6 +11,12 @@ function SelectAccount2() {
     const [info2, setInfo2] = React.useState([]);
     const navigate = useNavigate();
     let accountNumber
+    const [info, setInfo] = React.useState([]);
+    const [interestRate, setInterestRate] = React.useState([]);
+    let loanType
+    const [index, setIndex] = React.useState([]);
+
+
 
     useEffect(() => {
         Axios.get('/users/accounts/inquiry',
@@ -21,21 +27,84 @@ function SelectAccount2() {
             .catch(err => console.log(err));
     }, []);
 
+    useEffect(() => {
+        Axios.get('/users/loanlist')
+            .then(res => {
+                setInfo(res.data.data)
+                // setInterestRate(res.data.data[0].interestRate)
+            })
+            // .then(res => console.log(res.data.data))
+            .catch(err => console.log(err));
+    }, []);
+
+    useEffect(() => {
+        Axios.get('/users/loanlist/'+index, { params: { id: index } })
+            .then(res => {
+                console.log(index)
+                console.log('test')
+                // setInfo(res.data.data)
+                setInterestRate(res.data.data.interestRate)
+                console.log(interestRate)
+            })
+            // .then(res => console.log(res.data.data))
+            .catch(err => console.log(err));
+    }, []);
+
     const handleAccountNum = (e) => {
         accountNumber = e.target.options[e.target.selectedIndex].value
         // setAccountNum(e.target.options[e.target.selectedIndex].value)
         // setAccountNum(accountNum)
     }
 
+    const handleLoanType = (e) => {
+        loanType = e.target.options[e.target.selectedIndex].text
+        setIndex(e.target.options[e.target.selectedIndex].index)        
+    };
+
     const onClickNext = () => {
+        // console.log(accountNumber)
+        // console.log(loanType)
         if (accountNumber === undefined || accountNumber === '계좌를 선택해주세요')
             alert('대출 받으실 계좌를 선택해주세요')
-        else
-            { 
-                console.log(accountNumber)
-                navigate('/loanapply',
-                {state: accountNumber} 
-            )}
+        else if (loanType === undefined || loanType === '대출종류를 선택해주세요')
+            alert('대출종류를 선택해주세요')
+        else {
+            console.log(accountNumber)
+            navigate('/loanapply',
+                {
+                    state: [
+                        {
+                            accountNumber: accountNumber,
+                            loanType: loanType,
+                            interestRate: interestRate
+                        }
+                    ]
+                }
+            )
+        }
+    }
+
+    const Tr = ({ info }) => {
+        return (
+            <Form.Select className={styles.loantypeinput} aria-label="Default select example" onChange={handleLoanType}>
+                <option>대출종류를 선택해주세요</option>
+                {
+                    info.map((item, idx) => {
+                        return (
+                            <Td key={item.title} item={item} />
+                        )
+                    })
+                }
+            </Form.Select>
+        );
+    };
+
+    const Td = ({ item }) => {
+        return (
+            <>
+                <option value={item.title}>{item.title}</option>
+            </>
+        )
     }
 
     const Tr2 = ({ info }) => {
@@ -72,6 +141,7 @@ function SelectAccount2() {
                     <Col lg={4}>
                         <h2 className={styles.application}>대출 계좌번호 선택</h2>
                         <Tr2 info={info2} />
+                        <Tr info={info} />
                         <Button className={styles.nextbutton} variant="primary" size="lg" onClick={onClickNext}>다음
                         </Button>
                     </Col>

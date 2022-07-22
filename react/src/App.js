@@ -436,6 +436,7 @@ function App() {
             <Route path="/qapage" element={<NoLoginpage />}></Route>
             <Route path="/myinfo" element={<NoLoginpage />}></Route>
             <Route path="/CreateAccount_2page" element={<NoLoginpage />}></Route>
+            <Route path="/selectAccount2" element={<NoLoginpage />}></Route>
 
 
 
