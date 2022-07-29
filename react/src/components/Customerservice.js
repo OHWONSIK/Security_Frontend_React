@@ -78,7 +78,7 @@ const Customerservice = () => {
 
         <Col lg={4}>
           <Button className={styles.write_style} variant="secondary" size="lg">
-            <Link to="/qapage">글쓰기</Link>
+            <Link to="/qa">글쓰기</Link>
           </Button>
         </Col>
       </Row>

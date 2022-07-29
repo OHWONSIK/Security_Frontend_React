@@ -10,16 +10,16 @@ const BottomContent = () => {
       <Container fluid>
         <Row>
           <Col lg={1} className={styles.bottomCont}>
-            <Link to="/Incidentnotificationpage">사고신고</Link>
+            <Link to="/incidentnotification">사고신고</Link>
           </Col>
           <Col lg={1} className={styles.bottomCont}>
             <Link to="/">인증센터</Link>
           </Col>
           <Col lg={1} className={styles.bottomCont}>
-            <Link to="/Netsecpage">보안공지</Link>
+            <Link to="/netsec">보안공지</Link>
           </Col>
           <Col lg={1} className={styles.bottomCont}>
-            <Link to="/Customerservicepage">상담센터</Link>
+            <Link to="/customerservice">상담센터</Link>
           </Col>
 
           <Col lg={8}></Col>

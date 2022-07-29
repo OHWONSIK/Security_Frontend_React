@@ -10,31 +10,31 @@ const leftList = () => {
       <ul className={styles.noBullet}>
         {/* 0번링크는 지금 메인페이지로 해야할 듯?  */}
         <li className={styles.leftCont}>
-          <Link to="/Productpage">예적금</Link>
+          <Link to="/product">예적금</Link>
           <div className={styles.divideLineC}></div>
         </li>
         <li className={styles.leftCont}>
-          <Link to="/Newnewspage">새소식</Link>
-          <div className={styles.divideLineC}></div>
-        </li>
-
-        <li className={styles.leftCont}>
-          <Link to="/OngoingEvent">이벤트</Link>
+          <Link to="/newnews">새소식</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/Customerservicepage">상담센터</Link>
+          <Link to="/ongoingevent">이벤트</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/Incidentnotificationpage">사고신고</Link>
+          <Link to="/customerservice">상담센터</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/Netsecpage">보안공지</Link>
+          <Link to="/incidentnotification">사고신고</Link>
+          <div className={styles.divideLineC}></div>
+        </li>
+
+        <li className={styles.leftCont}>
+          <Link to="/netsec">보안공지</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
@@ -44,7 +44,7 @@ const leftList = () => {
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/Bankstatementpage">거래내역</Link>
+          <Link to="/bankstatement">거래내역</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
@@ -54,12 +54,12 @@ const leftList = () => {
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/Quicksearchpage">빠른거래내역</Link>
+          <Link to="/quicksearch">빠른거래내역</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/Transfer">이체</Link>
+          <Link to="/transfer">이체</Link>
           <div className={styles.divideLineC}></div>
         </li>
 
@@ -74,7 +74,7 @@ const leftList = () => {
           </Col>
           <Col>
             <div className={styles.leftCont2}>
-              <Link to="/Customerservicepage">고객센터</Link>
+              <Link to="/customerservice">고객센터</Link>
             </div>
           </Col>
         </Row>
