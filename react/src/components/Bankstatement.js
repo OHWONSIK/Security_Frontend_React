@@ -215,7 +215,7 @@ const Bankstatement = () => {
       accountNumber === "계좌를 선택해주세요"
     )
       alert("계좌번호를 선택해주세요");
-    else document.location.href = "CreateAccountpage";
+    else document.location.href = "createaccount";
   };
 
   const onClickTransfer = () => {

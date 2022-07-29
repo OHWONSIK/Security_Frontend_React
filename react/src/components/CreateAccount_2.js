@@ -4,54 +4,43 @@ import { Row, Col } from "react-bootstrap";
 import styles from "../css/CreateAccount_2.module.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import React, { useEffect } from 'react';
-import Axios from 'axios';
-
+import React, { useEffect } from "react";
+import Axios from "axios";
 
 const CreateAccount_2 = () => {
-
-  const [inputPw, setInputPw] = React.useState('');
+  const [inputPw, setInputPw] = React.useState("");
 
   const handleInputPw = (e) => {
-    setInputPw(e.target.value)
-  }
+    setInputPw(e.target.value);
+  };
 
   const onKeyPress = (e) => {
-    if (e.key == 'Enter') {
+    if (e.key == "Enter") {
       onClickCreate();
     }
-  }
+  };
 
   const onClickCreate = () => {
     if (inputPw.length === 0) {
-      alert('계좌 비밀번호를 입력해주세요')
-      console.log('프론트 오류처리')
-    }
-
-    else if (inputPw.length !== 6) {
-      alert('계좌 비밀번호는 숫자 6자리로 구성되어야 합니다')
-      console.log('프론트 오류처리')
-    }
-
-    else {
-      Axios.post('users/accounts/add', {
-        "accountPassword": inputPw,
-        "loginId": sessionStorage.getItem('loginId')
-      }
-      )
-        .then(res => {
+      alert("계좌 비밀번호를 입력해주세요");
+      console.log("프론트 오류처리");
+    } else if (inputPw.length !== 6) {
+      alert("계좌 비밀번호는 숫자 6자리로 구성되어야 합니다");
+      console.log("프론트 오류처리");
+    } else {
+      Axios.post("users/accounts/add", {
+        accountPassword: inputPw,
+        loginId: sessionStorage.getItem("loginId"),
+      })
+        .then((res) => {
           if (res.data.checker === true)
-            document.location.href = '/CreateAccount_3page'
-          else
-            alert(res.data.message)
+            document.location.href = "/createaccount03";
+          else alert(res.data.message);
         })
 
-        .catch()
+        .catch();
     }
-  }
-
-
-
+  };
 
   return (
     <div>
@@ -100,7 +89,11 @@ const CreateAccount_2 = () => {
         </Col>
       </Row>
       <Row>
-        <Button variant="primary" className={styles.ca_2_button} onClick={onClickCreate}>
+        <Button
+          variant="primary"
+          className={styles.ca_2_button}
+          onClick={onClickCreate}
+        >
           확인
         </Button>{" "}
       </Row>

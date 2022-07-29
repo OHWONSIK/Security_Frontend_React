@@ -14,7 +14,7 @@ const CreateAccount = () => {
       </Row>
       <Row>
         <Button variant="primary" className={styles.ca_button}>
-          <Link to="/CreateAccount_2page">계좌 생성하러 가기</Link>
+          <Link to="/createaccount02">계좌 생성하러 가기</Link>
         </Button>{" "}
       </Row>
     </div>

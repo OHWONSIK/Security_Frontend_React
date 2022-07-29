@@ -124,7 +124,7 @@ function Home() {
                 variant="secondary"
                 size="lg"
               >
-                <Link to="/Productpage">예적금</Link>
+                <Link to="/product">예적금</Link>
               </Button>
 
               <Button
@@ -132,7 +132,7 @@ function Home() {
                 variant="secondary"
                 size="lg"
               >
-                <Link to="/Quicksearchpage">빠른거래내역</Link>
+                <Link to="/quicksearch">빠른거래내역</Link>
               </Button>
 
               <Button
@@ -162,7 +162,7 @@ function Home() {
           </Col>
           <Col lg={1}>
             <div className={styles.seemore}>
-              <Link to="/Newnewspage">+더보기</Link>
+              <Link to="/newnews">+더보기</Link>
             </div>
           </Col>
           <Col lg={4}>
@@ -179,13 +179,13 @@ function Home() {
           <Col lg={3}>
             <div className="d-grid gap-2">
               <Button className={styles.button1} variant="secondary" size="lg">
-                <Link to="/Bankstatementpage">조회</Link>
+                <Link to="/bankstatement">조회</Link>
               </Button>
               <Button className={styles.button2} variant="secondary" size="lg">
                 <Link to="/transfer">이체</Link>
               </Button>
               <Button className={styles.button3} variant="secondary" size="lg">
-                <Link to="/OngoingEvent">이벤트</Link>
+                <Link to="/ongoingevent">이벤트</Link>
               </Button>
             </div>
           </Col>

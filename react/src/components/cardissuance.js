@@ -3,86 +3,77 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../css/cardissuance.module.css";
 import { Router, Route, Routes, Link } from "react-router-dom";
-import React, { useEffect } from 'react';
-import Axios from 'axios';
+import React, { useEffect } from "react";
+import Axios from "axios";
 
 function Cardissuance() {
-
   const [info2, setInfo2] = React.useState([]);
 
   //const [checked, setChecked] = React.useState(false);
 
-
   // const [selectCardType, setSelectCardType] = React.useState("");
 
-
-  let accountNumber
-  let cardType
-  let i
-  let checked = false
+  let accountNumber;
+  let cardType;
+  let i;
+  let checked = false;
 
   const checkHandler = ({ target }) => {
-    checked = !checked
-  }
+    checked = !checked;
+  };
 
   const handleAccountNum = (e) => {
-    accountNumber = e.target.options[e.target.selectedIndex].value
+    accountNumber = e.target.options[e.target.selectedIndex].value;
     // setAccountNum(e.target.options[e.target.selectedIndex].value)
     // setAccountNum(accountNum)
-  }
+  };
 
   const handleCardType = (e) => {
-    cardType = e.target.options[e.target.selectedIndex].text
+    cardType = e.target.options[e.target.selectedIndex].text;
   };
 
   useEffect(() => {
-    Axios.get('/users/accounts/inquiry',
-      { params: { userId: sessionStorage.getItem('loginId') } }
-    )
-      .then(res => setInfo2(res.data.data))
+    Axios.get("/users/accounts/inquiry", {
+      params: { userId: sessionStorage.getItem("loginId") },
+    })
+      .then((res) => setInfo2(res.data.data))
       // .then(res => console.log(res.data.data))
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
 
   const onClickSubmit = () => {
     if (accountNumber === undefined || accountNumber === "계좌를 선택해주세요")
-      alert('계좌번호를 선택해주세요')
+      alert("계좌번호를 선택해주세요");
     else if (cardType === undefined || cardType === "카드종류를 선택해주세요")
-      alert('카드종류를 선택해주세요')
-
-    else if (checked === false)
-      alert('개인정보 수집 및 이용에 동의해주세요')
-
+      alert("카드종류를 선택해주세요");
+    else if (checked === false) alert("개인정보 수집 및 이용에 동의해주세요");
     else {
-      Axios.post('users/card', {
-        "accountNumber": accountNumber,
-        "cardType": cardType,
-        "loginId": sessionStorage.getItem('loginId')
-      }
-      )
-        .then(res => {
+      Axios.post("users/card", {
+        accountNumber: accountNumber,
+        cardType: cardType,
+        loginId: sessionStorage.getItem("loginId"),
+      })
+        .then((res) => {
           if (res.data.checker === true) {
-            document.location.href = 'cardissuancecompletepage'
-          }
-          else
-            alert(res.data.message)
+            document.location.href = "cardissuancecomplete";
+          } else alert(res.data.message);
         })
 
-        .catch()
+        .catch();
     }
-  }
+  };
 
   const Tr2 = ({ info }) => {
     return (
-      <Form.Select className={styles.accountinput} aria-label="Default select example" onChange={handleAccountNum}>
+      <Form.Select
+        className={styles.accountinput}
+        aria-label="Default select example"
+        onChange={handleAccountNum}
+      >
         <option>계좌를 선택해주세요</option>
-        {
-          info.map((item, idx) => {
-            return (
-              <Td2 key={item.accountNumber} item={item} />
-            )
-          })
-        }
+        {info.map((item, idx) => {
+          return <Td2 key={item.accountNumber} item={item} />;
+        })}
       </Form.Select>
     );
   };
@@ -92,10 +83,8 @@ function Cardissuance() {
       <>
         <option value={item.accountNumber}>{item.accountNumber}</option>
       </>
-    )
-  }
-
-
+    );
+  };
 
   return (
     <div className={styles.Cardissuance}>
@@ -111,12 +100,15 @@ function Cardissuance() {
             <h2 className={styles.application}>카드발급 신청</h2>
 
             <Tr2 info={info2} />
-            <Form.Select className={styles.cardtypeinput} aria-label="Default select example" onChange={handleCardType}>
+            <Form.Select
+              className={styles.cardtypeinput}
+              aria-label="Default select example"
+              onChange={handleCardType}
+            >
               <option>카드종류를 선택해주세요</option>
               <option value="1">상명카드1</option>
               <option value="2">상명카드2</option>
             </Form.Select>
-
 
             {/* <Form className={styles.cardcheckbox}>
               {['checkbox'].map((type) => (
@@ -139,7 +131,7 @@ function Cardissuance() {
               ))}
             </Form> */}
 
-            <Form.Control 
+            <Form.Control
               className={styles.textinput}
               as="textarea"
               rows={3}
@@ -164,24 +156,25 @@ function Cardissuance() {
 있음을 알려드립니다."
             />
 
-<Form className={styles.agreeCheckbox} onChange={(e) => checkHandler(e)} > 
-      {['checkbox'].map((type) => (
-        <div key={`default-${type}`} className="mb-3">
-          <Form.Check 
-            type={type}
-            id={`default-${type}`}
-            label={`개인정보 수집 및 이용에 동의합니다`}
-          />
-        </div>
-      ))}
-    </Form>
-
-            
-
-            
+            <Form
+              className={styles.agreeCheckbox}
+              onChange={(e) => checkHandler(e)}
+            >
+              {["checkbox"].map((type) => (
+                <div key={`default-${type}`} className="mb-3">
+                  <Form.Check
+                    type={type}
+                    id={`default-${type}`}
+                    label={`개인정보 수집 및 이용에 동의합니다`}
+                  />
+                </div>
+              ))}
+            </Form>
 
             <Button className={styles.submitbutton} variant="primary" size="lg">
-              <Link to onClick={onClickSubmit}>제출</Link>
+              <Link to onClick={onClickSubmit}>
+                제출
+              </Link>
             </Button>
           </Col>
           <Col lg={4}></Col>
