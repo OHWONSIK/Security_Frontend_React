@@ -10,3 +10,17 @@
     align-items:center;
     margin-left : 300px;    
 }
+
+
+.index{
+    width:10%;
+}
+
+.title{
+    text-align: center;
+    width:70%;
+}
+
+.date{
+    width:15%;
+}
