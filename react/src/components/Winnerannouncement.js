@@ -3,11 +3,62 @@ import { Router, Route, Routes, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
-import Pagination from "react-bootstrap/Pagination";
-import PageItem from "react-bootstrap/PageItem";
 import styles from "../css/Winnerannouncement.module.css";
+import Pagination from "./pagination";
+import PageItem from "react-bootstrap/PageItem";
+import Axios from "axios";
+import { useState, useEffect, useRef } from "react";
 
 const Winnerannouncement = () => {
+
+  const [info, setInfo] = useState([]);
+  const [posts, setPosts] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+
+  
+
+
+  useEffect(() => {
+    Axios.get("/cont/events/winner")
+      .then((res) => setInfo(res.data.data))
+      // .then(res => console.log(res.data.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const indexOfLast = currentPage * postsPerPage;
+  const indexOfFirst = indexOfLast - postsPerPage;
+  function currentPosts(tmp) {
+    let currentPosts = 0;
+    currentPosts = tmp.slice(indexOfFirst, indexOfLast);
+    return currentPosts;
+  }
+
+  const Tr = ({ info }) => {
+    // let infoReverse = info.slice(0).reverse()
+    return (
+      <tbody>
+        {info.map((item, idx) => {
+          // console.log(item)
+          return <Td key={item.id} item={item} />;
+        })}
+      </tbody>
+    );
+  };
+
+  const Td = ({ item }) => {
+    return (
+      <>
+        <tr>
+          <td className={styles.index}>{item.id}</td>
+          <td className={styles.title}>{item.title} 당첨자 안내 </td>
+          <td className={styles.date}>{item.createDate}</td>
+        </tr>
+      </>
+    );
+  };
+
+
   return (
     <div>
       <Nav fill className={styles.nav} variant="pills" defaultActiveKey="/">
@@ -35,82 +86,18 @@ const Winnerannouncement = () => {
             <th>등록일</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>10</td>
-            <td>이벤트1의 당첨자를 발표합니다.</td>
-            <td>2022-02-25</td>
-          </tr>
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
 
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-        </tbody>
+        <Tr info={currentPosts(info.slice(0))}></Tr>
       </Table>
-
-      <Pagination size="lg" className={styles.pagenav_smbank}>
-        <Pagination.First />
+      <Row>
+        {/* <Col lg={4}></Col>
+        <Col lg={4}> */}
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={info.length}
+          paginate={setCurrentPage}
+        >
+          {/* <Pagination.First />
         <Pagination.Prev />
         <Pagination.Item active>{1}</Pagination.Item>
         <Pagination.Item>{2}</Pagination.Item>
@@ -118,8 +105,11 @@ const Winnerannouncement = () => {
         <Pagination.Item>{4}</Pagination.Item>
         <Pagination.Item>{5}</Pagination.Item>
         <Pagination.Next />
-        <Pagination.Last />
-      </Pagination>
+        <Pagination.Last /> */}
+        </Pagination>
+        {/* </Col>
+        <Col lg={4}></Col> */}
+      </Row>
     </div>
   );
 };

@@ -50,12 +50,6 @@ import MyInfomationpage from "./page/myInfomationpage";
 import CardListpage from "./page/cardListpage";
 import LoanListpage from "./page/loanListpage";
 
-
-
-
-// import TesttopContent from "./components/testtopcontent";
-
-
 function App() {
 
   const [isLogin, setIsLogin] = useState(false)
@@ -93,158 +87,6 @@ function App() {
     }
   }, [])
 
-  // const render = () => {
-  //   if (isLogin === true && isAccount === true) {
-  //     <BrowserRouter>
-  //       <Testtopcontent />
-  //       <Routes>
-  //         <Route path="/" element={<Testhomepage />} />
-  //         <Route path="/login" element={<Loginpage />} />
-  //         <Route path="/signup" element={<Signuppage />} />
-  //         <Route path="/signupcomplete" element={<Signupcompletepage />} />
-  //         <Route path="/cardissuance" element={<Cardissuancepage />} />
-  //         <Route
-  //           path="/cardissuancecompletepage"
-  //           element={<Cardissuancecompletepage />}
-  //         />
-  //         <Route path="/event1" element={<Eventpage />} />
-  //         <Route path="/event" element={<OngoingEventpage />} />
-  //         <Route path="/certification" element={<Certificationpage />} />
-  //         <Route path="/loanapply" element={<Loanapplypage />} />
-  //         <Route path="/loancomplete" element={<Loancompletepage />} />
-  //         <Route path="/transfer" element={<Transferpage />} />
-  //         <Route path="/transfercomplete" element={<Transfercompletepage />} />
-  //         <Route path="/Commonpage" element={<Commonpage />} />
-  //         <Route
-  //           path="/Bankstatementpage"
-  //           element={<Bankstatementpage />}
-  //         ></Route>
-  //         <Route
-  //           path="/Customerservicepage"
-  //           element={<Customerservicepage />}
-  //         ></Route>
-  //         <Route
-  //           path="/Eventfinishedpage"
-  //           element={<Eventfinishedpage />}
-  //         ></Route>
-  //         <Route path="/Netsecpage" element={<Netsecpage />}></Route>
-  //         <Route path="/Newnewspage" element={<Newnewspage />}></Route>
-  //         <Route path="/productpage" element={<Productpage />}></Route>
-  //         <Route path="/Quicksearchpage" element={<Quicksearchpage />}></Route>
-  //         <Route
-  //           path="/Winnerannouncementpage"
-  //           element={<Winnerannouncementpage />}
-  //         ></Route>
-
-  //         <Route
-  //           path="/Incidentnotificationpage"
-  //           element={<Incidentnotificationpage />}
-  //         ></Route>
-  //         <Route path="/findid" element={<Findidpage />}></Route>
-  //         <Route path="/findpassword" element={<Findpasswordpage />}></Route>
-  //         <Route path="/passwordchange" element={<Passwordchangepage />}></Route>
-  //         <Route path="/idguide" element={<Idguidepage />}></Route>
-  //         <Route
-  //           path="/temporarypasswordguide"
-  //           element={<Temporarypasswordguidepage />}
-  //         ></Route>
-  //         <Route
-  //           path="/CreateAccountpage"
-  //           element={<CreateAccountpage />}
-  //         ></Route>
-  //         <Route
-  //           path="/CreateAccount_2page"
-  //           element={<CreateAccount_2page />}
-  //         ></Route>
-  //         <Route
-  //           path="/CreateAccount_3page"
-  //           element={<CreateAccount_3page />}
-  //         ></Route>
-  //         <Route
-  //           path="/PasswordChangeComplete"
-  //           element={<PasswordChangeCompletepage />}
-  //         ></Route>
-  //       </Routes>
-  //     </BrowserRouter>
-  //   }
-
-  //   else {
-
-  //     <BrowserRouter>
-  //       <Topcontent />
-  //       <Routes>
-  //         <Route path="/" element={<Homepage />} />
-  //         <Route path="/login" element={<Loginpage />} />
-  //         <Route path="/signup" element={<Signuppage />} />
-  //         <Route path="/signupcomplete" element={<Signupcompletepage />} />
-  //         <Route path="/cardissuance" element={<Cardissuancepage />} />
-  //         <Route
-  //           path="/cardissuancecompletepage"
-  //           element={<Cardissuancecompletepage />}
-  //         />
-  //         <Route path="/Eventpage" element={<Eventpage />} />
-  //         <Route path="/OngoingEventpage" element={<OngoingEventpage />} />
-  //         <Route path="/certification" element={<Certificationpage />} />
-  //         <Route path="/loanapply" element={<Loanapplypage />} />
-  //         <Route path="/loancomplete" element={<Loancompletepage />} />
-  //         <Route path="/transfer" element={<Transferpage />} />
-  //         <Route path="/transfercomplete" element={<Transfercompletepage />} />
-  //         <Route path="/Commonpage" element={<Commonpage />} />
-  //         <Route
-  //           path="/Bankstatementpage"
-  //           element={<Bankstatementpage />}
-  //         ></Route>
-  //         <Route
-  //           path="/Customerservicepage"
-  //           element={<Customerservicepage />}
-  //         ></Route>
-  //         <Route
-  //           path="/Eventfinishedpage"
-  //           element={<Eventfinishedpage />}
-  //         ></Route>
-  //         <Route path="/Netsecpage" element={<Netsecpage />}></Route>
-  //         <Route path="/Newnewspage" element={<Newnewspage />}></Route>
-  //         <Route path="/productpage" element={<Productpage />}></Route>
-  //         <Route path="/Quicksearchpage" element={<Quicksearchpage />}></Route>
-  //         <Route
-  //           path="/Winnerannouncementpage"
-  //           element={<Winnerannouncementpage />}
-  //         ></Route>
-
-  //         <Route
-  //           path="/Incidentnotificationpage"
-  //           element={<Incidentnotificationpage />}
-  //         ></Route>
-  //         <Route path="/findid" element={<Findidpage />}></Route>
-  //         <Route path="/findpassword" element={<Findpasswordpage />}></Route>
-  //         <Route path="/passwordchange" element={<Passwordchangepage />}></Route>
-  //         <Route path="/idguide" element={<Idguidepage />}></Route>
-  //         <Route
-  //           path="/temporarypasswordguide"
-  //           element={<Temporarypasswordguidepage />}
-  //         ></Route>
-  //         <Route
-  //           path="/CreateAccountpage"
-  //           element={<CreateAccountpage />}
-  //         ></Route>
-  //         <Route
-  //           path="/CreateAccount_2page"
-  //           element={<CreateAccount_2page />}
-  //         ></Route>
-  //         <Route
-  //           path="/CreateAccount_3page"
-  //           element={<CreateAccount_3page />}
-  //         ></Route>
-  //         <Route
-  //           path="/PasswordChangeComplete"
-  //           element={<PasswordChangeCompletepage />}
-  //         ></Route>
-  //       </Routes>
-  //     </BrowserRouter>
-  //   }
-
-  // }
-
   return (
     <div className="App">
       {isAccount ? (
@@ -254,68 +96,68 @@ function App() {
             <Route path="/" element={<Testhomepage />} />
             <Route path="/cardissuance" element={<Cardissuancepage />} />
             <Route
-              path="/cardissuancecompletepage"
+              path="/cardissuancecomplete"
               element={<Cardissuancecompletepage />}
             />
-            <Route path="/Event" element={<Eventpage />} />
-            <Route path="/OngoingEvent" element={<OngoingEventpage />} />
+            <Route path="/event" element={<Eventpage />} />
+            <Route path="/ongoingevent" element={<OngoingEventpage />} />
             <Route path="/certification" element={<Certificationpage />} />
             <Route path="/loanapply" element={<Loanapplypage />} />
             <Route path="/loancomplete" element={<Loancompletepage />} />
             <Route path="/transfer" element={<Transferpage />} />
             <Route path="/transfercomplete" element={<Transfercompletepage />} />
-            <Route path="/Commonpage" element={<Commonpage />} />
+            <Route path="/commonpage" element={<Commonpage />} />
             <Route
-              path="/Bankstatementpage"
+              path="/bankstatement"
               element={<Bankstatementpage />}
             ></Route>
             <Route
-              path="/Customerservicepage"
+              path="/customerservice"
               element={<Customerservicepage />}
             ></Route>
             <Route
-              path="/Eventfinishedpage"
+              path="/eventfinished"
               element={<Eventfinishedpage />}
             ></Route>
-            <Route path="/Netsecpage" element={<Netsecpage />}></Route>
-            <Route path="/Newnewspage" element={<Newnewspage />}></Route>
-            <Route path="/productpage" element={<Productpage />}></Route>
-            <Route path="/Quicksearchpage" element={<Quicksearchpage />}></Route>
+            <Route path="/netsec" element={<Netsecpage />}></Route>
+            <Route path="/newnews" element={<Newnewspage />}></Route>
+            <Route path="/product" element={<Productpage />}></Route>
+            <Route path="/quicksearch" element={<Quicksearchpage />}></Route>
             <Route
-              path="/Winnerannouncementpage"
+              path="/winnerannouncement"
               element={<Winnerannouncementpage />}
             ></Route>
 
             <Route
-              path="/Incidentnotificationpage"
+              path="/incidentnotification"
               element={<Incidentnotificationpage />}
             ></Route>
 
             <Route path="/passwordchange" element={<Passwordchangepage />}></Route>
             <Route
-              path="/CreateAccountpage"
+              path="/createaccount"
               element={<CreateAccountpage />}
             ></Route>
             <Route
-              path="/CreateAccount_2page"
+              path="/createaccount02"
               element={<CreateAccount_2page />}
             ></Route>
             <Route
-              path="/CreateAccount_3page"
+              path="/createaccount03"
               element={<CreateAccount_3page />}
             ></Route>
             <Route
-              path="/PasswordChangeComplete"
+              path="/passwordchangecomplete"
               element={<PasswordChangeCompletepage />}
             ></Route>
-            <Route path="/selectAccount" element={<SelectAccountpage />}></Route>
-            <Route path="/selectAccount2" element={<SelectAccountpage2 />}></Route>
+            <Route path="/selectaccount" element={<SelectAccountpage />}></Route>
+            <Route path="/selectaccount02" element={<SelectAccountpage2 />}></Route>
 
             <Route path="/mypage" element={<Mypagepage />}></Route>
-            <Route path="/qapage" element={<InquiryWritepage />}></Route>
+            <Route path="/qa" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>
             <Route path="/cardlist" element={<CardListpage />}></Route>
-            <Route path="/loanList" element={<LoanListpage />}></Route>
+            <Route path="/loanlist" element={<LoanListpage />}></Route>
           </Routes>
         </BrowserRouter>
 
@@ -325,57 +167,57 @@ function App() {
           <Routes>
             <Route path="/" element={<Testhomepage />} />
             <Route path="/cardissuance" element={<CreateAccountpage />} />
-            <Route path="/Eventpage" element={<Eventpage />} />
-            <Route path="/OngoingEventpage" element={<OngoingEventpage />} />
+            <Route path="/eventpage" element={<Eventpage />} />
+            <Route path="/ongoingevent" element={<OngoingEventpage />} />
             <Route path="/loanapply" element={<CreateAccountpage />} />
             <Route path="/transfer" element={<CreateAccountpage />} />
-            <Route path="/Commonpage" element={<Commonpage />} />
+            <Route path="/common" element={<Commonpage />} />
             <Route
-              path="/Bankstatementpage"
+              path="/bankstatement"
               element={<CreateAccountpage />}
             ></Route>
             <Route
-              path="/Customerservicepage"
+              path="/customerservice"
               element={<Customerservicepage />}
             ></Route>
             <Route
-              path="/Eventfinishedpage"
+              path="/eventfinished"
               element={<Eventfinishedpage />}
             ></Route>
-            <Route path="/Netsecpage" element={<Netsecpage />}></Route>
-            <Route path="/Newnewspage" element={<Newnewspage />}></Route>
-            <Route path="/productpage" element={<Productpage />}></Route>
-            <Route path="/Quicksearchpage" element={<CreateAccountpage />}></Route>
+            <Route path="/netsec" element={<Netsecpage />}></Route>
+            <Route path="/newnews" element={<Newnewspage />}></Route>
+            <Route path="/product" element={<Productpage />}></Route>
+            <Route path="/quicksearch" element={<CreateAccountpage />}></Route>
             <Route
-              path="/Winnerannouncementpage"
+              path="/winnerannouncement"
               element={<Winnerannouncementpage />}
             ></Route>
 
             <Route
-              path="/Incidentnotificationpage"
+              path="/incidentnotification"
               element={<Incidentnotificationpage />}
             ></Route>
             <Route path="/passwordchange" element={<Passwordchangepage />}></Route>
             <Route
-              path="/CreateAccountpage"
+              path="/createaccount"
               element={<CreateAccountpage />}
             ></Route>
             <Route
-              path="/CreateAccount_2page"
+              path="/createaccount02"
               element={<CreateAccount_2page />}
             ></Route>
             <Route
-              path="/CreateAccount_3page"
+              path="/createaccount03"
               element={<CreateAccount_3page />}
             ></Route>
             <Route
-              path="/PasswordChangeComplete"
+              path="/passwordchangecomplete"
               element={<PasswordChangeCompletepage />}
             ></Route>
-              <Route path="/selectAccount" element={<CreateAccountpage />}></Route>
-              <Route path="/selectAccount2" element={<CreateAccountpage />}></Route>
+              <Route path="/selectaccount" element={<CreateAccountpage />}></Route>
+              <Route path="/selectaccount02" element={<CreateAccountpage />}></Route>
             <Route path="/mypage" element={<Mypagepage />}></Route>
-            <Route path="/qapage" element={<InquiryWritepage />}></Route>
+            <Route path="/qa" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>
             
           </Routes>
@@ -391,34 +233,34 @@ function App() {
             <Route path="/signup" element={<Signuppage />} />
             <Route path="/signupcomplete" element={<Signupcompletepage />} />
             <Route path="/cardissuance" element={<NoLoginpage />} />
-            <Route path="/Eventpage" element={<Eventpage />} />
-            <Route path="/OngoingEventpage" element={<OngoingEventpage />} />
+            <Route path="/event" element={<Eventpage />} />
+            <Route path="/ongoingevent" element={<OngoingEventpage />} />
             <Route path="/loanapply" element={<NoLoginpage />} />
             <Route path="/transfer" element={<NoLoginpage />} />
-            <Route path="/Commonpage" element={<Commonpage />} />
+            <Route path="/common" element={<Commonpage />} />
             <Route
-              path="/Bankstatementpage"
+              path="/bankstatement"
               element={<NoLoginpage />}
             ></Route>
             <Route
-              path="/Customerservicepage"
+              path="/customerservice"
               element={<NoLoginpage />}
             ></Route>
             <Route
-              path="/Eventfinishedpage"
+              path="/eventfinished"
               element={<Eventfinishedpage />}
             ></Route>
-            <Route path="/Netsecpage" element={<Netsecpage />}></Route>
-            <Route path="/Newnewspage" element={<Newnewspage />}></Route>
-            <Route path="/productpage" element={<Productpage />}></Route>
-            <Route path="/Quicksearchpage" element={<NoLoginpage />}></Route>
+            <Route path="/netsec" element={<Netsecpage />}></Route>
+            <Route path="/newnews" element={<Newnewspage />}></Route>
+            <Route path="/product" element={<Productpage />}></Route>
+            <Route path="/quicksearch" element={<NoLoginpage />}></Route>
             <Route
-              path="/Winnerannouncementpage"
+              path="/winnerannouncement"
               element={<Winnerannouncementpage />}
             ></Route>
 
             <Route
-              path="/Incidentnotificationpage"
+              path="/incidentnotification"
               element={<Incidentnotificationpage />}
             ></Route>
             <Route path="/findid" element={<Findidpage />}></Route>
@@ -430,20 +272,20 @@ function App() {
               element={<Temporarypasswordguidepage />}
             ></Route>
             <Route
-              path="/CreateAccountpage"
+              path="/createaccount"
               element={<NoLoginpage />}
             ></Route>
             <Route
-              path="/PasswordChangeComplete"
+              path="/passwordchangecomplete"
               element={<PasswordChangeCompletepage />}
             ></Route>
-            <Route path="/selectAccount" element={<NoLoginpage />}></Route>
-            <Route path="/noLogin" element={<NoLoginpage />}></Route>
+            <Route path="/selectaccount" element={<NoLoginpage />}></Route>
+            <Route path="/nologin" element={<NoLoginpage />}></Route>
             <Route path="/mypage" element={<NoLoginpage />}></Route>
-            <Route path="/qapage" element={<NoLoginpage />}></Route>
+            <Route path="/qa" element={<NoLoginpage />}></Route>
             <Route path="/myinfo" element={<NoLoginpage />}></Route>
-            <Route path="/CreateAccount_2page" element={<NoLoginpage />}></Route>
-            <Route path="/selectAccount2" element={<NoLoginpage />}></Route>
+            <Route path="/createaccount02" element={<NoLoginpage />}></Route>
+            <Route path="/selectaccount02" element={<NoLoginpage />}></Route>
 
 
 
