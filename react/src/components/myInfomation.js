@@ -18,6 +18,9 @@ function MyInfomation() {
     const [info, setInfo] = React.useState([]);
     const [info2, setInfo2] = React.useState([]);
     const [info3, setInfo3] = React.useState([]);
+    const [info4, setInfo4] = React.useState([]);
+
+    let i;
 
     useEffect(() => {
         Axios.get('/users/',
@@ -55,8 +58,25 @@ function MyInfomation() {
         Axios.get('/users/loans/loanlist',
             { params: { loginId: sessionStorage.getItem('loginId') } }
         )
-            .then(res => setInfo3(res.data.data))
+            .then(res => {
+                setInfo3(res.data.data)
+                console.log(info3)
+            })
             .catch(err => console.log(err));
+    }, []);
+
+    useEffect(() => {
+        for (i = 0; i < info3.length; i++) {
+            console.log(info3.loanList)
+            Axios.get('/users/loanlist/' + info3[i].loanList
+            )
+                .then(res => {
+                    setInfo4(res.data.data)
+                    console.log(info4.interestType)
+                })
+
+                .catch(err => console.log(err));
+        }
     }, []);
 
     const Tr = ({ info }) => {
@@ -112,7 +132,7 @@ function MyInfomation() {
                 {
                     info.map((item, idx) => {
                         return (
-                            <Td3 key={item.loanList} item={item} />
+                            <Td3 key={item.interestType} item={item} />
                         )
                     })
                 }
@@ -123,7 +143,7 @@ function MyInfomation() {
     const Td3 = ({ item }) => {
         return (
             <>
-                <option value={item.loanList}>{item.loanList}</option>
+                <option value={item.interestType}>{item.interestType}</option>
             </>
         )
     }
@@ -175,7 +195,7 @@ function MyInfomation() {
                         <div className={styles.readMore}>
                             <Link to="/cardlist">자세히보기</Link>
                         </div>
-                        <Tr3 info={info3} />
+                        <Tr3 info={info4} />
                         <div className={styles.readMore}>
                             <Link to="/loanlist">자세히보기</Link>
                         </div>
