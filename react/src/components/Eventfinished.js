@@ -4,10 +4,56 @@ import { Container } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import styles from "../css/Eventfinished.module.css";
-import Pagination from "react-bootstrap/Pagination";
+import Pagination from "./pagination";
 import PageItem from "react-bootstrap/PageItem";
+import { useState, useEffect, useRef } from "react";
+import Axios from "axios";
 
-const Eventfinished = () => {
+function Eventfinished() {
+  const [info, setInfo] = useState([]);
+  const [posts, setPosts] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+
+  useEffect(() => {
+    Axios.get("/cont/events/done")
+      .then((res) => setInfo(res.data.data))
+      // .then(res => console.log(res.data.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const indexOfLast = currentPage * postsPerPage;
+  const indexOfFirst = indexOfLast - postsPerPage;
+  function currentPosts(tmp) {
+    let currentPosts = 0;
+    currentPosts = tmp.slice(indexOfFirst, indexOfLast);
+    return currentPosts;
+  }
+
+  const Tr = ({ info }) => {
+    // let infoReverse = info.slice(0).reverse()
+    return (
+      <tbody>
+        {info.map((item, idx) => {
+          // console.log(item)
+          return <Td key={item.id} item={item} />;
+        })}
+      </tbody>
+    );
+  };
+
+  const Td = ({ item }) => {
+    return (
+      <>
+        <tr>
+          <td className={styles.index}>{item.id}</td>
+          <td className={styles.title}>{item.title}</td>
+          <td className={styles.date}>{item.createDate}</td>
+        </tr>
+      </>
+    );
+  };
+
   return (
     <div>
       <Nav fill className={styles.nav} variant="pills" defaultActiveKey="/home">
@@ -27,90 +73,27 @@ const Eventfinished = () => {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>등록일</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>10</td>
-            <td>이벤트1</td>
-            <td>2022-02-25</td>
-          </tr>
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
+      <div>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>등록일</th>
+            </tr>
+          </thead>
 
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-
-          <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-          </tr>
-        </tbody>
-      </Table>
-
-      <Pagination size="lg" className={styles.pagenav_smbank}>
-        <Pagination.First />
+          <Tr info={currentPosts(info.slice(0))}></Tr>
+        </Table>
+        <Row>
+          {/* <Col lg={4}></Col>
+        <Col lg={4}> */}
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={info.length}
+            paginate={setCurrentPage}
+          >
+            {/* <Pagination.First />
         <Pagination.Prev />
         <Pagination.Item active>{1}</Pagination.Item>
         <Pagination.Item>{2}</Pagination.Item>
@@ -118,10 +101,14 @@ const Eventfinished = () => {
         <Pagination.Item>{4}</Pagination.Item>
         <Pagination.Item>{5}</Pagination.Item>
         <Pagination.Next />
-        <Pagination.Last />
-      </Pagination>
+        <Pagination.Last /> */}
+          </Pagination>
+          {/* </Col>
+        <Col lg={4}></Col> */}
+        </Row>
+      </div>
     </div>
   );
-};
+}
 
 export default Eventfinished;
