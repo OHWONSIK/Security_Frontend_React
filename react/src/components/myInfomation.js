@@ -189,7 +189,7 @@ function MyInfomation() {
                         </Form.Select> */}
                         <Tr info={info} />
                         <div className={styles.readMore}>
-                            <Link to="/Bankstatementpage">자세히보기</Link>
+                            <Link to="/bankstatement">자세히보기</Link>
                         </div>
                         <Tr2 info={info2} />
                         <div className={styles.readMore}>

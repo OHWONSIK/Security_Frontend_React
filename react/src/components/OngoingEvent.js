@@ -17,17 +17,17 @@ const OngoingEvent = () => {
               defaultActiveKey="/"
             >
               <Nav.Item>
-                <Nav.Link href="/OngoingEvent" active>
+                <Nav.Link href="/ongoingevent" active>
                   진행중인 이벤트
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/Eventfinishedpage" active>
+                <Nav.Link href="/eventfinished" active>
                   종료된 이벤트
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/Winnerannouncementpage" active>
+                <Nav.Link href="/winnerannouncement" active>
                   당첨자 발표
                 </Nav.Link>
               </Nav.Item>

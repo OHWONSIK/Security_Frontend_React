@@ -20,7 +20,7 @@ const Mypage = () => {
         <Col>
           <div>
             <Button className={styles.qa_button} variant="secondary" size="lg">
-              <Link to="/qapage">1:1문의</Link>
+              <Link to="/qa">1:1문의</Link>
             </Button>
 
             <Button

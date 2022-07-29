@@ -37,12 +37,12 @@ function TopContent() {
                                         style={{ maxHeight: '100px' }}
                                         navbarScroll
                                     >
-                                        <Nav.Link className={styles.lookup} href="/Bankstatementpage">조회</Nav.Link>
-                                        <Nav.Link className={styles.transper} href="/selectAccount">이체</Nav.Link>
-                                        <Nav.Link className={styles.tuition} href="/selectAccount2">대출</Nav.Link>
-                                        <Nav.Link className={styles.product} href="/CreateAccount_2page">계좌생성</Nav.Link>
+                                        <Nav.Link className={styles.lookup} href="/bankstatement">조회</Nav.Link>
+                                        <Nav.Link className={styles.transper} href="/selectaccount">이체</Nav.Link>
+                                        <Nav.Link className={styles.tuition} href="/selectaccount02">대출</Nav.Link>
+                                        <Nav.Link className={styles.product} href="/createaccount02">계좌생성</Nav.Link>
                                         <Nav.Link className={styles.cardissuance}href="/cardissuance">카드발급</Nav.Link>
-                                        <Nav.Link className={styles.notice}href="/Newnewspage">공지사항</Nav.Link>
+                                        <Nav.Link className={styles.notice}href="/newnews">공지사항</Nav.Link>
                                         
                                     </Nav>
                                 </Navbar.Collapse>

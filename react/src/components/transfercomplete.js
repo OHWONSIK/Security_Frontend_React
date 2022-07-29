@@ -62,7 +62,7 @@ function Transfercomplete() {
                             </tbody>
                         </Table>
                         <Button className={styles.continuebutton} variant="primary">
-                            <Link to="/selectAccount">이체계속하기</Link>
+                            <Link to="/selectaccount">이체계속하기</Link>
                         </Button>{" "}
                         <Button className={styles.checkbutton} variant="primary">
                             <Link to="/">확인</Link>
