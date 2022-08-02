@@ -9,62 +9,86 @@ const leftList = () => {
     <div>
       <ul className={styles.noBullet}>
         {/* 0번링크는 지금 메인페이지로 해야할 듯?  */}
-        <li className={styles.leftCont}>
-          <Link to="/product">예적금</Link>
+        <li className={styles.leftCont1}>
+          <Link to="/product" className={styles.nocolor}>
+            예적금
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
         <li className={styles.leftCont}>
-          <Link to="/newnews">새소식</Link>
-          <div className={styles.divideLineC}></div>
-        </li>
-
-        <li className={styles.leftCont}>
-          <Link to="/ongoingevent">이벤트</Link>
-          <div className={styles.divideLineC}></div>
-        </li>
-
-        <li className={styles.leftCont}>
-          <Link to="/customerservice">상담센터</Link>
+          <Link to="/newnews" className={styles.nocolor}>
+            새소식
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/incidentnotification">사고신고</Link>
+          <Link to="/ongoingevent" className={styles.nocolor}>
+            이벤트
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/netsec">보안공지</Link>
+          <Link to="/customerservice" className={styles.nocolor}>
+            상담센터
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/">금융상품</Link>
+          <Link to="/incidentnotification" className={styles.nocolor}>
+            사고신고
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/bankstatement">거래내역</Link>
+          <Link to="/netsec" className={styles.nocolor}>
+            보안공지
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/loanapply">대출</Link>
+          <Link to="/" className={styles.nocolor}>
+            금융상품
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/quicksearch">빠른거래내역</Link>
+          <Link to="/bankstatement" className={styles.nocolor}>
+            거래내역
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/transfer">이체</Link>
+          <Link to="/loanapply" className={styles.nocolor}>
+            대출
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
         <li className={styles.leftCont}>
-          <Link to="/cardissuance">카드발급</Link>
+          <Link to="/quicksearch" className={styles.nocolor}>
+            빠른거래내역
+          </Link>
+          <div className={styles.divideLineC}></div>
+        </li>
+
+        <li className={styles.leftCont}>
+          <Link to="/transfer" className={styles.nocolor}>
+            이체
+          </Link>
+          <div className={styles.divideLineC}></div>
+        </li>
+
+        <li className={styles.leftCont}>
+          <Link to="/cardissuance" className={styles.nocolor}>
+            카드발급
+          </Link>
           <div className={styles.divideLineC}></div>
         </li>
 
@@ -74,7 +98,9 @@ const leftList = () => {
           </Col>
           <Col>
             <div className={styles.leftCont2}>
-              <Link to="/customerservice">고객센터</Link>
+              <Link to="/customerservice" className={styles.nocolor2}>
+                고객센터
+              </Link>
             </div>
           </Col>
         </Row>

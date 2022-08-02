@@ -25,11 +25,13 @@ function Home() {
   const Tr = ({ info }) => {
     //let infoReverse = info.slice(-4).reverse()
     return (
-      <ListGroup className={styles.noticeList} variant="flush">
-        {info.slice(0, 4).map((item, idx) => {
-          return <Td key={item.id} item={item} />;
-        })}
-      </ListGroup>
+      <div className={styles.og_box}>
+        <ListGroup className={styles.noticeList} variant="flush">
+          {info.slice(0, 4).map((item, idx) => {
+            return <Td key={item.id} item={item} />;
+          })}
+        </ListGroup>
+      </div>
     );
   };
 
@@ -101,14 +103,18 @@ function Home() {
                 variant="primary"
                 size="lg"
               >
-                <Link to="/login">로그인</Link>
+                <Link to="/login" className={styles.logintext}>
+                  로그인
+                </Link>
               </Button>
               <Button
                 className={styles.signupButton}
                 variant="primary"
                 size="lg"
               >
-                <Link to="/signup">회원가입</Link>
+                <Link to="/signup" className={styles.signuptext}>
+                  회원가입
+                </Link>
               </Button>
             </div>
           </Col>
@@ -162,7 +168,9 @@ function Home() {
           </Col>
           <Col lg={1}>
             <div className={styles.seemore}>
-              <Link to="/newnews">+더보기</Link>
+              <Link to="/newnews" className={styles.morebutton}>
+                +더보기
+              </Link>
             </div>
           </Col>
           <Col lg={4}>
@@ -173,6 +181,7 @@ function Home() {
                             <ListGroup.Item class
                             Name={styles.List4}>2022년도 SW중심대학사업 SW산학멘토링</ListGroup.Item>
                         </ListGroup> */}
+
             <Tr info={info} />
           </Col>
           <Col lg={1}></Col>

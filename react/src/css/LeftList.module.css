@@ -1,6 +1,6 @@
 .divideLineC{
     height:2px;
-    background-color:black;
+    background-color:#003d91;
 }
 
 .noBullet{
@@ -8,9 +8,37 @@
 
 }
 
+.leftCont1{
+    font-size:25px;
+    margin-top:50px;
+    margin-bottom:20px;
+
+}
+
+.leftCont1:hover{
+    background-color:#003d91;
+    color:white;
+
+}
+
 .leftCont{
+    font-size:25px;
     margin-top:10px;
-    margin-bottom:30px;
+    margin-bottom:20px;
+}
+
+.leftCont:hover{
+    background-color:#003d91;
+    color:white;
+
+}
+
+.nocolor:hover{
+    color:white;
+}
+
+.nocolor2:hover{
+    color:blue;
 }
 
 .cs_size{
