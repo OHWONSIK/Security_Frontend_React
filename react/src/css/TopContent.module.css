@@ -1,12 +1,17 @@
+.top{
+    background-color: #003d91;
+}
+
 .nobullet{
     list-style: none;
 }
 
-.header {
-    height: 35px;
+.Navbar{
+    color:white;
 }
 
 .login {
+    color:white;
     margin-top: 5px;
     font-size: 20px;
     float: left;
@@ -25,29 +30,72 @@
 }
 
 .name {
-    margin-left: 70px;
+    color:white;
+    text-align: left;
+    margin-left: 20px;
     margin-right: 200px;
     font-size: 25px;
     font-weight: bold;
 }
+
+.logoimg{
+    width:40px;
+    padding-bottom:10px;
+    padding-top:10px;
+}
+
 .lookup {
-    margin-right: 150px;
+    color: #003d91;
+}
+
+.lookup:hover{
+    color: white;
+    background-color: #003d91;
 }
 
 .transper {
-    margin-right: 150px;
+    color: #003d91;
+}
+
+.transper:hover {
+    color: white;
+    background-color: #003d91;
 }
 
 .tuition {
-    margin-right: 150px;
+    color: #003d91;
+}
+
+.tuition:hover {
+    color: white;
+    background-color: #003d91;
 }
 
 .product {
-    margin-right: 150px;
+    color: #003d91;
+}
+
+.product:hover {
+    color: white;
+    background-color: #003d91;
 }
 
 .cardissuance {
-    margin-right: 150px;
+    color: #003d91;
+}
+
+.cardissuance:hover {
+    color: white;
+    background-color: #003d91;
+}
+
+.notice{
+    color: #003d91;
+}
+
+.notice:hover {
+    color: white;
+    background-color: #003d91;
 }
 
 .d-flex {
@@ -58,3 +106,4 @@
     height: 1px;
     background-color: black;
 }
+
