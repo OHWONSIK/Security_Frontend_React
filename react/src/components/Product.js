@@ -10,17 +10,56 @@ const Product = () => {
     <Row>
       <div className={styles.pd_text}>당신에게 추천합니다. </div>
       <Row xs={1} md={2} className="g-4">
-        {Array.from({ length: 6 }).map((_, idx) => (
+        {/* {Array.from({ length: 4 }).map((_, idx) => ( */}
           <Col>
             <Card className={styles.p_card}>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title>상품</Card.Title>
-                <Card.Text>상품</Card.Text>
+              {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+            <Card.Body className={styles.cardbody}>
+                <img
+                  className={styles.item}
+                  src="img/item1.png"
+                  alt="Second slide"
+                />
               </Card.Body>
             </Card>
-          </Col>
-        ))}
+        </Col>
+        <Col>
+          <Card className={styles.p_card}>
+            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+            <Card.Body className={styles.cardbody}>
+              <img
+                className={styles.item}
+                src="img/item2.png"
+                alt="Second slide"
+              />
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card className={styles.p_card}>
+            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+            <Card.Body className={styles.cardbody}>
+              <img
+                className={styles.item}
+                src="img/item1.png"
+                alt="Second slide"
+              />
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card className={styles.p_card}>
+            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+            <Card.Body className={styles.cardbody}>
+              <img
+                className={styles.item}
+                src="img/item1.png"
+                alt="Second slide"
+              />
+            </Card.Body>
+          </Card>
+        </Col>
+        {/* ))} */}
       </Row>
       <Row>
         <div className={styles.pd_text}>원하는 상품이 없나요?</div>
