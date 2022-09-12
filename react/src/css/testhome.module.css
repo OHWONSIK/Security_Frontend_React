@@ -4,8 +4,15 @@
 }
 
 .item{
+    width:1015.08px;
+    height:540px;
+}
+
+.og_box2{
     width: 1015.08px;
-    height: 507.54px;
+    height:546.5px;
+    border: 3px solid black;
+
 }
 
 .cardImage{
@@ -13,11 +20,19 @@
     padding-bottom: 60px;
 }
 
+
 .loginButton{
     padding-top: 35px;
     width:482.4px;
     height:85px;
     padding-bottom: 35px;
+}
+
+.loginButton:hover{
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
+
 }
 
 .signupButton{
@@ -27,32 +42,83 @@
     padding-bottom: 35px;
 }
 
+
+.signupButton:hover{
+
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
+}
+
 .contentMiddle{
     height:300px;
 }
 
+
 .depositButton{
-    margin: 70px;
+    margin:70px;
+    margin-right:80px;
+    margin-left:80px;
     width:200px;
     height:200px;
+    border-radius:15%;
+}
+
+
+.depositButton:hover{
+    
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
 }
 
 .historyButton{
-    margin: 70px;
+    margin:70px;
+    margin-right:80px;
+    margin-left:80px;
     width:200px;
     height:200px;
+    border-radius:15%;
 }
 
+.historyButton:hover{
+    
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
+}
+
+
 .loanButton{
-    margin: 70px;
+    margin:70px;
+    margin-right:80px;
+    margin-left:80px;
     width:200px;
     height:200px;
+    border-radius:15%;
+}
+
+.loanButton:hover{
+    
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
 }
 
 .productButton{
-    margin: 70px;
+    margin:70px;
+    margin-left: 80px;
+    margin-right:80px;
     width:200px;
     height:200px;
+    border-radius:15%;
+}
+
+.productButton:hover{
+    
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
 }
 
 .contentBottom{
@@ -70,11 +136,25 @@
     text-align: left;
     margin-top:20px;
 }
+.og_box{
+    margin-top:30px;
+    border: 2px solid gray;
+    width : 580px;
+    height: 265px;
+}
+
+
 
 .noticeList{
     text-align: left;
     height:500px;
 }
+
+.List1:hover{
+    color:#003d91;
+    font-size:15px;
+}
+
 
 .List1{
     padding:20px;
@@ -93,16 +173,42 @@
 }
 
 .button1{
+    margin-top:30px;
     padding-top:25px;
     padding-bottom:25px;
+}
+
+.button1:hover{
+    
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
 }
 
 .button2{
     padding-top:25px;
     padding-bottom:25px;
 }
+.button2:hover{
+    
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
+}
 
 .button3{
     padding-top:25px;
     padding-bottom:25px;
+}
+
+.button3:hover{
+    
+    background-color:white;
+    color:#003d91;
+    font-size:25px;
+}
+
+.morebutton:hover{
+    font-size:20px;
+    color:#003d91;
 }
