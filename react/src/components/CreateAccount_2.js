@@ -28,7 +28,7 @@ const CreateAccount_2 = () => {
       alert("계좌 비밀번호는 숫자 6자리로 구성되어야 합니다");
       console.log("프론트 오류처리");
     } else {
-      Axios.post("users/accounts/add", {
+      Axios.post("/api/v1/user/accounts/add", {
         accountPassword: inputPw,
         loginId: sessionStorage.getItem("loginId"),
       })
