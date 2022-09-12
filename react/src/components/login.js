@@ -30,12 +30,27 @@ function Login() {
       password: inputPw,
     })
       .then((res) => {
-        if (res.data.checker === true) {
-          sessionStorage.setItem("loginId", inputId);
+        if (
+          res.data.checker === true &&
+          res.data.data[0].useTemplatePassword === false
+        ) {
+          // let jwtToken = res.headers.get("authorization");
+          // sessionStorage.setItem("authorization", jwtToken);
+          let jwtToken = res.headers.authorization;
+          localStorage.setItem("jwtToken", jwtToken);
           document.location.href = "/";
-        } else if (res.data.checker === true) {
-          sessionStorage.setItem("Password", inputPw);
-          sessionStorage.setItem("loginId", inputId);
+        } else if (
+          res.data.checker === true &&
+          res.data.data[0].useTemplatePassword === true
+        ) {
+          let jwtToken = res.headers.authorization;
+          localStorage.setItem("jwtToken", jwtToken);
+          // sessionStorage.setItem("Password", inputPw);
+          // sessionStorage.setItem("loginId", inputId);
+          console.log(res.headers.authorization);
+
+          // let jwtToken = res.headers.get("authorization");
+          // sessionStorage.setItem("authorization", jwtToken);
           document.location.href = "/passwordchange";
         } else alert(res.data.message);
       })
