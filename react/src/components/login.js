@@ -1,55 +1,47 @@
-import { Container, Row, Col, Nav, Form, Button } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../css/login.module.css';
+import { Container, Row, Col, Nav, Form, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "../css/login.module.css";
 import { Link } from "react-router-dom";
-import React, { useEffect } from 'react';
-import Axios from 'axios';
-import { findAllByTestId } from '@testing-library/react';
-
-
-
+import React, { useEffect } from "react";
+import Axios from "axios";
+import { findAllByTestId } from "@testing-library/react";
 
 function Login() {
-
-  const [inputId, setInputId] = React.useState('');
-  const [inputPw, setInputPw] = React.useState('');
+  const [inputId, setInputId] = React.useState("");
+  const [inputPw, setInputPw] = React.useState("");
 
   const handleInputId = (e) => {
-    setInputId(e.target.value)
-  }
+    setInputId(e.target.value);
+  };
 
   const handleInputPw = (e) => {
-    setInputPw(e.target.value)
-  }
+    setInputPw(e.target.value);
+  };
 
   const onKeyPress = (e) => {
-    if (e.key == 'Enter') {
+    if (e.key == "Enter") {
       onClickLogin();
     }
-  }
+  };
 
   const onClickLogin = () => {
-    Axios.post('/users/login',{
-      "loginId": inputId,
-      "password": inputPw
-    }
-    )
-      .then(res => {
-        if (res.data.checker === true && res.data.data.usingTempPassword === false) {
-          sessionStorage.setItem('loginId', inputId)
-          document.location.href = '/'
-        }
-        else if (res.data.checker === true && res.data.data.usingTempPassword === true) {
-          sessionStorage.setItem('Password', inputPw)
-          sessionStorage.setItem('loginId', inputId)
-          document.location.href = '/passwordchange'
-        }
-        else
-          alert(res.data.message)
+    Axios.post("/api/v1/user/login", {
+      loginId: inputId,
+      password: inputPw,
+    })
+      .then((res) => {
+        if (res.data.checker === true) {
+          sessionStorage.setItem("loginId", inputId);
+          document.location.href = "/";
+        } else if (res.data.checker === true) {
+          sessionStorage.setItem("Password", inputPw);
+          sessionStorage.setItem("loginId", inputId);
+          document.location.href = "/passwordchange";
+        } else alert(res.data.message);
       })
 
-      .catch()
-  }
+      .catch();
+  };
 
   return (
     <div className={styles.Login}>
@@ -69,7 +61,6 @@ function Login() {
               </Nav.Item> */}
             </Nav>
             <div className={styles.divideline}></div>
-
           </Col>
           <Col lg={3}></Col>
         </Row>
@@ -94,34 +85,35 @@ function Login() {
             />
           </Col>
           <Col lg={1}>
-            <Button className={styles.loginbutton} variant="primary" size="lg" onClick={onClickLogin}>
+            <Button
+              className={styles.loginbutton}
+              variant="primary"
+              size="lg"
+              onClick={onClickLogin}
+            >
               로그인
             </Button>
           </Col>
           <Col lg={3}></Col>
-
         </Row>
         <Row className={styles.bottomcontent}>
           <Col lg={4}></Col>
           <Col lg={1}>
             <div className={styles.signup}>
-              <Link to='/signup'>회원가입</Link>
+              <Link to="/signup">회원가입</Link>
             </div>
           </Col>
           <Col lg={2}>
             <div className={styles.findid}>
-              <Link to='/findid'>아이디찾기</Link>
+              <Link to="/findid">아이디찾기</Link>
             </div>
           </Col>
           <Col lg={1}>
             <div className={styles.findpassword}>
-              <Link to='/findpassword'>비밀번호찾기</Link>
+              <Link to="/findpassword">비밀번호찾기</Link>
             </div>
           </Col>
           <Col lg={4}></Col>
-
-
-
         </Row>
       </Container>
     </div>
@@ -129,25 +121,3 @@ function Login() {
 }
 
 export default Login;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
