@@ -42,7 +42,7 @@ const Findpassword = () => {
     )
       alert("질문을 선택해주세요");
     else {
-      Axios.post("users/find_Password", {
+      Axios.post("/api/v1/user/find_Password", {
         ansWord: inputAnswer,
         loginId: inputId,
         question: selectQuestion,

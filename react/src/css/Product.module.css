@@ -16,7 +16,11 @@
 }
 
 .item{
-    width:680px;
+    width:710px;
     height:400px;
+}
+
+.productbutton{
+    border-radius:50%;
 }
 

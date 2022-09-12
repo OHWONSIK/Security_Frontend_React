@@ -41,7 +41,7 @@ const OngoingEvent = () => {
               {/* <Link to="/event1">-</Link> */}
               <img
                 className={styles.item}
-                src="img/event1_001.png"
+                src="img/event3_001.jpg"
                 alt="First slide"
               />
             </div>
@@ -50,7 +50,7 @@ const OngoingEvent = () => {
             <div className={styles.og_box}>
               <img
                 className={styles.item}
-                src="img/event2_001.png"
+                src="img/event02_001.jpg"
                 alt="First slide"
               />
             </div>
@@ -60,12 +60,20 @@ const OngoingEvent = () => {
         <Row>
           <Col>
             <div className={styles.og_box}>
-              
+              <img
+                className={styles.item}
+                src="img/event1_001.png"
+                alt="First slide"
+              />
             </div>
           </Col>
           <Col>
             <div className={styles.og_box}>
-              
+              <img
+                className={styles.item}
+                src="img/event4_001.jpg"
+                alt="First slide"
+              />
             </div>
           </Col>
         </Row>

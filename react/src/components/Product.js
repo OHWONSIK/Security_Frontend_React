@@ -11,17 +11,17 @@ const Product = () => {
       <div className={styles.pd_text}>당신에게 추천합니다. </div>
       <Row xs={1} md={2} className="g-4">
         {/* {Array.from({ length: 4 }).map((_, idx) => ( */}
-          <Col>
-            <Card className={styles.p_card}>
-              {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+        <Col>
+          <Card className={styles.p_card}>
+            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
-                <img
-                  className={styles.item}
-                  src="img/item1.png"
-                  alt="Second slide"
-                />
-              </Card.Body>
-            </Card>
+              <img
+                className={styles.item}
+                src="img/item1.png"
+                alt="Second slide"
+              />
+            </Card.Body>
+          </Card>
         </Col>
         <Col>
           <Card className={styles.p_card}>
@@ -41,7 +41,7 @@ const Product = () => {
             <Card.Body className={styles.cardbody}>
               <img
                 className={styles.item}
-                src="img/item1.png"
+                src="img/item3.png"
                 alt="Second slide"
               />
             </Card.Body>
@@ -53,7 +53,7 @@ const Product = () => {
             <Card.Body className={styles.cardbody}>
               <img
                 className={styles.item}
-                src="img/item1.png"
+                src="img/item4.jpg"
                 alt="Second slide"
               />
             </Card.Body>
@@ -66,23 +66,25 @@ const Product = () => {
       </Row>
       <Row>
         <Col>
-          <Button variant="secondary">상품1</Button>{" "}
+          <Button className={styles.productbutton} variant="secondary">
+            상품1
+          </Button>{" "}
         </Col>
 
         <Col>
-          <Button variant="secondary">상품2</Button>{" "}
+          <Button className={styles.productbutton} variant="secondary">
+            상품2
+          </Button>{" "}
         </Col>
         <Col>
-          <Button variant="secondary">상품3</Button>{" "}
+          <Button className={styles.productbutton} variant="secondary">
+            상품3
+          </Button>{" "}
         </Col>
         <Col>
-          <Button variant="secondary">상품4</Button>{" "}
-        </Col>
-        <Col>
-          <Button variant="secondary">상품5</Button>{" "}
-        </Col>
-        <Col>
-          <Button variant="secondary">상품6</Button>{" "}
+          <Button className={styles.productbutton} variant="secondary">
+            상품4
+          </Button>{" "}
         </Col>
       </Row>
     </Row>

@@ -5,7 +5,14 @@
 
 .item{
     width:1015.08px;
-    height:507.54px;
+    height:540px;
+}
+
+.og_box2{
+    width: 1015.08px;
+    height:546.5px;
+    border: 3px solid black;
+
 }
 
 .cardImage{

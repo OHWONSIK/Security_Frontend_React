@@ -49,31 +49,31 @@ function Home() {
         <Row className={styles.contentTop}>
           <Col lg={1}></Col>
           <Col lg={7}>
-            <Carousel>
-              <Carousel.Item>
-                <img
-                  className={styles.item}
-                  src="img/event1_006.png"
-                  alt="First slide"
-                />
-
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className={styles.item}
-                  src="img/event2_007.png"
-                  alt="Second slide"
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="img/third.svg"
-                  alt="Third slide"
-                />
-
-              </Carousel.Item>
-            </Carousel>
+            <div className={styles.og_box2}>
+              <Carousel>
+                <Carousel.Item>
+                  <img
+                    className={styles.item}
+                    src="img/event3_001.jpg"
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className={styles.item}
+                    src="img/event02_001.jpg"
+                    alt="Second slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className={styles.item}
+                    src="img/event1_001.png"
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </div>
           </Col>
           <Col lg={3}>
             <img className={styles.cardImage} alt="card" src="img/card.png" />
