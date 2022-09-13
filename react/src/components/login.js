@@ -38,6 +38,8 @@ function Login() {
           // sessionStorage.setItem("authorization", jwtToken);
           let jwtToken = res.headers.authorization;
           localStorage.setItem("jwtToken", jwtToken);
+          sessionStorage.setItem("Password", inputPw);
+          sessionStorage.setItem("loginId", inputId);
           document.location.href = "/";
         } else if (
           res.data.checker === true &&
@@ -45,8 +47,8 @@ function Login() {
         ) {
           let jwtToken = res.headers.authorization;
           localStorage.setItem("jwtToken", jwtToken);
-          // sessionStorage.setItem("Password", inputPw);
-          // sessionStorage.setItem("loginId", inputId);
+          sessionStorage.setItem("Password", inputPw);
+          sessionStorage.setItem("loginId", inputId);
           console.log(res.headers.authorization);
 
           // let jwtToken = res.headers.get("authorization");

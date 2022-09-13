@@ -15,7 +15,7 @@ function Newnews() {
   const [info, setInfo] = useState([]);
   const [posts, setPosts] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage, setPostsPerPage] = useState(14);
 
   useEffect(() => {
     Axios.get("/api/v1/guest/cont/news")
