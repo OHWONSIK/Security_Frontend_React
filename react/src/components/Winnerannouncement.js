@@ -10,17 +10,13 @@ import Axios from "axios";
 import { useState, useEffect, useRef } from "react";
 
 const Winnerannouncement = () => {
-
   const [info, setInfo] = useState([]);
   const [posts, setPosts] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
-
-  
-
+  const [postsPerPage, setPostsPerPage] = useState(14);
 
   useEffect(() => {
-    Axios.get("/cont/events/winner")
+    Axios.get("/api/v1/guest/cont/events/winner")
       .then((res) => setInfo(res.data.data))
       // .then(res => console.log(res.data.data))
       .catch((err) => console.log(err));
@@ -58,26 +54,27 @@ const Winnerannouncement = () => {
     );
   };
 
-
   return (
     <div>
-      <Nav fill className={styles.nav} variant="pills" defaultActiveKey="/">
-        <Nav.Item>
-          <Nav.Link href="/Event" active>
-            진행중인 이벤트
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/Eventfinishedpage" active>
-            종료된 이벤트
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/Winnerannouncementpage" active>
-            당첨자 발표
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
+      <Row>
+        <Nav fill className={styles.nav} variant="pills" defaultActiveKey="/">
+          <Nav.Item>
+            <Nav.Link href="/ongoingevent" active>
+              진행중인 이벤트
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/eventfinished" active>
+              종료된 이벤트
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/Winnerannouncementpage" active>
+              당첨자 발표
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </Row>
       <Table striped bordered hover>
         <thead>
           <tr>
