@@ -2,3 +2,39 @@
     align-items:center;
     margin-left : 280px;    
 }
+
+.pagination{
+    justify-content : center; 
+    float:center;
+    text-align: center;
+}
+
+.index{
+    width:10%;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.title{
+    
+    width:70%;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.date{
+    text-align:center;
+    width:15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.marginnewnews{
+    margin-top:30px;
+    margin-bottom:30px;
+}
