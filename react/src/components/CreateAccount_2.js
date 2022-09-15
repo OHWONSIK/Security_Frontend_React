@@ -30,6 +30,7 @@ const CreateAccount_2 = () => {
     } else {
       Axios.post("/api/v1/user/accounts/add", {
         accountPassword: inputPw,
+        accountType: "상명계좌",
         loginId: sessionStorage.getItem("loginId"),
       }, {
         headers: {

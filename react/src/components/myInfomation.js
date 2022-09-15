@@ -23,8 +23,15 @@ function MyInfomation() {
     let i;
 
     useEffect(() => {
-        Axios.get('/users/',
-            { params: { loginId: sessionStorage.getItem('loginId') } }
+        Axios.get('/api/v1/user/',
+            // { params: { userId: sessionStorage.getItem('loginId') } }
+            {
+                params: { userId: sessionStorage.getItem('loginId') },
+                headers: {
+                    Authorization: localStorage.getItem('jwtToken'),
+                    "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+                }
+            }
         )
             .then(res => {
                 setId(res.data.data.loginId)
@@ -35,15 +42,26 @@ function MyInfomation() {
                 setPhoneNumber(res.data.data.phoneNumber)
             }
             )
-            .catch((err) => console.log(err));
+            .catch((error) => {
+                alert(error.response.data.message)
+            });
     }, []);
 
     useEffect(() => {
-        Axios.get('/users/accounts/inquiry',
-            { params: { userId: sessionStorage.getItem('loginId') } }
+        Axios.get('/api/v1/user/accounts/inquiry',
+            // { params: { userId: sessionStorage.getItem('loginId') } }
+            {
+                params: { userId: sessionStorage.getItem('loginId') },
+                headers: {
+                    Authorization: localStorage.getItem('jwtToken'),
+                    "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+                }
+            }
         )
             .then(res => setInfo(res.data.data))
-            .catch(err => console.log(err));
+            .catch((error) => {
+                alert(error.response.data.message)
+            });
     }, []);
 
     useEffect(() => {

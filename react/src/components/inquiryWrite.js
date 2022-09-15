@@ -18,10 +18,15 @@ function InquiryWrite() {
   };
 
   const onClickComplete = () => {
-    Axios.post("cont/counsels", {
+    Axios.post("/api/v1/user/cont/counsels", {
       content: inputContent,
       loginId: sessionStorage.getItem("loginId"),
       title: inputTitle,
+    }, {
+      headers: {
+        Authorization: localStorage.getItem('jwtToken'),
+        "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+      }
     })
       .then((res) => {
         if (res.data.checker === true) {
@@ -32,7 +37,10 @@ function InquiryWrite() {
         }
       })
 
-      .catch();
+      .catch((error) => {
+        alert(error.response.data.message)
+
+      });
   };
 
   return (

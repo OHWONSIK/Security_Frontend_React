@@ -14,13 +14,24 @@ const Customerservice = () => {
   const [postsPerPage, setPostsPerPage] = useState(10);
 
   useEffect(() => {
-    Axios.get("/cont/counsels", {
-      params: { userId: sessionStorage.getItem("loginId") },
-    })
-
-      .then((res) => setInfo(res.data.data))
+    Axios.get('/api/v1/user/cont/counsels',
+      // { params: { userId: sessionStorage.getItem('loginId') } }
+      {
+        params: { loginId: sessionStorage.getItem('loginId') },
+        headers: {
+          Authorization: localStorage.getItem('jwtToken'),
+          "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+        }
+      }
+    )
+      .then((res) =>
+        
+        setInfo(res.data.data)
+      )
       // .then(res => console.log(res.data.data))
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        alert(error.response.data.message)
+      });
   }, []);
 
   const indexOfLast = currentPage * postsPerPage;
@@ -49,7 +60,7 @@ const Customerservice = () => {
         <tr>
           <td className={styles.index}>{item.id}</td>
           <td className={styles.title}>{item.title}</td>
-          <td className={styles.date}>{item.createdDate}</td>
+          <td className={styles.date}>{item.createDate}</td>
         </tr>
       </>
     );
