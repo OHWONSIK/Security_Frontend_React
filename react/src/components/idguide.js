@@ -1,10 +1,14 @@
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../css/idguide.module.css';
+import React, { useEffect } from "react";
+
 
 
 function Idguide() {
+    const location = useLocation();
+
     return (
         <div className={styles.Idguide}>
             <Container fluid>
@@ -18,7 +22,7 @@ function Idguide() {
                                 <h4 className={styles.id}>아이디: </h4>  
                             </Col>        
                             <Col lg={6}>
-                                <h4 className={styles.idvalue}>sdfdsh246424 </h4>  
+                                <h4 className={styles.idvalue}>{location.state} </h4>  
                             </Col>        
                         </Row>    
                         <Button className={styles.loginbutton} variant="primary" size="lg">

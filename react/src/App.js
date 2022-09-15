@@ -67,10 +67,14 @@ function App() {
 
   useEffect(() => {
     if (sessionStorage.getItem('loginId') !== null) {
-      Axios.get('/users/accounts/inquiry',
+      Axios.get('/api/v1/user/accounts/inquiry',
         // { params: { userId: sessionStorage.getItem('loginId') } }
-        { params: { userId: sessionStorage.getItem('loginId') } }
-
+        { params: { userId: sessionStorage.getItem('loginId') } ,
+          headers: {
+            Authorization: localStorage.getItem('jwtToken'),
+            "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+          }
+        }
       )
         .then(res => {
           if (Object.keys(res.data.data).length === 0)
@@ -83,7 +87,10 @@ function App() {
             setIsAccount(true)
           }
         })
-        .catch()
+        .catch((error) => {
+          alert(error.response.data.message)
+
+        });
     }
   }, [])
 
