@@ -89,7 +89,8 @@ function App() {
         })
         .catch((error) => {
           alert(error.response.data.message)
-
+          // sessionStorage.removeItem('loginId')
+          // document.location.href = "/";
         });
     }
   }, [])
