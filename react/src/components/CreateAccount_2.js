@@ -31,6 +31,11 @@ const CreateAccount_2 = () => {
       Axios.post("/api/v1/user/accounts/add", {
         accountPassword: inputPw,
         loginId: sessionStorage.getItem("loginId"),
+      }, {
+        headers: {
+          Authorization: localStorage.getItem('jwtToken'),
+          "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+        }
       })
         .then((res) => {
           if (res.data.checker === true)
@@ -38,7 +43,10 @@ const CreateAccount_2 = () => {
           else alert(res.data.message);
         })
 
-        .catch();
+        .catch((error) => {
+          alert(error.response.data.message)
+
+        });
     }
   };
 
