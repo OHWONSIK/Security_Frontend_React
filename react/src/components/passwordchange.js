@@ -43,11 +43,16 @@ function Passwordchange() {
       alert("새 비밀번호의 형식이 올바르지 않습니다");
       console.log("프론트 오류처리");
     } else {
-      Axios.post("/api/v1/user/update_temp_password", {
+      Axios.post("/api/v1/user/updatePassword", {
         loginId: sessionStorage.getItem("loginId"),
-        newPassword1: inputNewPw,
-        newPassword2: inputConPw,
         oldPassword: inputOldPw,
+        newPassword1: inputNewPw,
+        newPassword2: inputConPw
+      }, {
+        headers: {
+          Authorization: localStorage.getItem('jwtToken'),
+          "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+        }
       })
         .then((res) => {
           if (res.data.checker === true) {
@@ -63,7 +68,10 @@ function Passwordchange() {
           }
         })
 
-        .catch();
+        .catch((error) => {
+          alert(error.response.data.message)
+
+        });
     }
   };
 
