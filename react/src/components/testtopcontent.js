@@ -1,11 +1,34 @@
 import { Row, Col, Nav, Navbar, Container, Form, FormControl, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../css/testtopcontent.module.css';
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import Axios from "axios";
+
 
 function TesttopContent() {
 
     const onLogout = () => {
+        Axios.post("/api/v1/user/logout", {},
+            {
+            headers: {
+                Authorization: localStorage.getItem('jwtToken'),
+                "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+            }
+        })
+            .then((res) => {
+                if (res.data.checker === true)
+                {
+                    localStorage.removeItem('jwtToken')
+                    localStorage.removeItem('jwtRefreshToken')
+                }
+                else alert(res.data.message);
+            })
+
+            .catch((error) => {
+                alert(error.response.data.message)
+
+            });
+
         sessionStorage.removeItem('loginId')
         document.location.href = '/'
     }
@@ -26,12 +49,12 @@ function TesttopContent() {
                     <Col lg={2}>
                         <div className={styles.header}>
                             <ul className={styles.nobullet}>
-                                
+
                                 <li className={styles.login}>
-                                    <Link to onClick ={onLogout}> 로그아웃</Link>                               
+                                    <Link to onClick={onLogout}> 로그아웃</Link>
                                 </li>
                                 <li className={styles.certification}>
-                                <Link to="/mypage">마이페이지</Link>
+                                    <Link to="/mypage">마이페이지</Link>
                                 </li>
                             </ul>
                         </div>
