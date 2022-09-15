@@ -33,9 +33,16 @@ function Cardissuance() {
   };
 
   useEffect(() => {
-    Axios.get("/users/accounts/inquiry", {
-      params: { userId: sessionStorage.getItem("loginId") },
-    })
+    Axios.get('/api/v1/user/accounts/inquiry',
+      // { params: { userId: sessionStorage.getItem('loginId') } }
+      {
+        params: { userId: sessionStorage.getItem('loginId') },
+        headers: {
+          Authorization: localStorage.getItem('jwtToken'),
+          "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+        }
+      }
+    )
       .then((res) => setInfo2(res.data.data))
       // .then(res => console.log(res.data.data))
       .catch((err) => console.log(err));
