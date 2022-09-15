@@ -25,39 +25,56 @@ function Login() {
   };
 
   const onClickLogin = () => {
-    Axios.post("/api/v1/user/login", {
-      loginId: inputId,
-      password: inputPw,
-    })
-      .then((res) => {
-        if (
-          res.data.checker === true &&
-          res.data.data[0].useTemplatePassword === false
-        ) {
-          // let jwtToken = res.headers.get("authorization");
-          // sessionStorage.setItem("authorization", jwtToken);
-          let jwtToken = res.headers.authorization;
-          localStorage.setItem("jwtToken", jwtToken);
-          sessionStorage.setItem("Password", inputPw);
-          sessionStorage.setItem("loginId", inputId);
-          document.location.href = "/";
-        } else if (
-          res.data.checker === true &&
-          res.data.data[0].useTemplatePassword === true
-        ) {
-          let jwtToken = res.headers.authorization;
-          localStorage.setItem("jwtToken", jwtToken);
-          sessionStorage.setItem("Password", inputPw);
-          sessionStorage.setItem("loginId", inputId);
-          console.log(res.headers.authorization);
+    if (inputId.length === 0) {
+      alert("아이디를 입력해주세요")
+    }
 
-          // let jwtToken = res.headers.get("authorization");
-          // sessionStorage.setItem("authorization", jwtToken);
-          document.location.href = "/passwordchange";
-        } else alert(res.data.message);
+    else if (inputPw.length === 0) {
+      alert("비밀번호를 입력해주세요")
+    }
+
+    else {
+      Axios.post("/api/v1/user/login", {
+        loginId: inputId,
+        password: inputPw,
       })
+        .then((res) => {
+          if (
+            res.data.checker === true &&
+            res.data.data[0].useTemplatePassword === false
+          ) {
+            // let jwtToken = res.headers.get("authorization");
+            // sessionStorage.setItem("authorization", jwtToken);
+            let jwtToken = res.headers.authorization;
+            let jwtRefreshToken = res.headers['authorization-refresh']
+            localStorage.setItem("jwtToken", jwtToken);
+            localStorage.setItem("jwtRefreshToken", jwtRefreshToken)
+            sessionStorage.setItem("loginId", inputId);
+            //console.log(res.headers['authorization-refresh'])
+            document.location.href = "/";
+          } else if (
+            res.data.checker === true &&
+            res.data.data[0].useTemplatePassword === true
+          ) {
+            let jwtToken = res.headers.authorization;
+            let jwtRefreshToken = res.headers['authorization-refresh']
+            localStorage.setItem("jwtToken", jwtToken);
+            localStorage.setItem("jwtRefreshToken", jwtRefreshToken)
+            // sessionStorage.setItem("Password", inputPw);
+            sessionStorage.setItem("loginId", inputId);
+            //console.log(res.headers.authorization);
 
-      .catch();
+            // let jwtToken = res.headers.get("authorization");
+            // sessionStorage.setItem("authorization", jwtToken);
+            document.location.href = "/passwordchange";
+          } else alert(res.data.message);
+        })
+
+        .catch((error) => {
+
+          alert(error.response.data.message)
+        });
+    }
   };
 
   return (
