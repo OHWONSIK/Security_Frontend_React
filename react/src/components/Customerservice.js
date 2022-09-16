@@ -11,7 +11,7 @@ const Customerservice = () => {
   const [info, setInfo] = useState([]);
   const [posts, setPosts] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage, setPostsPerPage] = useState(14);
 
   useEffect(() => {
     Axios.get('/api/v1/user/cont/counsels',
@@ -79,15 +79,16 @@ const Customerservice = () => {
         <Tr info={currentPosts(info.slice(0))}></Tr>
       </Table>
       <Row>
-        <Col lg={8}>
+        <Col lg={12}>
           <Pagination
             postsPerPage={postsPerPage}
             totalPosts={info.length}
             paginate={setCurrentPage}
           ></Pagination>
         </Col>
-
-        <Col lg={4}>
+      </Row>
+      <Row>
+        <Col lg={12}>
           <Button className={styles.write_style} variant="secondary" size="lg">
             <Link to="/qa">글쓰기</Link>
           </Button>

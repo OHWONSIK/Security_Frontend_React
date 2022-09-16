@@ -67,7 +67,7 @@
 
 .interestrateguide{
     text-align: left;
-    padding-top:83px;
+    padding-top:80px;
 }
 
 .maximumguide{
@@ -86,12 +86,12 @@
     margin-top: 20px;
 }
 
-.tenmillionbutton{
+/* .tenmillionbutton{
     width:120px;
-}
+} */
 
 .millionbutton{
-    margin-left:20px;
+    /* margin-left:20px; */
     width:120px;
 }
 

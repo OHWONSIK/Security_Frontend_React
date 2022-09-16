@@ -19,6 +19,7 @@ function Loanapply() {
     const [inputAmount, setInputAmount] = React.useState('');
     // const [info2, setInfo2] = React.useState([]);
     const [interestRate, setInterestRate] = React.useState([]);
+    const [interestType, setInterestType] = React.useState([]);
     let i
 
     useEffect(() => {
@@ -38,19 +39,20 @@ function Loanapply() {
         // }
 
         Axios.get(
-            "/users/loanlist",
+            "/api/v1/guest/loanlist",
         )
             .then((res) => {
                 for (i = 0; i < res.data.data.length; i++) {
-                    if (loanType == res.data.data[i].interestType) {
+                    if (loanType == res.data.data[i].title) {
                         setInterestRate(res.data.data[i].interestRate)
+                        setInterestType(res.data.data[i].interestType)
                         setLoanIndex(res.data.data[i].id)
                     }
                 }
             })
-            .catch();
-        
-        
+            .catch((error) => {
+                alert(error.response.data.message)
+            });
     }, []);
 
 
@@ -75,12 +77,12 @@ function Loanapply() {
         setInputAmount('')
     }
 
-    const onClickTenMillion = () => {
-        if (inputAmount === '')
-            setInputAmount(10000000)
-        else
-            setInputAmount(parseInt(inputAmount) + 10000000)
-    }
+    // const onClickTenMillion = () => {
+    //     if (inputAmount === '')
+    //         setInputAmount(10000000)
+    //     else
+    //         setInputAmount(parseInt(inputAmount) + 10000000)
+    // }
 
     const onClickMillion = () => {
         if (inputAmount === '')
@@ -105,14 +107,19 @@ function Loanapply() {
         console.log(Number(accountNumber), inputAmount, loanType)
         if (inputAmount.length === 0)
             alert('대출금액이 비어있습니다')
-        else if (inputAmount > 100000000)
+        else if (inputAmount > 5000000)
             alert('대출금액을 최대한도 이하로 작성해주세요')
         else {
-            Axios.post('users/loans', {   
+            Axios.post('/api/v1/user/loans', {   
+                    "loginId": sessionStorage.getItem('loginId'),
                     "accountNumber": accountNumber,
                     "amount": inputAmount,
-                    "loanList": loanIndex,
-                    "loginId": sessionStorage.getItem('loginId')
+                    "loanList": loanIndex
+            }, {
+                headers: {
+                    Authorization: localStorage.getItem('jwtToken'),
+                    "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+                }
             }
             )
                 .then(res => {
@@ -127,7 +134,8 @@ function Loanapply() {
                                         inputAmount: inputAmount,
                                         loanType: loanIndex,
                                         loginId: sessionStorage.getItem('loginId'),
-                                        interestRate: interestRate
+                                        interestRate: interestRate,
+                                        interestType: interestType
                                     }
                                 ]
                             }
@@ -136,8 +144,9 @@ function Loanapply() {
                     else
                         alert(res.data.message)
                 })
-
-                .catch(err => console.log(err))
+                .catch((error) => {
+                    alert(error.response.data.message)
+                });
         }
     }
 
@@ -182,17 +191,17 @@ function Loanapply() {
                         {/* <Tr2 info={info2} /> */}
                         <h4 className={styles.loantypeguide}>{loanType}</h4>
 
-                        <h4 className={styles.interestrateguide}>{interestRate}</h4>
+                        <h4 className={styles.interestrateguide}>{interestRate}% {interestType}</h4>
 
-                        <h4 className={styles.maximumguide}>1억원</h4>
+                        <h4 className={styles.maximumguide}>5,000,000원</h4>
 
                         <InputGroup className={styles.transferamountinput}>
                             <FormControl onChange={handleInputAmount} value={inputAmount} />
                             <InputGroup.Text>원</InputGroup.Text>
                         </InputGroup>
                         <div className={styles.buttonlist}>
-                            <Button className={styles.tenmillionbutton} variant="secondary" size="md" onClick={onClickTenMillion}> 1000만
-                            </Button>
+                            {/* <Button className={styles.tenmillionbutton} variant="secondary" size="md" onClick={onClickTenMillion}> 1000만
+                            </Button> */}
 
                             <Button className={styles.millionbutton} variant="secondary" size="md" onClick={onClickMillion}>
                                 100만

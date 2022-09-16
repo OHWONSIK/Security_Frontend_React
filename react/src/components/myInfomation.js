@@ -26,7 +26,7 @@ function MyInfomation() {
         Axios.get('/api/v1/user/',
             // { params: { userId: sessionStorage.getItem('loginId') } }
             {
-                params: { userId: sessionStorage.getItem('loginId') },
+                params: { loginId: sessionStorage.getItem('loginId') },
                 headers: {
                     Authorization: localStorage.getItem('jwtToken'),
                     "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
@@ -51,7 +51,7 @@ function MyInfomation() {
         Axios.get('/api/v1/user/accounts/inquiry',
             // { params: { userId: sessionStorage.getItem('loginId') } }
             {
-                params: { userId: sessionStorage.getItem('loginId') },
+                params: { loginId: sessionStorage.getItem('loginId') },
                 headers: {
                     Authorization: localStorage.getItem('jwtToken'),
                     "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
@@ -65,37 +65,54 @@ function MyInfomation() {
     }, []);
 
     useEffect(() => {
-        Axios.get('/users/card/cardlist',
-            { params: { loginId: sessionStorage.getItem('loginId') } }
+        Axios.get('/api/v1/user/card/cardlist',
+            // { params: { userId: sessionStorage.getItem('loginId') } }
+            {
+                params: { loginId: sessionStorage.getItem('loginId') },
+                headers: {
+                    Authorization: localStorage.getItem('jwtToken'),
+                    "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+                }
+            }
         )
             .then(res => setInfo2(res.data.data))
-            .catch(err => console.log(err));
+            .catch((error) => {
+                alert(error.response.data.message)
+            });
     }, []);
 
     useEffect(() => {
-        Axios.get('/users/loans/loanlist',
-            { params: { loginId: sessionStorage.getItem('loginId') } }
+        Axios.get('/api/v1/user/loans/loanlist',
+            {
+                params: { loginId: sessionStorage.getItem('loginId') },
+                headers: {
+                    Authorization: localStorage.getItem('jwtToken'),
+                    "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+                }
+            }
         )
             .then(res => {
                 setInfo3(res.data.data)
                 console.log(info3)
             })
-            .catch(err => console.log(err));
+            .catch((error) => {
+                alert(error.response.data.message)
+            });
     }, []);
 
-    useEffect(() => {
-        for (i = 0; i < info3.length; i++) {
-            console.log(info3.loanList)
-            Axios.get('/users/loanlist/' + info3[i].loanList
-            )
-                .then(res => {
-                    setInfo4(res.data.data)
-                    console.log(info4.interestType)
-                })
+    // useEffect(() => {
+    //     for (i = 0; i < info3.length; i++) {
+    //         console.log(info3.loanList)
+    //         Axios.get('/users/loanlist/' + info3[i].loanList
+    //         )
+    //             .then(res => {
+    //                 setInfo4(res.data.data)
+    //                 console.log(info4.interestType)
+    //             })
 
-                .catch(err => console.log(err));
-        }
-    }, []);
+    //             .catch(err => console.log(err));
+    //     }
+    // }, []);
 
     const Tr = ({ info }) => {
         return (
@@ -150,7 +167,7 @@ function MyInfomation() {
                 {
                     info.map((item, idx) => {
                         return (
-                            <Td3 key={item.interestType} item={item} />
+                            <Td3 key={item.loanList} item={item} />
                         )
                     })
                 }
@@ -161,7 +178,7 @@ function MyInfomation() {
     const Td3 = ({ item }) => {
         return (
             <>
-                <option value={item.interestType}>{item.interestType}</option>
+                <option value={item.loanList}>{item.loanList}</option>
             </>
         )
     }
@@ -213,7 +230,7 @@ function MyInfomation() {
                         <div className={styles.readMore}>
                             <Link to="/cardlist">자세히보기</Link>
                         </div>
-                        <Tr3 info={info4} />
+                        <Tr3 info={info3} />
                         <div className={styles.readMore}>
                             <Link to="/loanlist">자세히보기</Link>
                         </div>

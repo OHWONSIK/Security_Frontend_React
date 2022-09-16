@@ -13,43 +13,42 @@ function Loancomplete() {
     let loanType = location.state[0].loanType
     let inputAmount = location.state[0].inputAmount
     let interestRate = location.state[0].interestRate
+    let interestType = location.state[0].interestType
     let i
 
 
     useEffect(() => {
-        // if (loanType === 1)
-        //     setLoanList('상명등록금대출')
-        // else if (loanType === 2)
-        //     setLoanList('상명신용대출')
-        // else if (loanType === 3)
-        //     setLoanList('상명비상금대출')
-
-        Axios.get('users/loanlist/' + loanType,
+        Axios.get('/api/v1/guest/loanlist/' + loanType,
             // { params: { loginId: sessionStorage.getItem('loginId') } }
         )
             .then(res => {
-                setLoanList(res.data.data.interestType)
+                setLoanList(res.data.data.title)
             })
-            .catch()
+            .catch((error) => {
+                alert(error.response.data.message)
+            });
 
 
-        Axios.get('users/loans/loanlist',
-            { params: { loginId: sessionStorage.getItem('loginId') } }
+        Axios.get('api/v1/user/loans/loanlist',
+            {
+                params: { loginId: sessionStorage.getItem('loginId') },
+                headers: {
+                    Authorization: localStorage.getItem('jwtToken'),
+                    "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+                }
+            }
         )
             .then(res => {
                 for (i = 0; i < res.data.data.length; i++) {
-                    if (loanType == res.data.data[i].loanList) {
+                    if (loanType == res.data.data[i].id) {
                         setCreateDate(res.data.data[i].createDate)
                     }
                 }
             })
-            .catch()
+            .catch((error) => {
+                alert(error.response.data.message)
+            });
     }, [])
-
-
-
-
-
 
     return (
         <div className={styles.Loancomplete}>
@@ -73,7 +72,7 @@ function Loancomplete() {
                                     <td>{createDate}</td>
                                     <td>{loanList}</td>
                                     <td>{inputAmount}원</td>
-                                    <td>{interestRate}</td>
+                                    <td>{interestRate}% {interestType}</td>
                                 </tr>
                             </tbody>
                         </Table>
