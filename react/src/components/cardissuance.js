@@ -7,7 +7,9 @@ import React, { useEffect } from "react";
 import Axios from "axios";
 
 function Cardissuance() {
+  const [info, setInfo] = React.useState([]);
   const [info2, setInfo2] = React.useState([]);
+  
 
   //const [checked, setChecked] = React.useState(false);
 
@@ -36,7 +38,7 @@ function Cardissuance() {
     Axios.get('/api/v1/user/accounts/inquiry',
       // { params: { userId: sessionStorage.getItem('loginId') } }
       {
-        params: { userId: sessionStorage.getItem('loginId') },
+        params: { loginId: sessionStorage.getItem('loginId') },
         headers: {
           Authorization: localStorage.getItem('jwtToken'),
           "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
@@ -45,7 +47,27 @@ function Cardissuance() {
     )
       .then((res) => setInfo2(res.data.data))
       // .then(res => console.log(res.data.data))
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        alert(error.response.data.message)
+      });
+  }, []);
+
+  useEffect(() => {
+    Axios.get('/api/v1/user/cardlist', {
+      headers: {
+        Authorization: localStorage.getItem('jwtToken'),
+        "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+      }
+    }
+    )
+      .then(res => {
+        setInfo(res.data.data)
+        // setInterestRate(res.data.data[0].interestRate)
+      })
+      // .then(res => console.log(res.data.data))
+      .catch((error) => {
+        alert(error.response.data.message)
+      });
   }, []);
 
   const onClickSubmit = () => {
@@ -55,20 +77,49 @@ function Cardissuance() {
       alert("카드종류를 선택해주세요");
     else if (checked === false) alert("개인정보 수집 및 이용에 동의해주세요");
     else {
-      Axios.post("users/card", {
-        accountNumber: accountNumber,
-        cardType: cardType,
+      Axios.post("/api/v1/user/card", {
         loginId: sessionStorage.getItem("loginId"),
+        accountNumber: accountNumber,
+        cardType: cardType
+      }, {
+        headers: {
+          Authorization: localStorage.getItem('jwtToken'),
+          "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+        }
       })
         .then((res) => {
           if (res.data.checker === true) {
             document.location.href = "cardissuancecomplete";
           } else alert(res.data.message);
         })
-
-        .catch();
+        .catch((error) => {
+          alert(error.response.data.message)
+        });
     }
   };
+
+  const Tr = ({ info }) => {
+    return (
+      <Form.Select className={styles.cardtypeinput} aria-label="Default select example" onChange={handleCardType}>
+        <option>카드종류를 선택해주세요</option>
+        {
+          info.map((item, idx) => {
+            return (
+              <Td key={item.title} item={item} />
+            )
+          })
+        }
+      </Form.Select>
+    );
+  };
+
+  const Td = ({ item }) => {
+    return (
+      <>
+        <option value={item.title}>{item.title}</option>
+      </>
+    )
+  }
 
   const Tr2 = ({ info }) => {
     return (
@@ -107,15 +158,19 @@ function Cardissuance() {
             <h2 className={styles.application}>카드발급 신청</h2>
 
             <Tr2 info={info2} />
-            <Form.Select
+            {/* <Form.Select
               className={styles.cardtypeinput}
               aria-label="Default select example"
               onChange={handleCardType}
-            >
-              <option>카드종류를 선택해주세요</option>
-              <option value="1">상명카드1</option>
-              <option value="2">상명카드2</option>
-            </Form.Select>
+            > */}
+              {/* <option>카드종류를 선택해주세요</option>
+              <option value="1">상명체크카드</option>
+              <option value="2">상명신용카드</option>
+              <option value="3">상명나라사랑체크카드</option>
+              <option value="4">상명나라사랑신용카드</option> */}
+              <Tr info={info} />
+
+            {/* </Form.Select> */}
 
             {/* <Form className={styles.cardcheckbox}>
               {['checkbox'].map((type) => (
