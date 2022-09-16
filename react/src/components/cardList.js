@@ -11,13 +11,20 @@ function CardList() {
     const [data, setData] = React.useState([]);
 
     useEffect(() => {
-        Axios.get('/users/card/cardlist',
-            { params: { loginId: sessionStorage.getItem('loginId') } }
+        Axios.get('/api/v1/user/card/cardlist',
+            // { params: { userId: sessionStorage.getItem('loginId') } }
+            {
+                params: { loginId: sessionStorage.getItem('loginId') },
+                headers: {
+                    Authorization: localStorage.getItem('jwtToken'),
+                    "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+                }
+            }
         )
-            .then(res => {
-                setData(res.data.data)
-            })
-            .catch(err => console.log(err));
+            .then(res => setData(res.data.data))
+            .catch((error) => {
+                alert(error.response.data.message)
+            });
     }, []);
 
     return (
