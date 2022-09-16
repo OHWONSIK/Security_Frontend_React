@@ -69,7 +69,7 @@ function App() {
     if (sessionStorage.getItem('loginId') !== null) {
       Axios.get('/api/v1/user/accounts/inquiry',
         // { params: { userId: sessionStorage.getItem('loginId') } }
-        { params: { userId: sessionStorage.getItem('loginId') } ,
+        { params: { loginId: sessionStorage.getItem('loginId') } ,
           headers: {
             Authorization: localStorage.getItem('jwtToken'),
             "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
