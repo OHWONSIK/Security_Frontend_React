@@ -226,10 +226,8 @@ function Cardissuance() {
               ))}
             </Form>
 
-            <Button className={styles.submitbutton} variant="primary" size="lg">
-              <Link to onClick={onClickSubmit}>
+            <Button className={styles.submitbutton} variant="primary" size="lg" onClick={onClickSubmit}>
                 제출
-              </Link>
             </Button>
           </Col>
           <Col lg={4}></Col>
