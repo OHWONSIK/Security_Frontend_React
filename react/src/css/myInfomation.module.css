@@ -98,13 +98,14 @@
     width: 400px;
 }
 
-.checkbutton{
+/* .checkbutton{
+    text-align: center;
     margin-top: 100px;
     margin-bottom:200px;
-    margin-left:500px;
+    /* margin-left:500px;
     height:75px;
     width:145px;
-}
+} */
 
 .readMore{
     color: gray;
