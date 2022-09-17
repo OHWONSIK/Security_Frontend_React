@@ -14,8 +14,27 @@ import Axios from "axios";
 
 function Testhome() {
   const onLogout = () => {
-    sessionStorage.removeItem("loginId");
-    document.location.href = "/";
+    Axios.post("/api/v1/user/logout", {},
+      {
+        headers: {
+          Authorization: localStorage.getItem('jwtToken'),
+          "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+        }
+      })
+      .then((res) => {
+        if (res.data.checker === true) {
+          localStorage.removeItem('jwtToken')
+          localStorage.removeItem('jwtRefreshToken')
+          sessionStorage.removeItem('loginId')
+          document.location.href = '/'
+        }
+        else alert(res.data.message);
+      })
+
+      .catch((error) => {
+        alert(error.response.data.message)
+
+      });
   };
 
   const [info, setInfo] = useState([]);
