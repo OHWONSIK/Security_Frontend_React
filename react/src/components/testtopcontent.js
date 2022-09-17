@@ -20,8 +20,6 @@ function TesttopContent() {
                 {
                     localStorage.removeItem('jwtToken')
                     localStorage.removeItem('jwtRefreshToken')
-                    sessionStorage.removeItem('loginId')
-                    document.location.href = '/'
                 }
                 else alert(res.data.message);
             })
@@ -29,6 +27,8 @@ function TesttopContent() {
             .catch((error) => {
                 alert(error.response.data.message)
             });
+        sessionStorage.removeItem('loginId')
+        document.location.href = '/'
 
         
     }
@@ -39,10 +39,12 @@ function TesttopContent() {
             <Container fluid>
                 <Row className={styles.top}>
                     <Col lg={3}>
+                        <a href="/">
                         <img
                             className={styles.logoimg}
                             src="img/logo01.png"
-                        />
+                            />
+                        </a>
                         <Navbar.Brand className={styles.name} href="/">상명은행</Navbar.Brand>
                     </Col>
                     <Col lg={7}></Col>

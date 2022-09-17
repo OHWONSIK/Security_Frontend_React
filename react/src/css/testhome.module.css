@@ -16,6 +16,28 @@
 
 }
 
+.cardContainer{
+    position: relative;
+}
+
+.cardType {
+    position: absolute;
+    top: 50%;
+    left: 13%;
+}
+
+.cardNumber{
+    position: absolute;
+    top:60%;
+    left:13%;
+}
+
+.cardExpireDate {
+    position: absolute;
+    top: 70%;
+    left: 13%;
+}
+
 .cardImage{
     width: 482.4px;
     padding-bottom: 60px;
@@ -23,7 +45,7 @@
 
 
 .loginButton{
-    padding-top: 35px;
+    padding-top: 30px;
     width:482.4px;
     height:85px;
     padding-bottom: 35px;
@@ -37,7 +59,7 @@
 }
 
 .signupButton{
-    padding-top: 35px;
+    padding-top: 30px;
     width:482.4px;
     height:85px;
     padding-bottom: 35px;

@@ -42,7 +42,11 @@ function Passwordchange() {
     } else if (!inputNewPw.match("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$")) {
       alert("새 비밀번호의 형식이 올바르지 않습니다");
       console.log("프론트 오류처리");
-    } else {
+    } else if (inputOldPw === inputNewPw) {
+      alert("기존비밀번호와 새비밀번호가 일치합니다\n다른 비밀번호를 입력해주세요");
+      console.log("프론트 오류처리");
+    } 
+    else {
       Axios.post("/api/v1/user/updatePassword", {
         loginId: sessionStorage.getItem("loginId"),
         oldPassword: inputOldPw,
