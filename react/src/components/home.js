@@ -82,19 +82,17 @@ function Home() {
                 className={styles.loginButton}
                 variant="primary"
                 size="lg"
+                href="/login"
               >
-                <Link to="/login" className={styles.logintext}>
-                  로그인
-                </Link>
+                로그인
               </Button>
               <Button
                 className={styles.signupButton}
                 variant="primary"
                 size="lg"
+                href="/signup"
               >
-                <Link to="/signup" className={styles.signuptext}>
-                  회원가입
-                </Link>
+                회원가입
               </Button>
             </div>
           </Col>
@@ -105,37 +103,45 @@ function Home() {
           <Col lg={1}></Col>
           <Col lg={10}>
             <div>
-              <Button
-                className={styles.depositButton}
-                variant="secondary"
-                size="lg"
-              >
-                <Link to="/product">예적금</Link>
-              </Button>
+              <a href="/product">
+                <Button
+                  className={styles.depositButton}
+                  variant="secondary"
+                  size="lg"
+                >
+                  예적금
+                </Button>
+              </a>
 
-              <Button
-                className={styles.historyButton}
-                variant="secondary"
-                size="lg"
-              >
-                <Link to="/quicksearch">빠른거래내역</Link>
-              </Button>
+              <a href="quicksearch">
+                <Button
+                  className={styles.historyButton}
+                  variant="secondary"
+                  size="lg"
+                >
+                  빠른거래내역
+                </Button>
+              </a>
 
-              <Button
-                className={styles.loanButton}
-                variant="secondary"
-                size="lg"
-              >
-                <Link to="/loanapply">대출</Link>
-              </Button>
+              <a href="selectaccount02">
+                <Button
+                  className={styles.loanButton}
+                  variant="secondary"
+                  size="lg"
+                >
+                  대출
+                </Button>
+              </a>
 
-              <Button
-                className={styles.productButton}
-                variant="secondary"
-                size="lg"
-              >
-                금융상품
-              </Button>
+              <a href="/">
+                <Button
+                  className={styles.productButton}
+                  variant="secondary"
+                  size="lg"
+                >
+                  금융상품
+                </Button>
+              </a>
             </div>
           </Col>
           <Col lg={1}></Col>
@@ -167,14 +173,14 @@ function Home() {
           <Col lg={1}></Col>
           <Col lg={3}>
             <div className="d-grid gap-2">
-              <Button className={styles.button1} variant="secondary" size="lg">
-                <Link to="/bankstatement">조회</Link>
+              <Button className={styles.button1} variant="secondary" size="lg" href="/bankstatement">
+                조회
               </Button>
-              <Button className={styles.button2} variant="secondary" size="lg">
-                <Link to="/transfer">이체</Link>
+              <Button className={styles.button2} variant="secondary" size="lg" href="/transfer">
+                이체
               </Button>
-              <Button className={styles.button3} variant="secondary" size="lg">
-                <Link to="/ongoingevent">이벤트</Link>
+              <Button className={styles.button3} variant="secondary" size="lg" href="/ongoingevent">
+                이벤트
               </Button>
             </div>
           </Col>
