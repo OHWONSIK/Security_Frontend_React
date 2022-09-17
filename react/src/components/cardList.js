@@ -25,12 +25,13 @@ function CardList() {
             .catch((error) => {
                 alert(error.response.data.message)
             });
+        
     }, []);
 
     return (
         <div className={styles.CardList}>
             <Container fluid>
-                <Row>
+                {/* <Row>
                     <Col lg={6}>
                         <h4 className={styles.cardList}>카드 목록</h4>
                         {data.map((data) => (
@@ -54,6 +55,18 @@ function CardList() {
                     <Button className={styles.checkbutton} variant="primary">
                         <Link to="/myinfo">확인</Link>
                     </Button>{' '}
+                </Row> */}
+                <Row>
+                    <h4 className={styles.cardList}>카드 목록</h4>
+                    {data.map((data) => (
+                        <div className={styles.cardContainer}>
+                            <img className={styles.cardImage} alt="card" src="img/card.png" />
+                            <h4 className={styles.cardType}> {data.cardType} </h4>
+                            <h4 className={styles.cardNumber}> {data.cardNumber} </h4>
+                            <h4 className={styles.cardExpireDate}> Expire {data.expireDate} </h4>
+                        </div>
+                    ))}
+
                 </Row>
             </Container>
         </div>
