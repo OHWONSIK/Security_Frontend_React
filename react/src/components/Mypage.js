@@ -19,25 +19,31 @@ const Mypage = () => {
       <Row className={styles.mypage_contents}>
         <Col>
           <div>
-            <Button className={styles.qa_button} variant="secondary" size="lg">
-              <Link to="/qa">1:1문의</Link>
-            </Button>
+            <a href="/qa">
+              <Button className={styles.qa_button} variant="secondary" size="lg">
+                1:1문의
+              </Button>
+            </a>
 
-            <Button
-              className={styles.pwchange_button}
-              variant="secondary"
-              size="lg"
-            >
-              <Link to="/passwordchange">비밀번호 변경</Link>
-            </Button>
+            <a href="/passwordchange">
+              <Button
+                className={styles.pwchange_button}
+                variant="secondary"
+                size="lg"
+              >
+                비밀번호 변경
+              </Button>
+            </a>
 
-            <Button
-              className={styles.myinfo_button}
-              variant="secondary"
-              size="lg"
-            >
-              <Link to="/myinfo">본인 정보 확인</Link>
-            </Button>
+            <a href="/myinfo">
+              <Button
+                className={styles.myinfo_button}
+                variant="secondary"
+                size="lg"
+              >
+                본인 정보 확인
+              </Button>
+            </a>
           </div>
         </Col>
       </Row>
