@@ -69,7 +69,7 @@ const Winnerannouncement = () => {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/Winnerannouncementpage" active>
+            <Nav.Link href="/Winnerannouncement" active>
               당첨자 발표
             </Nav.Link>
           </Nav.Item>

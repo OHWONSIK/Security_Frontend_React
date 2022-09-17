@@ -90,9 +90,15 @@ const Bankstatement = () => {
 
     {
       Axios.get(
-        "/users/accounts/inquiry",
+        "/api/v1/user/accounts/inquiry",
         // { params: { userId: sessionStorage.getItem('loginId') } }
-        { params: { userId: sessionStorage.getItem("loginId") } }
+        {
+          params: { loginId: sessionStorage.getItem("loginId") },
+          headers: {
+            Authorization: localStorage.getItem("jwtToken"),
+            "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+          },
+        }
       )
         .then((res) => {
           for (i = 0; i < res.data.data.length; i++) {
