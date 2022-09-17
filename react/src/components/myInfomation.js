@@ -235,10 +235,14 @@ function MyInfomation() {
                             <Link to="/loanlist">자세히보기</Link>
                         </div>
 
+                        
                     </Col>
-                    <Button className={styles.checkbutton} variant="primary">
-                        <Link to="/">확인</Link>
-                    </Button>{' '}
+                    {/* <a className={styles.checkbutton} href="/">
+                        <Button variant="primary" >
+                            <Link to="/">확인</Link>
+                        </Button>{' '}
+                    </a> */}
+                    
                 </Row>
             </Container>
         </div>
