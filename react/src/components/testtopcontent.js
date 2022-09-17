@@ -20,17 +20,17 @@ function TesttopContent() {
                 {
                     localStorage.removeItem('jwtToken')
                     localStorage.removeItem('jwtRefreshToken')
+                    sessionStorage.removeItem('loginId')
+                    document.location.href = '/'
                 }
                 else alert(res.data.message);
             })
 
             .catch((error) => {
                 alert(error.response.data.message)
-
             });
 
-        sessionStorage.removeItem('loginId')
-        document.location.href = '/'
+        
     }
 
     return (

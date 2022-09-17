@@ -98,6 +98,10 @@ function Loanapply() {
             setInputAmount(parseInt(inputAmount) + 500000)
     }
 
+    const onClickMaximum = () => {
+        setInputAmount(5000000)
+    }
+
     const onClickLoan = () => {
         // console.log(setInfo2)
         // setAccountNum(accountNumber)
@@ -211,7 +215,7 @@ function Loanapply() {
                                 50만
                             </Button>
 
-                            <Button className={styles.maximumbutton} variant="secondary" size="md">
+                            <Button className={styles.maximumbutton} variant="secondary" size="md" onClick={onClickMaximum}>
                                 최대한도
                             </Button>
 
