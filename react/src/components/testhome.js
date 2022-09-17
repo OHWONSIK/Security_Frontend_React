@@ -25,8 +25,7 @@ function Testhome() {
         if (res.data.checker === true) {
           localStorage.removeItem('jwtToken')
           localStorage.removeItem('jwtRefreshToken')
-          sessionStorage.removeItem('loginId')
-          document.location.href = '/'
+          
         }
         else alert(res.data.message);
       })
@@ -35,6 +34,8 @@ function Testhome() {
         alert(error.response.data.message)
 
       });
+    sessionStorage.removeItem('loginId')
+    document.location.href = '/'
   };
 
   const [info, setInfo] = useState([]);
@@ -66,6 +67,39 @@ function Testhome() {
       </>
     );
   };
+
+  const [cardNumber, setCardNumber] = useState([]);
+  const [cardType, setCardType] = useState([]);
+  const [cardExpireDate, setCardExpireDate] = useState([]);
+  let number;
+
+
+  useEffect(() => {
+    Axios.get('/api/v1/user/card/cardlist',
+      // { params: { userId: sessionStorage.getItem('loginId') } }
+      {
+        params: { loginId: sessionStorage.getItem('loginId') },
+        headers: {
+          Authorization: localStorage.getItem('jwtToken'),
+          "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
+        }
+      }
+    )
+      .then((res) => {
+        number = res.data.data[1].cardNumber.toString()
+        number = number.substring(0, 4) + '-' + number.substring(4, 8) + '-' + number.substring(8, 12) + '-' + number.substring(12, 16)
+        setCardType(res.data.data[1].cardType)
+        setCardExpireDate(res.data.data[1].expireDate)
+        setCardNumber(number)
+      })
+
+      .catch((error) => {
+        alert(error.response.data.message)
+      });
+  }, []);
+
+
+
 
   return (
     <div className={styles.Testhome}>
@@ -100,21 +134,27 @@ function Testhome() {
             </div>
           </Col>
           <Col lg={3}>
-            <img className={styles.cardImage} alt="card" src="img/card.png" />
+            <div className={styles.cardContainer}>
+              <img className={styles.cardImage} alt="card" src="img/card.png" />
+              <h4 className={styles.cardType}> {cardType} </h4>
+              <h4 className={styles.cardNumber}> {cardNumber} </h4>
+              <h4 className={styles.cardExpireDate}> {cardExpireDate} </h4>
+            </div>
+            
             <div className="d-grid gap-2">
               <Button
                 className={styles.loginButton}
                 variant="primary"
                 size="lg"
+                onClick={onLogout}
               >
-                <Link to onClick={onLogout}>
                   로그아웃
-                </Link>
               </Button>
               <Button
                 className={styles.signupButton}
                 variant="primary"
                 size="lg"
+                href="/"
               >
                 <Link to="/">인증센터</Link>
               </Button>
@@ -127,37 +167,45 @@ function Testhome() {
           <Col lg={1}></Col>
           <Col lg={10}>
             <div>
+              <a href="/product">
               <Button
                 className={styles.depositButton}
                 variant="secondary"
                 size="lg"
               >
-                <Link to="/product">예적금</Link>
-              </Button>
+                예적금
+                </Button>
+              </a>
 
+              <a href="/quicksearch">
               <Button
                 className={styles.historyButton}
                 variant="secondary"
                 size="lg"
               >
-                <Link to="/quicksearch">빠른거래내역</Link>
-              </Button>
+              빠른거래내역
+                </Button>
+              </a>
 
+              <a href="/selectaccount02">
               <Button
                 className={styles.loanButton}
                 variant="secondary"
                 size="lg"
               >
-                <Link to="/loanapply">대출</Link>
-              </Button>
+              대출
+                </Button>
+              </a>
 
+              <a href="/">
               <Button
                 className={styles.productButton}
                 variant="secondary"
                 size="lg"
               >
                 금융상품
-              </Button>
+                </Button>
+              </a>
             </div>
           </Col>
           <Col lg={1}></Col>
@@ -174,25 +222,19 @@ function Testhome() {
             </div>
           </Col>
           <Col lg={4}>
-            {/* <ListGroup className={styles.noticeList} variant="flush">
-                            <ListGroup.Item className={styles.List1}>학사제도 안내서 및 교양 교육과정 이수기준</ListGroup.Item>
-                            <ListGroup.Item className={styles.List2}>제17회 TOPCIT 정기평가 안내</ListGroup.Item>
-                            <ListGroup.Item className={styles.List3}>2022년 8월 졸업예정자 공학인증 안내</ListGroup.Item>
-                            <ListGroup.Item className={styles.List4}>2022년도 SW중심대학사업 SW산학멘토링</ListGroup.Item>
-                        </ListGroup> */}
             <Tr info={info} />
           </Col>
           <Col lg={1}></Col>
           <Col lg={3}>
             <div className="d-grid gap-2">
-              <Button className={styles.button1} variant="secondary" size="lg">
-                <Link to="/bankstatement">조회</Link>
+              <Button className={styles.button1} variant="secondary" href="/bankstatement" size="lg">
+                조회
               </Button>
-              <Button className={styles.button2} variant="secondary" size="lg">
-                <Link to="/transfer">이체</Link>
+              <Button className={styles.button2} variant="secondary" href="/transfer" size="lg">
+                이체
               </Button>
-              <Button className={styles.button3} variant="secondary" size="lg">
-                <Link to="/ongoingevent">이벤트</Link>
+              <Button className={styles.button3} variant="secondary" href="/ongoingevent" size="lg">
+                이벤트
               </Button>
             </div>
           </Col>
