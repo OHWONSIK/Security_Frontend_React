@@ -3,6 +3,7 @@
     font-weight: bold;
     text-align: left;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .cardType {
@@ -43,4 +44,32 @@
     margin-left: 500px;
     height: 75px;
     width: 145px;
+}
+
+.cardContainer {
+    position: relative;
+    text-align: left;
+}
+
+.cardType {
+    position: absolute;
+    top: 45%;
+    left: 8%;
+}
+
+.cardNumber {
+    position: absolute;
+    top: 65%;
+    left: 8%;
+}
+
+.cardExpireDate {
+    position: absolute;
+    top: 75%;
+    left: 8%;
+}
+
+.cardImage {
+    width: 682.4px;
+    padding-bottom: 60px;
 }
