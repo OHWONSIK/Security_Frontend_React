@@ -11,10 +11,12 @@ function TopContent() {
                 <Row className={styles.top}>
 
                     <Col lg={3}>
+                        <a href="/">
                         <img
                             className={styles.logoimg}
                             src="img/logo01.png"
-                        />
+                            />
+                        </a>
                         <Navbar.Brand className={styles.name} href="/">상명은행</Navbar.Brand>
                     </Col>
                     <Col lg={7}></Col>
