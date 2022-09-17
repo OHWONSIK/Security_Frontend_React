@@ -72,6 +72,7 @@ function Testhome() {
   const [cardType, setCardType] = useState([]);
   const [cardExpireDate, setCardExpireDate] = useState([]);
   let number;
+  let date;
 
 
   useEffect(() => {
@@ -88,8 +89,10 @@ function Testhome() {
       .then((res) => {
         number = res.data.data[1].cardNumber.toString()
         number = number.substring(0, 4) + '-' + number.substring(4, 8) + '-' + number.substring(8, 12) + '-' + number.substring(12, 16)
+        date = res.data.data[1].expireDate.toString()
+        date = date.substring(5, 7) + '/' + date.substring(0,2)
         setCardType(res.data.data[1].cardType)
-        setCardExpireDate(res.data.data[1].expireDate)
+        setCardExpireDate(date)
         setCardNumber(number)
       })
 
@@ -138,7 +141,7 @@ function Testhome() {
               <img className={styles.cardImage} alt="card" src="img/card.png" />
               <h4 className={styles.cardType}> {cardType} </h4>
               <h4 className={styles.cardNumber}> {cardNumber} </h4>
-              <h4 className={styles.cardExpireDate}> {cardExpireDate} </h4>
+              <h4 className={styles.cardExpireDate}> Expire {cardExpireDate} </h4>
             </div>
             
             <div className="d-grid gap-2">
