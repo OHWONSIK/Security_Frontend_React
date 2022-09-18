@@ -77,9 +77,6 @@ function LoanList() {
 
 
                     </Col>
-                    <Button className={styles.checkbutton} variant="primary">
-                        <Link to="/myinfo">확인</Link>
-                    </Button>{' '}
                 </Row>
             </Container>
         </div>

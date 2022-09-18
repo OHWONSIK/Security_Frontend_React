@@ -8,7 +8,7 @@ const BottomContent = () => {
     <div className={styles.marginbottom}>
       <div className={styles.divideLineC}></div>
       <Container fluid>
-        <Row>
+        <Row className={styles.top}>
           <Col lg={1} className={styles.bottomCont}>
             <Link to="/incidentnotification" className={styles.noaction}>
               사고신고
@@ -33,14 +33,14 @@ const BottomContent = () => {
           <Col lg={8}></Col>
         </Row>
 
-        <Row>
+        <Row className={styles.bottom}>
           <Col lg={2} className={styles.bottomCont2}>
             서울지점 : 02 - 2287 - 5292
           </Col>
           <Col lg={10}></Col>
         </Row>
         <Row>
-          <Col lg={2} className={styles.bottomCont2}>
+          <Col lg={2} className={styles.bottomCont3}>
             천안지점 : 02 - 2287 - 5291
           </Col>
           <Col lg={10}></Col>

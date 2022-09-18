@@ -95,17 +95,22 @@ const leftList = () => {
 
         <Row>
           <Col>
-            <a href="/customerservice">
               <img src="img/cs_img.jpg" className={styles.cs_size}></img>
-            </a>
           </Col>
           <Col>
             <div className={styles.leftCont2}>
-              <Link to="/customerservice" className={styles.nocolor2}>
+              <a >
                 고객센터
-              </Link>
+              </a>
             </div>
           </Col>
+        </Row>
+        <Row>
+          <div className={styles.box}>
+            <p className={styles.seoul}>02 - 2287 - 5292</p>
+            <p>02 - 2287 - 5291 </p>
+            
+          </div>
         </Row>
       </ul>
     </div>
