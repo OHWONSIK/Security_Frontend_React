@@ -53,7 +53,7 @@ const leftList = () => {
 
         <a href="/" className={styles.nocolor}>
         <li className={styles.leftCont}>
-            금융상품
+            인증센터
           <div className={styles.divideLineC}></div>
           </li>
         </a>
