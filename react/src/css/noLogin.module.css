@@ -6,21 +6,21 @@
 }
 
 .ca_button{
-    
+    float:right;
     margin-top : 200px;
-    margin-left : 650px;
+    /* margin-left : 0px; */
     margin-bottom: 300px;
-    width : 300px;
+    width : 200px;
     height : 80px;
 
 }
 
 .ca_button2{
-    
+    float:left;
     margin-top : 200px;
-    margin-left : 100px;
+    /* margin-left : 100px; */
     margin-bottom: 300px;
-    width : 300px;
+    width : 200px;
     height : 80px;
 
 }
