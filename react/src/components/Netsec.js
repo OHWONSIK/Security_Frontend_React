@@ -1,4 +1,4 @@
-import { Router, Route, Routes, Link } from "react-router-dom";
+import { Router, Route, Routes, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import Axios from "axios";
 import { Container } from "react-bootstrap";
@@ -14,6 +14,15 @@ function Netsec() {
   const [posts, setPosts] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(14);
+  const navigate = useNavigate();
+  const onClickTitle = (params, e) => {
+    // console.log(params);
+    e.preventDefault();
+    navigate("/netsec_detail", {
+      state: [{ params: params }],
+    });
+    // console.log();
+  };
 
   useEffect(() => {
     Axios.get("/api/v1/guest/cont/security-notices")
@@ -47,8 +56,17 @@ function Netsec() {
       <>
         <tr>
           <td className={styles.index}>{item.id}</td>
-          <td className={styles.title}>{item.title}</td>
-          <td className={styles.date}>{item.createdDate}</td>
+          <td className={styles.title}>
+            <Link
+              to="/netsec_detail"
+              onClick={(e) => {
+                onClickTitle(item.id, e);
+              }}
+            >
+              {item.title}
+            </Link>
+          </td>
+          <td className={styles.date}>{item.createdDate.substr(0, 10)}</td>
         </tr>
       </>
     );
