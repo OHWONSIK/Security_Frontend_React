@@ -14,15 +14,23 @@ const NoLogin = () => {
             </Row>
             <Row>
                 {/* <Col lg={6}> */}
-                    <Button variant="primary" className={styles.ca_button}>
-                        <Link to="/login">로그인 하러가기</Link>
-                    </Button>{" "}
-                {/* </Col> */}
-                {/* <Col lg={6}> */}
-                    <Button variant="primary" className={styles.ca_button2}>
-                        <Link to="/signup">회원가입 하러가기</Link>
-                    </Button>{" "}
-                {/* </Col> */}
+                <Col sm={6}>
+                    <a href="/login">
+                        <Button variant="primary" className={styles.ca_button}>
+                            로그인 하러가기
+                        </Button>{" "}
+                    </a>
+                    </Col>
+
+                <Col sm={6}>
+
+                    <a href="/signup">
+
+                        <Button variant="primary" className={styles.ca_button2}>
+                            회원가입 하러가기
+                        </Button>{" "}
+                    </a>
+                </Col>
             </Row>
         </div>
     );
