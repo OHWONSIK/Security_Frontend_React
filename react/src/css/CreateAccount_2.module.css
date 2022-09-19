@@ -1,6 +1,12 @@
+.createaccount2{
+    height:624px;
+}
+
 .ca_2_text{
-    margin-top:40px;
+    margin-top:150px;
     font-size:40px;
+    font-weight: bold;
+    margin-bottom:50px;
 }
 
 .ca_2_ntext{
@@ -12,8 +18,8 @@
 
 .ca_2_button{
     width: 150px;
-    margin-left:950px;
-    margin-top:40px;
+    height: 50px;
+    margin-top:50px;
 }
 
 .ca_2_form{
