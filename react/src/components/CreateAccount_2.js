@@ -52,7 +52,7 @@ const CreateAccount_2 = () => {
   };
 
   return (
-    <div>
+    <div className={styles.createaccount2}>
       <Row>
         <div className={styles.ca_2_text}>계좌 생성</div>
       </Row>
@@ -98,6 +98,7 @@ const CreateAccount_2 = () => {
         </Col>
       </Row>
       <Row>
+        <Col sm={12}>
         <Button
           variant="primary"
           className={styles.ca_2_button}
@@ -105,6 +106,7 @@ const CreateAccount_2 = () => {
         >
           확인
         </Button>{" "}
+      </Col>
       </Row>
     </div>
   );
