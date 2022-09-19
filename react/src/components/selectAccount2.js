@@ -149,9 +149,12 @@ function SelectAccount2() {
         <div className={styles.SelectAccount}>
             <Container fluid>
                 <Row>
+                    <h2 className={styles.loanapply}>대출신청</h2>
+                </Row>
+                <Row>
                     <Col lg={3}></Col>
                     <Col lg={1}>
-                        <h2 className={styles.loanapply}>대출신청</h2>
+                        
                         <h3 className={styles.accountNumber}>계좌번호</h3>
                         <h3 className={styles.loanType}>대출상품</h3>
 
