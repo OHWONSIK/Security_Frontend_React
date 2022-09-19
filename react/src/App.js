@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import Productpage from "./page/Productpage";
 import Newnewspage from "./page/Newnewspage";
 import Netsecpage from "./page/Netsecpage";
@@ -10,7 +10,10 @@ import Winnerannouncementpage from "./page/Winnerannouncementpage";
 import Bankstatementpage from "./page/Bankstatementpage";
 import Quicksearchpage from "./page/Quicksearchpage";
 import Customerservicepage from "./page/Customerservicepage";
-import Commonpage from "./page/Commonpage";
+import Winnerannouncement_detailpage from "./page/Winnerannouncement_detailpage";
+import Newnews_detailpage from "./page/Newnews_detailpage";
+import Netsec_detailpage from "./page/Netsec_detailpage";
+import Eventfinished_detailpage from "./page/Eventfinished_detailpage";
 import Incidentnotificationpage from "./page/Incidentnotificationpage";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -38,8 +41,8 @@ import CreateAccount_3page from "./page/CreateAccount_3page";
 import PasswordChangeCompletepage from "./page/PasswordChangeCompletepage";
 
 import Testhomepage from "./page/testhomepage";
-import Topcontent from "./components/TopContent"
-import Testtopcontent from "./components/testtopcontent"
+import Topcontent from "./components/TopContent";
+import Testtopcontent from "./components/testtopcontent";
 import SelectAccountpage from "./page/selectAccountpage";
 import SelectAccountpage2 from "./page/selectAccountpage2";
 import SelectAccountpage3 from "./page/selectAccountpage3";
@@ -51,49 +54,49 @@ import CardListpage from "./page/cardListpage";
 import LoanListpage from "./page/loanListpage";
 
 function App() {
-
-  const [isLogin, setIsLogin] = useState(false)
-  const [isAccount, setIsAccount] = useState(false)
-
+  const [isLogin, setIsLogin] = useState(false);
+  const [isAccount, setIsAccount] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem('loginId') === null) {
-      console.log('isLogin ?? :: ', isLogin)
+    if (sessionStorage.getItem("loginId") === null) {
+      console.log("isLogin ?? :: ", isLogin);
     } else {
-      setIsLogin(true)
-      console.log('isLogin ?? :: ', isLogin)
+      setIsLogin(true);
+      console.log("isLogin ?? :: ", isLogin);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    if (sessionStorage.getItem('loginId') !== null) {
-      Axios.get('/api/v1/user/accounts/inquiry',
+    if (sessionStorage.getItem("loginId") !== null) {
+      Axios.get(
+        "/api/v1/user/accounts/inquiry",
         // { params: { userId: sessionStorage.getItem('loginId') } }
-        { params: { loginId: sessionStorage.getItem('loginId') } ,
+        {
+          params: { loginId: sessionStorage.getItem("loginId") },
           headers: {
-            Authorization: localStorage.getItem('jwtToken'),
-            "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
-          }
+            Authorization: localStorage.getItem("jwtToken"),
+            "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+          },
         }
       )
-        .then(res => {
+        .then((res) => {
           if (Object.keys(res.data.data).length === 0)
-            console.log('isAccount ?? :: ', isAccount)
+            console.log("isAccount ?? :: ", isAccount);
           else {
-            console.log('isAccount ?? :: ', isAccount)
+            console.log("isAccount ?? :: ", isAccount);
             // setAccountNum(res.data.data[0].accountNumber)
             // account = res.data.data[0].accountNumber
             // balance = res.data.data[0].balance
-            setIsAccount(true)
+            setIsAccount(true);
           }
         })
         .catch((error) => {
-          alert(error.response.data.message)
+          alert(error.response.data.message);
           // sessionStorage.removeItem('loginId')
           // document.location.href = "/";
         });
     }
-  }, [])
+  }, []);
 
   return (
     <div className="App">
@@ -113,8 +116,20 @@ function App() {
             <Route path="/loanapply" element={<Loanapplypage />} />
             <Route path="/loancomplete" element={<Loancompletepage />} />
             <Route path="/transfer" element={<Transferpage />} />
-            <Route path="/transfercomplete" element={<Transfercompletepage />} />
-            <Route path="/commonpage" element={<Commonpage />} />
+            <Route
+              path="/transfercomplete"
+              element={<Transfercompletepage />}
+            />
+            <Route
+              path="/winnerannouncement_detail"
+              element={<Winnerannouncement_detailpage />}
+            />
+            <Route path="/newnews_detail" element={<Newnews_detailpage />} />
+            <Route path="/netsec_detail" element={<Netsec_detailpage />} />
+            <Route
+              path="/eventfinished_detail"
+              element={<Eventfinished_detailpage />}
+            />
             <Route
               path="/bankstatement"
               element={<Bankstatementpage />}
@@ -141,7 +156,10 @@ function App() {
               element={<Incidentnotificationpage />}
             ></Route>
 
-            <Route path="/passwordchange" element={<Passwordchangepage />}></Route>
+            <Route
+              path="/passwordchange"
+              element={<Passwordchangepage />}
+            ></Route>
             <Route
               path="/createaccount"
               element={<CreateAccountpage />}
@@ -158,8 +176,14 @@ function App() {
               path="/passwordchangecomplete"
               element={<PasswordChangeCompletepage />}
             ></Route>
-            <Route path="/selectaccount" element={<SelectAccountpage />}></Route>
-            <Route path="/selectaccount02" element={<SelectAccountpage2 />}></Route>
+            <Route
+              path="/selectaccount"
+              element={<SelectAccountpage />}
+            ></Route>
+            <Route
+              path="/selectaccount02"
+              element={<SelectAccountpage2 />}
+            ></Route>
 
             <Route path="/mypage" element={<Mypagepage />}></Route>
             <Route path="/qa" element={<InquiryWritepage />}></Route>
@@ -168,7 +192,6 @@ function App() {
             <Route path="/loanlist" element={<LoanListpage />}></Route>
           </Routes>
         </BrowserRouter>
-
       ) : isLogin ? (
         <BrowserRouter>
           <Testtopcontent />
@@ -179,7 +202,16 @@ function App() {
             <Route path="/ongoingevent" element={<OngoingEventpage />} />
             <Route path="/loanapply" element={<CreateAccountpage />} />
             <Route path="/transfer" element={<CreateAccountpage />} />
-            <Route path="/common" element={<Commonpage />} />
+            <Route
+              path="/winnerannouncement_detail"
+              element={<Winnerannouncement_detailpage />}
+            />
+            <Route path="/newnews_detail" element={<Newnews_detailpage />} />
+            <Route path="/netsec_detail" element={<Netsec_detailpage />} />
+            <Route
+              path="/eventfinished_detail"
+              element={<Eventfinished_detailpage />}
+            />
             <Route
               path="/bankstatement"
               element={<CreateAccountpage />}
@@ -205,7 +237,10 @@ function App() {
               path="/incidentnotification"
               element={<Incidentnotificationpage />}
             ></Route>
-            <Route path="/passwordchange" element={<Passwordchangepage />}></Route>
+            <Route
+              path="/passwordchange"
+              element={<Passwordchangepage />}
+            ></Route>
             <Route
               path="/createaccount"
               element={<CreateAccountpage />}
@@ -222,17 +257,20 @@ function App() {
               path="/passwordchangecomplete"
               element={<PasswordChangeCompletepage />}
             ></Route>
-              <Route path="/selectaccount" element={<CreateAccountpage />}></Route>
-              <Route path="/selectaccount02" element={<CreateAccountpage />}></Route>
+            <Route
+              path="/selectaccount"
+              element={<CreateAccountpage />}
+            ></Route>
+            <Route
+              path="/selectaccount02"
+              element={<CreateAccountpage />}
+            ></Route>
             <Route path="/mypage" element={<Mypagepage />}></Route>
             <Route path="/qa" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>
-            
           </Routes>
         </BrowserRouter>
-
       ) : (
-
         <BrowserRouter>
           <Topcontent />
           <Routes>
@@ -245,15 +283,18 @@ function App() {
             <Route path="/ongoingevent" element={<OngoingEventpage />} />
             <Route path="/loanapply" element={<NoLoginpage />} />
             <Route path="/transfer" element={<NoLoginpage />} />
-            <Route path="/common" element={<Commonpage />} />
             <Route
-              path="/bankstatement"
-              element={<NoLoginpage />}
-            ></Route>
+              path="/winnerannouncement_detail"
+              element={<Winnerannouncement_detailpage />}
+            />
+            <Route path="/newnews_detail" element={<Newnews_detailpage />} />
+            <Route path="/netsec_detail" element={<Netsec_detailpage />} />
             <Route
-              path="/customerservice"
-              element={<NoLoginpage />}
-            ></Route>
+              path="/eventfinished_detail"
+              element={<Eventfinished_detailpage />}
+            />
+            <Route path="/bankstatement" element={<NoLoginpage />}></Route>
+            <Route path="/customerservice" element={<NoLoginpage />}></Route>
             <Route
               path="/eventfinished"
               element={<Eventfinishedpage />}
@@ -273,16 +314,16 @@ function App() {
             ></Route>
             <Route path="/findid" element={<Findidpage />}></Route>
             <Route path="/findpassword" element={<Findpasswordpage />}></Route>
-            <Route path="/passwordchange" element={<Passwordchangepage />}></Route>
+            <Route
+              path="/passwordchange"
+              element={<Passwordchangepage />}
+            ></Route>
             <Route path="/idguide" element={<Idguidepage />}></Route>
             <Route
               path="/temporarypasswordguide"
               element={<Temporarypasswordguidepage />}
             ></Route>
-            <Route
-              path="/createaccount"
-              element={<NoLoginpage />}
-            ></Route>
+            <Route path="/createaccount" element={<NoLoginpage />}></Route>
             <Route
               path="/passwordchangecomplete"
               element={<PasswordChangeCompletepage />}
@@ -294,9 +335,6 @@ function App() {
             <Route path="/myinfo" element={<NoLoginpage />}></Route>
             <Route path="/createaccount02" element={<NoLoginpage />}></Route>
             <Route path="/selectaccount02" element={<NoLoginpage />}></Route>
-
-
-
           </Routes>
         </BrowserRouter>
       )}

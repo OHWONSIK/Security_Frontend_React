@@ -1,5 +1,5 @@
 import { Nav } from "react-bootstrap";
-import { Router, Route, Routes, Link } from "react-router-dom";
+import { Router, Route, Routes, Link, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
@@ -10,6 +10,15 @@ import { useState, useEffect, useRef } from "react";
 import Axios from "axios";
 
 function Eventfinished() {
+  const navigate = useNavigate();
+  const onClickTitle = (params, e) => {
+    // console.log(params);
+    e.preventDefault();
+    navigate("/eventfinished_detail", {
+      state: [{ params: params }],
+    });
+    // console.log();
+  };
   const [info, setInfo] = useState([]);
   const [posts, setPosts] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,8 +56,18 @@ function Eventfinished() {
       <>
         <tr>
           <td className={styles.index}>{item.id}</td>
-          <td className={styles.title}>{item.title}</td>
-          <td className={styles.date}>{item.createDate}</td>
+          <td className={styles.title}>
+            {" "}
+            <Link
+              to="/newnews_detail"
+              onClick={(e) => {
+                onClickTitle(item.id, e);
+              }}
+            >
+              {item.title}
+            </Link>
+          </td>
+          <td className={styles.date}>{item.createDate.substr(0, 10)}</td>
         </tr>
       </>
     );
