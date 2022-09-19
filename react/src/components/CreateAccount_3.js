@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 const CreateAccount_3 = () => {
   return (
-    <div className={styles.Event}>
+    <div className={styles.createaccount3}>
       <Row>
         <Col sm={2}></Col>
         <Col sm={8}>
@@ -21,9 +21,11 @@ const CreateAccount_3 = () => {
           <h4 className={styles.ca_completemessage_0}>
             회원님은 상명은행의 계좌 관련 모든 기능을 이용하실 수 있습니다.{" "}
           </h4>
+          <a href="/">
           <Button className={styles.checkbutton} variant="primary">
-            <Link to="/">확인</Link>
+            확인
           </Button>{" "}
+        </a>
         </Col>
         <Col sm={2}></Col>
       </Row>
