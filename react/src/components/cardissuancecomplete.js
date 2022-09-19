@@ -16,9 +16,11 @@ function Cardissuancecomplete() {
                             alt="checkimage"
                         />
                         <h1 className={styles.completemessage}>카드발급이 완료되었습니다.</h1>
+                        <a href="/">
                         <Button className={styles.checkbutton} variant="primary">
-                            <Link to="/">확인</Link>
-                        </Button>{' '}
+                            확인
+                            </Button>{' '}
+                        </a>
                     </Col>
                 <Col sm={2}></Col>
             </Row>
