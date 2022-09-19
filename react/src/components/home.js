@@ -133,13 +133,13 @@ function Home() {
                 </Button>
               </a>
 
-              <a href="/">
+              <a href="/netsec">
                 <Button
                   className={styles.productButton}
                   variant="secondary"
                   size="lg"
                 >
-                  금융상품
+                  보안공지
                 </Button>
               </a>
             </div>
