@@ -3,6 +3,7 @@
     font-weight: bold;
     text-align: left;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .loanlist {
@@ -12,7 +13,8 @@
 }
 
 .loanType {
-    margin-bottom: 10px;
+    font-size:30px;
+    margin-bottom: 20px;
 }
 
 .box{
@@ -43,4 +45,16 @@
     margin-left: 500px;
     height: 75px;
     width: 145px;
+}
+
+.amount{
+    font-size: 20px;
+}
+
+.interest {
+    font-size: 20px;
+}
+
+.expireDate {
+    font-size: 20px;
 }

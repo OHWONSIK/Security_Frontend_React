@@ -1,5 +1,9 @@
+.createaccount3{
+    height:624px;
+}
+
 .ca_checkimage{
-    margin-top:50px;
+    margin-top:150px;
 
 }
 
@@ -7,4 +11,10 @@
     margin-top:40px;
     margin-bottom:40px;
     
+}
+
+.checkbutton{
+    margin-top:50px;
+    width:150px;
+    height:50px;
 }

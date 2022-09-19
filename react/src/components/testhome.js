@@ -87,11 +87,11 @@ function Testhome() {
       }
     )
       .then((res) => {
-        number = res.data.data[1].cardNumber.toString()
+        number = res.data.data[0].cardNumber.toString()
         number = number.substring(0, 4) + '-' + number.substring(4, 8) + '-' + number.substring(8, 12) + '-' + number.substring(12, 16)
-        date = res.data.data[1].expireDate.toString()
+        date = res.data.data[0].expireDate.toString()
         date = date.substring(5, 7) + '/' + date.substring(0,2)
-        setCardType(res.data.data[1].cardType)
+        setCardType(res.data.data[0].cardType)
         setCardExpireDate(date)
         setCardNumber(number)
       })
@@ -200,13 +200,13 @@ function Testhome() {
                 </Button>
               </a>
 
-              <a href="/">
+              <a href="/netsec">
               <Button
                 className={styles.productButton}
                 variant="secondary"
                 size="lg"
               >
-                금융상품
+                보안공지
                 </Button>
               </a>
             </div>

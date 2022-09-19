@@ -13,9 +13,13 @@ const CreateAccount = () => {
         </div>
       </Row>
       <Row>
-        <Button variant="primary" className={styles.ca_button}>
-          <Link to="/createaccount02">계좌 생성하러 가기</Link>
-        </Button>{" "}
+        <Col sm={12}>
+        <a href="/createaccount02">
+          <Button className={styles.ca_button} variant="primary">
+          계좌 생성하러 가기
+        </Button>
+          </a>
+        </Col>
       </Row>
     </div>
   );

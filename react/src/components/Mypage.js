@@ -15,7 +15,7 @@ import styles from "../css/Mypage.module.css";
 
 const Mypage = () => {
   return (
-    <div>
+    <div className={styles.mypage}>
       <Row className={styles.mypage_contents}>
         <Col>
           <div>
