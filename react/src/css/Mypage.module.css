@@ -1,32 +1,55 @@
-.mypage_contents{
+.mypage{
+    height:624px;
+    overflow-x: hidden;
+}
+/* .mypage_contents{
     height:600px;
 
-}
+} */
 
 .qa_button{
     margin-top:150px;
     margin-right:200px;
     margin-left:200px;
-
-    width:300px;
-    height:300px;
+    width:250px;
+    height:250px;
+    border-radius: 15%;
 }
 
 .pwchange_button{
     margin-top:150px;
     margin-right:200px;
-
-    width:300px;
-    height:300px;
+    width:250px;
+    height:250px;
+    border-radius: 15%;
 
 }
 
 .myinfo_button{
     margin-top:150px;
     margin-right:200px;
+    width:250px;
+    height:250px;
+    border-radius: 15%;
+}
 
-    width:300px;
-    height:300px;
+.qa_button:hover {
 
+    background-color: white;
+    color: #003d91;
+    font-size: 25px;
+}
 
+.pwchange_button:hover {
+
+    background-color: white;
+    color: #003d91;
+    font-size: 25px;
+}
+
+.myinfo_button:hover {
+
+    background-color: white;
+    color: #003d91;
+    font-size: 25px;
 }
