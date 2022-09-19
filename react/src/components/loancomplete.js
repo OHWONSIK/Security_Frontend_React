@@ -74,9 +74,11 @@ function Loancomplete() {
                 </tr>
               </tbody>
             </Table>
+            <a href="/">
             <Button className={styles.checkbutton} variant="primary">
-              <Link to="/">확인</Link>
-            </Button>{" "}
+              확인
+              </Button>{" "}
+            </a>
           </Col>
           <Col lg={2}></Col>
         </Row>
