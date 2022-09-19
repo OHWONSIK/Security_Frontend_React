@@ -1,3 +1,7 @@
+.SelectAccount{
+    height:624px;
+}
+
 .application{
     margin-top:200px;
     margin-bottom:100px;
@@ -6,8 +10,8 @@
 
 .nextbutton{
     margin-top:100px;
-    height:75px;
-    width:145px;
+    height:50px;
+    width:150px;
 }
 
 .accountNumber{
