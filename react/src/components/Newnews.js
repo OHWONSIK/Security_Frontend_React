@@ -23,7 +23,7 @@ function Newnews() {
   const onClickTitle = (params, e) => {
     // console.log(params);
     e.preventDefault();
-    navigate("/common", {
+    navigate("/newnews_detail", {
       state: [{ params: params }],
     });
     // console.log();
@@ -68,7 +68,7 @@ function Newnews() {
           <td className={styles.index}>{item.id}</td>
           <td className={styles.title}>
             <Link
-              to="/common"
+              to="/newnews_detail"
               onClick={(e) => {
                 onClickTitle(item.id, e);
               }}
@@ -76,7 +76,7 @@ function Newnews() {
               {item.title}
             </Link>
           </td>
-          <td className={styles.date}>{item.createdDate}</td>
+          <td className={styles.date}>{item.createdDate.substr(0, 10)}</td>
         </tr>
       </>
     );
