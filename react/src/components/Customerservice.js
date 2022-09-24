@@ -65,7 +65,7 @@ const Customerservice = () => {
     return (
       <>
         <tr>
-          <td className={styles.index}>{15 - idx}</td>
+          <td className={styles.index}>{idx + 1}</td>
           <td className={styles.title}>
             <Link
               to="/customerservice_detail"
