@@ -13,7 +13,87 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Bankstatement = () => {
+  const [show, setShow] = useState(false);
+  const Component = () => {
+    return (
+      <div>
+        <Row>
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li>{inquireNum}건의 조회내역이 있습니다</li>
+            </ul>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li>계좌번호 : {accountNum}</li>
+            </ul>
+          </Col>
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li> 예금주 : {name} </li>
+            </ul>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li>상명예금</li>
+            </ul>
+          </Col>
+
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li>잔액 : {balanceNum}원</li>
+            </ul>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>거래일자</th>
+                  <th>거래시간</th>
+                  {/* <th>적요</th> */}
+                  <th>출금(원)</th>
+                  <th>입금(원)</th>
+                  <th>보낸이</th>
+                  {/* <th>내용(입금자명)</th> */}
+                  <th>메모</th>
+                  {/* <th>잔액(원)</th> */}
+                  <th>거래점</th>
+                </tr>
+              </thead>
+              <Tr info={currentPosts(info.slice(0))}></Tr>
+            </Table>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={info.length}
+              paginate={setCurrentPage}
+            ></Pagination>
+          </Col>
+        </Row>
+      </div>
+    );
+  };
   const navigate = useNavigate();
+
+  let now = new Date();
+  let iyear = now.getFullYear();
+  let imonth = now.getMonth() + 1;
+  let iday = now.getDate();
+
+  if (imonth < 10) imonth = "0" + imonth;
+  if (iday < 10) iday = "0" + iday;
+
+  let isdate = iyear + "-" + imonth + "-" + iday + "-00:00:00";
+
+  let iedate = iyear + "-" + imonth + "-" + iday + "-23:59:59";
 
   // const [isAccount, setIsAccount] = React.useState(false)
   const [startDate, setStartDate] = useState(new Date());
@@ -21,11 +101,15 @@ const Bankstatement = () => {
   const [accountNum, setAccountNum] = React.useState("");
   const [name, setName] = React.useState("");
   const [balanceNum, setBalanceNum] = React.useState("");
-  const [inquireNum, setInquireNum] = React.useState("");
+  const [inquireNum, setInquireNum] = React.useState(0);
   const [info, setInfo] = React.useState([]);
   const [info2, setInfo2] = React.useState([]);
-  console.log(startDate);
-  console.log(endDate);
+  const [sdate, setSDate] = React.useState(isdate);
+  const [edate, setEDate] = React.useState(iedate);
+  const [sname, setSName] = React.useState("");
+
+  // console.log(startDate);
+  // console.log(endDate);
 
   let accountNumber;
 
@@ -36,7 +120,6 @@ const Bankstatement = () => {
   };
 
   let balance;
-  let inquireNumber = 0;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
@@ -75,6 +158,7 @@ const Bankstatement = () => {
   // })
 
   let i;
+  let sendername;
   let senderAccount;
   let transactionDate;
   let transactionTime;
@@ -83,7 +167,9 @@ const Bankstatement = () => {
   let withdrawAmount;
   let infoTest = [];
   let tempInfoTest = [];
+
   const onClickInquiry = () => {
+    setShow(true);
     setCurrentPage(1);
     setAccountNum(accountNumber);
     // setIsRender(isRender + 1)
@@ -108,12 +194,18 @@ const Bankstatement = () => {
           }
           setBalanceNum(balance);
         })
-        .catch();
+        .catch((err) => {
+          alert(err.data.message);
+        });
     }
 
     {
-      Axios.get("/users/", {
+      Axios.get("/api/v1/user/", {
         params: { loginId: sessionStorage.getItem("loginId") },
+        headers: {
+          Authorization: localStorage.getItem("jwtToken"),
+          "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+        },
       })
         .then((res) => {
           setName(res.data.data.name);
@@ -127,33 +219,34 @@ const Bankstatement = () => {
     ) {
       // Axios.get('/users/transactions/' + account,
       // )
-      Axios.post("/users/transactions/inquiry", {
-        accountNumber: accountNumber,
-        endDate: endDate,
-        startDate: startDate,
-      })
+      Axios.post(
+        "/api/v1/user/transactions/inquiry",
+        {
+          accountNumber: accountNumber,
+          endDate: edate,
+          startDate: sdate,
+        },
+        {
+          headers: {
+            Authorization: localStorage.getItem("jwtToken"),
+            "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+          },
+        }
+      )
         .then((res) => {
           if (Object.keys(res.data.data).length === 0) {
-            console.log("거래내역이 존재하지 않습니다.");
+            alert("거래내역이 존재하지 않습니다.");
             setInquireNum(0);
             tempInfoTest = [];
             setInfo(tempInfoTest);
           } else {
             for (i = 0; i < res.data.data.length; i++) {
-              // for (i = 0; i < res.data.data.length - (res.data.data.length-10); i++) {
+              // console.log(inquireNum + " 초기값");
+              // let temp = inquireNum + 1;
+              // console.log(temp);
+              // setInquireNum(temp);
+              // console.log(inquireNum + "더한값");
 
-              // console.log(res.data.data[i].sendMoney)
-              // console.log(typeof(res.data.data[i].sendMoney))
-              // if (res.data.data[i].sendMoney <= 0){
-              //   amount = res.data.data[i].sendMnoney.toString()
-              //   console.log(amount)
-              // }
-              // else{
-              //   amount = res.data.data[i].sendMnoney.toString()
-              //   console.log(amount)
-              // }
-              // amount = (res.data.data[i].sendMoney >= 0) ? res.data.data[i].sendMoney : Math.abs(res.data.data[i].sendMoney)
-              inquireNumber = inquireNumber + 1;
               transactionDate = res.data.data[i].transactionDate.substring(
                 0,
                 10
@@ -169,6 +262,36 @@ const Bankstatement = () => {
                 depositAmount = amount;
                 withdrawAmount = "-";
 
+                Axios.get("/api/v1/user/accounts/name", {
+                  params: { accountNumber: senderAccount },
+
+                  headers: {
+                    Authorization: localStorage.getItem("jwtToken"),
+                    "Authorization-refresh":
+                      localStorage.getItem("jwtRefreshToken"),
+                  },
+                })
+                  .then((res) => {
+                    if (res.data.checker === true) {
+                      // console.log("진입");
+                      setSName(res.data.data[0].name);
+                      // // sendername = res.data.data[0].name;
+                      // console.log(sendername);
+                      // console.log(sname);
+                    } else alert("오류, 다시진행해주세요");
+
+                    // } else {
+                    //   // console.log("isAccount ?? :: ", isAccount);
+                    //   // account = res.data.data[0].accountNumber
+                    //   // balance = res.data.data[0].balance
+                    //   setMyAccount(res.data.data[0].accountNumber);
+                    // setIsAccount(true);
+                    // }
+                  })
+                  .catch((err) => {
+                    alert(err.data.message);
+                  });
+
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toReceiverMessage
                 // )
                 infoTest = {
@@ -177,7 +300,7 @@ const Bankstatement = () => {
                   transactionTime: transactionTime,
                   withdrawAmount: withdrawAmount,
                   depositAmount: depositAmount,
-                  senderAccount: senderAccount,
+                  sendername: sname,
                   memo: res.data.data[i].toReceiverMessage,
                 };
                 tempInfoTest.push(infoTest);
@@ -210,12 +333,13 @@ const Bankstatement = () => {
 
             // console.log(transactionDate)
             // console.log(`${res.data.data[i].sendMoney}`)
-            setInquireNum(inquireNumber);
 
             //여기구분선
           }
         })
-        .catch();
+        .catch((err) => {
+          alert(err.data.message);
+        });
     } else if (
       /*isAccount === true &&*/ accountNumber === undefined ||
       accountNumber === "계좌를 선택해주세요"
@@ -234,8 +358,12 @@ const Bankstatement = () => {
   };
 
   useEffect(() => {
-    Axios.get("/users/accounts/inquiry", {
-      params: { userId: sessionStorage.getItem("loginId") },
+    Axios.get("/api/v1/user/accounts/inquiry", {
+      params: { loginId: sessionStorage.getItem("loginId") },
+      headers: {
+        Authorization: localStorage.getItem("jwtToken"),
+        "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+      },
     })
       .then((res) => setInfo2(res.data.data))
       // .then(res => console.log(res.data.data))
@@ -284,7 +412,7 @@ const Bankstatement = () => {
           <td>{item.transactionTime}</td>
           <td>{item.withdrawAmount}</td>
           <td>{item.depositAmount}</td>
-          <td>{item.senderAccount}</td>
+          <td>{item.sendername}</td>
           <td>{item.memo}</td>
           <td>상명은행</td>
         </tr>
@@ -312,7 +440,28 @@ const Bankstatement = () => {
               <DatePicker
                 dateFormat="yyyy년 MM월 dd일"
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => {
+                  let year = date.getFullYear();
+                  let month = date.getMonth() + 1;
+                  let day = date.getDate();
+
+                  if (month < 10) month = "0" + month;
+                  if (day < 10) day = "0" + day;
+
+                  let sdate = year + "-" + month + "-" + day + "-00:00:00";
+
+                  setStartDate(date);
+                  setSDate(sdate);
+                  console.log(sdate);
+                  // setStartDate(sdate);
+                  // console.log(startDate);
+
+                  // console.log(date.getFullYear());
+                  // console.log(date.getMonth() + 1);
+                  // console.log(date.getDate());
+
+                  // setStartDate(date.toString().substr(0, 16));
+                }}
               />
             </ul>
             <ul className={styles.nobullet2}>
@@ -320,7 +469,20 @@ const Bankstatement = () => {
               <DatePicker
                 dateFormat="yyyy년 MM월 dd일"
                 selected={endDate}
-                onChange={(date) => setendDate(date)}
+                onChange={(date) => {
+                  let year = date.getFullYear();
+                  let month = date.getMonth() + 1;
+                  let day = date.getDate();
+
+                  if (month < 10) month = "0" + month;
+                  if (day < 10) day = "0" + day;
+
+                  let edate = year + "-" + month + "-" + day + "-23:59:59";
+
+                  setendDate(date);
+                  setEDate(edate);
+                  console.log(edate);
+                }}
               />
             </ul>
           </Col>
@@ -395,68 +557,7 @@ const Bankstatement = () => {
           </Col>
         </Row>
       </div>
-
-      <Row>
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li>{inquireNum}건의 조회내역이 있습니다</li>
-          </ul>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li>계좌번호 : {accountNum}</li>
-          </ul>
-        </Col>
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li> 예금주 : {name} </li>
-          </ul>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li>상명예금</li>
-          </ul>
-        </Col>
-
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li>잔액 : {balanceNum}원</li>
-          </ul>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>거래일자</th>
-                <th>거래시간</th>
-                {/* <th>적요</th> */}
-                <th>출금(원)</th>
-                <th>입금(원)</th>
-                <th>보낸이 계좌</th>
-                {/* <th>내용(입금자명)</th> */}
-                <th>메모</th>
-                {/* <th>잔액(원)</th> */}
-                <th>거래점</th>
-              </tr>
-            </thead>
-            <Tr info={currentPosts(info.slice(0))}></Tr>
-          </Table>
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={info.length}
-            paginate={setCurrentPage}
-          ></Pagination>
-        </Col>
-      </Row>
+      {show && <Component />}
     </Row>
   );
 };

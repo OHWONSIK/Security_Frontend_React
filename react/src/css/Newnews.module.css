@@ -3,6 +3,11 @@
     margin-left : 280px;    
 } */
 
+.notice{
+    width:80%;
+    height:300px;
+}
+
 .pagination{
     justify-content : center; 
     float:center;

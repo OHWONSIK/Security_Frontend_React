@@ -9,6 +9,63 @@ import Button from "react-bootstrap/Button";
 
 const Quicksearch = () => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const Component = () => {
+    return (
+      <div>
+        <Row>
+          <div className={styles.qs_text2}>
+            {inquireNum}건의 조회내역이 있습니다.{" "}
+          </div>
+        </Row>
+        <Row>
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li>계좌번호 : {accountNum} </li>
+            </ul>
+          </Col>
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li> 예금주 : {name} </li>
+            </ul>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li>상명예금</li>
+            </ul>
+          </Col>
+
+          <Col lg={6}>
+            <ul className={styles.nobullet}>
+              <li>잔액 : {balanceNum} 원</li>
+            </ul>
+          </Col>
+        </Row>
+
+        <Row>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>거래일자</th>
+                <th>거래시간</th>
+                {/* <th>적요</th> */}
+                <th>출금(원)</th>
+                <th>입금(원)</th>
+                {/* <th>내용(입금자명)</th> */}
+                <th>메모</th>
+                <th>거래점</th>
+              </tr>
+            </thead>
+            <Tr info={info}></Tr>
+          </Table>
+        </Row>
+      </div>
+    );
+  };
 
   const [accountNum, setAccountNum] = React.useState("");
   const [name, setName] = React.useState("");
@@ -258,55 +315,7 @@ const Quicksearch = () => {
           </Button>{" "}
         </Col>
       </Row>
-      <Row>
-        <div className={styles.qs_text2}>
-          {inquireNum}건의 조회내역이 있습니다.{" "}
-        </div>
-      </Row>
-      <Row>
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li>계좌번호 : {accountNum} </li>
-          </ul>
-        </Col>
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li> 예금주 : {name} </li>
-          </ul>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li>상명예금</li>
-          </ul>
-        </Col>
-
-        <Col lg={6}>
-          <ul className={styles.nobullet}>
-            <li>잔액 : {balanceNum} 원</li>
-          </ul>
-        </Col>
-      </Row>
-
-      <Row>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>거래일자</th>
-              <th>거래시간</th>
-              {/* <th>적요</th> */}
-              <th>출금(원)</th>
-              <th>입금(원)</th>
-              {/* <th>내용(입금자명)</th> */}
-              <th>메모</th>
-              <th>거래점</th>
-            </tr>
-          </thead>
-          <Tr info={info}></Tr>
-        </Table>
-      </Row>
+      {show && <Component />}
     </Row>
   );
 };

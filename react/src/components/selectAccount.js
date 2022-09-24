@@ -10,6 +10,7 @@ function SelectAccount() {
   const [info2, setInfo2] = React.useState([]);
   const navigate = useNavigate();
   let accountNumber;
+  let balance;
 
   useEffect(() => {
     Axios.get("/api/v1/user/accounts/inquiry", {
@@ -37,7 +38,9 @@ function SelectAccount() {
       alert("출금계좌를 선택해주세요");
     else {
       console.log(accountNumber);
-      navigate("/transfer", { state: accountNumber });
+      navigate("/transfer", {
+        state: accountNumber,
+      });
     }
   };
 

@@ -25,11 +25,18 @@ function Transfer() {
     React.useState("");
   const [inputToSenderMessage, setInputToSenderMessage] = React.useState("");
   const [info2, setInfo2] = React.useState([]);
+  const [myAccount, setMyAccount] = React.useState("");
+  const [receiverName, setReceiverName] = React.useState("1");
+
   // const [accountNum, setAccountNum] = React.useState('')
   const [balanceNum, setBalanceNum] = React.useState("");
 
   let balance;
   const accountNumber = location.state;
+  let num1;
+  let num2;
+  let name;
+
   // let accountNumber
   let i;
   // const handleAccountNum = (e) => {
@@ -58,18 +65,25 @@ function Transfer() {
   useEffect(() => {
     if (sessionStorage.getItem("loginId") !== null) {
       Axios.get("/api/v1/user/accounts/inquiry", {
-        params: { userId: sessionStorage.getItem("loginId") },
+        params: { loginId: sessionStorage.getItem("loginId") },
+
+        headers: {
+          Authorization: localStorage.getItem("jwtToken"),
+          "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+        },
       })
         .then((res) => {
           if (Object.keys(res.data.data).length === 0) {
             console.log("isAccount ?? :: ", isAccount);
             document.location.href = "/CreateAccountpage";
-          } else {
-            console.log("isAccount ?? :: ", isAccount);
-            // account = res.data.data[0].accountNumber
-            // balance = res.data.data[0].balance
-            setIsAccount(true);
           }
+          // } else {
+          //   // console.log("isAccount ?? :: ", isAccount);
+          //   // account = res.data.data[0].accountNumber
+          //   // balance = res.data.data[0].balance
+          //   setMyAccount(res.data.data[0].accountNumber);
+          // setIsAccount(true);
+          // }
         })
         .catch();
     }
@@ -101,19 +115,29 @@ function Transfer() {
 
   const onClickFullAmount = () => {
     Axios.get(
-      "/users/accounts/inquiry",
+      "/api/v1/user/accounts/inquiry",
       // { params: { userId: sessionStorage.getItem('loginId') } }
-      { params: { userId: sessionStorage.getItem("loginId") } }
+      {
+        params: { loginId: sessionStorage.getItem("loginId") },
+
+        headers: {
+          Authorization: localStorage.getItem("jwtToken"),
+          "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+        },
+      }
     )
       .then((res) => {
+        // console.log("진입");
         for (i = 0; i < res.data.data.length; i++) {
           if (accountNumber == res.data.data[i].accountNumber) {
             balance = res.data.data[i].balance;
+            setInputAmount(balance);
           }
         }
-        setInputAmount(balance);
       })
-      .catch();
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
   };
 
   const onClickMillion = () => {
@@ -132,8 +156,23 @@ function Transfer() {
   };
 
   const onClickTransfer = () => {
-    console.log("전액: " + balanceNum);
-    console.log("이체금액: " + inputAmount);
+    Axios.get("/api/v1/user/accounts/name", {
+      params: { accountNumber: inputAccount },
+      headers: {
+        Authorization: localStorage.getItem("jwtToken"),
+        "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+      },
+    })
+      .then((res) => {
+        if (res.data.checker === true) name = res.data.data[0].name;
+        else console.log("안됨");
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
+    console.log("리시버:" + receiverName);
+    // console.log("전액: " + balanceNum);
+    // console.log("이체금액: " + inputAmount);
     // setAccountNum(accountNumber)
     if (inputAccount.length === 0) alert("입금계좌번호가 비어있습니다");
     else if (inputPw.length === 0) alert("계좌비밀번호가 비어있습니다");
@@ -163,20 +202,66 @@ function Transfer() {
 
       let transactionDate = year + "-" + month + "-" + date2;
       let transactionTime = hours + ":" + minutes + ":" + seconds;
+      // console.log(sessionStorage.getItem("loginId"));
+      // console.log(accountNumber);
+      // console.log(inputToSenderMessage);
+      // console.log(inputAccount);
+      // console.log(inputToReceiberMessage);
+      // console.log(inputPw);
+      // console.log(inputAmount);
 
-      navigate("/certification", {
-        state: [
-          {
-            inputAccount: inputAccount,
-            accountNumber: accountNumber,
-            transactionDate: transactionDate,
-            transactionTime: transactionTime,
-            inputAmount: inputAmount,
-            inputToReceiberMessage: inputToReceiberMessage,
-            inputToSenderMessage: inputToSenderMessage,
+      Axios.post(
+        "/api/v1/user/accounts/transaction/validateaccount",
+        {
+          loginId: sessionStorage.getItem("loginId"),
+          myAccountNumber: accountNumber,
+          toSenderMessage: inputToSenderMessage,
+          sendAccountNumber: inputAccount,
+          toReceiverMessage: inputToReceiberMessage,
+          accountPassword: inputPw,
+          balance: inputAmount,
+        },
+        {
+          headers: {
+            Authorization: localStorage.getItem("jwtToken"),
+            "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
           },
-        ],
-      });
+        }
+      )
+        .then((res) => {
+          if (res.data.checker === true) {
+            console.log("1번진입");
+
+            num1 = res.data.data.select1;
+            num2 = res.data.data.select2;
+            // console.log(res.data.data.select1);
+            // console.log(res.data.data.select2);
+            // console.log(num1);
+            // console.log(num2);
+            navigate("/certification", {
+              state: [
+                {
+                  receiverName: name,
+                  inputAccount: inputAccount,
+                  accountNumber: accountNumber,
+                  transactionDate: transactionDate,
+                  transactionTime: transactionTime,
+                  inputAmount: inputAmount,
+                  inputToReceiberMessage: inputToReceiberMessage,
+                  inputToSenderMessage: inputToSenderMessage,
+                  selectNum1: num1,
+                  selectNum2: num2,
+                },
+              ],
+            });
+          } else {
+            alert(res.data.message);
+            // console.log("2번진입");
+          }
+        })
+        .catch((error) => {
+          alert(error.response.data.message);
+        });
     }
   };
 

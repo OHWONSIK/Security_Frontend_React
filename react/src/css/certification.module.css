@@ -1,3 +1,23 @@
+
+
+
+.numberinput{
+    width: 150px;
+}
+.otpnum{
+    margin-bottom:150px;
+    font-size:20px;
+
+}
+
+
+.otpsize{
+    width:100%;
+    height:400px;
+    text-align:left;
+}
+
+
 .confirm{
     margin-top: 100px;
     margin-bottom:50px;
@@ -11,18 +31,19 @@
     height:300px;
 }
 
-.executebutton{
+
+.cancelbutton{
     margin-top:70px;
     margin-bottom:100px;
+    margin-left:50px;
     height:75px;
-    width:145px;
+    width:200px;
 }
 
-.canclebutton{
+.nextbutton{
     margin-top:70px;
     margin-bottom:100px;
-    margin-left:20px;
+    
     height:75px;
-    width:145px;
+    width:200px;
 }
-
