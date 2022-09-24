@@ -60,7 +60,7 @@ function CardList() {
                     <h4 className={styles.cardList}>카드 목록</h4>
                     {data.map((data) => (
                         <div className={styles.cardContainer}>
-                            <img className={styles.cardImage} alt="card" src="img/card.png" />
+                            <img className={styles.cardImage} alt="card" src="img/card_2.PNG" />
                             <h4 className={styles.cardType}> {data.cardType} </h4>
                             <h4 className={styles.cardNumber}> {data.cardNumber} </h4>
                             <h4 className={styles.cardExpireDate}> Expire {data.expireDate} </h4>

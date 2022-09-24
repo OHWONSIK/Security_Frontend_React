@@ -82,9 +82,9 @@ function Login() {
         <Row className={styles.topcontent}>
           <Col lg={3}></Col>
           <Col lg={6} className={styles.loginpage}>
-            <Nav fill variant="pills" defaultActiveKey="/home">
+            <Nav fill variant="pills" defaultActiveKey="/login">
               <Nav.Item>
-                <Nav.Link href="/home">아이디/비밀번호</Nav.Link>
+                <Nav.Link href="/login">아이디/비밀번호</Nav.Link>
               </Nav.Item>
               {/* <Nav.Item>
                 <Nav.Link eventKey="link-1">공백</Nav.Link>
