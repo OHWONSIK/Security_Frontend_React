@@ -2,35 +2,42 @@ import Table from "react-bootstrap/Table";
 import styles from "../css/Customerservice.module.css";
 // import Pagination from "react-bootstrap/Pagination";
 import { Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Pagination from "./pagination";
 import Axios from "axios";
 
 const Customerservice = () => {
+  const navigate = useNavigate();
+  const onClickTitle = (params, e) => {
+    // console.log(params);
+    e.preventDefault();
+    navigate("/customerservice_detail", {
+      state: [{ params: params }],
+    });
+    // console.log();
+  };
   const [info, setInfo] = useState([]);
   const [posts, setPosts] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(14);
 
   useEffect(() => {
-    Axios.get('/api/v1/user/cont/counsels',
+    Axios.get(
+      "/api/v1/user/cont/counsels",
       // { params: { userId: sessionStorage.getItem('loginId') } }
       {
-        params: { loginId: sessionStorage.getItem('loginId') },
+        params: { loginId: sessionStorage.getItem("loginId") },
         headers: {
-          Authorization: localStorage.getItem('jwtToken'),
-          "Authorization-refresh": localStorage.getItem('jwtRefreshToken')
-        }
+          Authorization: localStorage.getItem("jwtToken"),
+          "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+        },
       }
     )
-      .then((res) =>
-        
-        setInfo(res.data.data)
-      )
+      .then((res) => setInfo(res.data.data))
       // .then(res => console.log(res.data.data))
       .catch((error) => {
-        alert(error.response.data.message)
+        alert(error.response.data.message);
       });
   }, []);
 
@@ -48,19 +55,28 @@ const Customerservice = () => {
       <tbody>
         {info.map((item, idx) => {
           // console.log(item)
-          return <Td key={item.id} item={item} />;
+          return <Td key={item.id} idx={idx} item={item} />;
         })}
       </tbody>
     );
   };
 
-  const Td = ({ item }) => {
+  const Td = ({ item, idx }) => {
     return (
       <>
         <tr>
-          <td className={styles.index}>{item.id}</td>
-          <td className={styles.title}>{item.title}</td>
-          <td className={styles.date}>{item.createDate}</td>
+          <td className={styles.index}>{15 - idx}</td>
+          <td className={styles.title}>
+            <Link
+              to="/customerservice_detail"
+              onClick={(e) => {
+                onClickTitle(item.id, e);
+              }}
+            >
+              {item.title}
+            </Link>
+          </td>
+          <td className={styles.date}>{item.createDate.substr(0, 10)}</td>
         </tr>
       </>
     );

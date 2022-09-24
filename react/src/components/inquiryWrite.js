@@ -18,16 +18,20 @@ function InquiryWrite() {
   };
 
   const onClickComplete = () => {
-    Axios.post("/api/v1/user/cont/counsels", {
-      content: inputContent,
-      loginId: sessionStorage.getItem("loginId"),
-      title: inputTitle,
-    }, {
-      headers: {
-        Authorization: localStorage.getItem('jwtToken'),
-        "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+    Axios.post(
+      "/api/v1/user/cont/counsels",
+      {
+        content: inputContent,
+        loginId: sessionStorage.getItem("loginId"),
+        title: inputTitle,
+      },
+      {
+        headers: {
+          Authorization: localStorage.getItem("jwtToken"),
+          "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+        },
       }
-    })
+    )
       .then((res) => {
         if (res.data.checker === true) {
           console.log(res.data.checker, "성공");
@@ -38,13 +42,15 @@ function InquiryWrite() {
       })
 
       .catch((error) => {
-        alert(error.response.data.message)
-
+        alert(error.response.data.message);
       });
   };
 
   return (
     <div className={styles.InquiryWrite}>
+      <Row>
+        <img className={styles.notice} src="img/customer.png" />
+      </Row>
       <h4 className={styles.inquiryWrite}>1:1문의 작성</h4>
       <h4 className={styles.title}>제목</h4>
       <Form.Control
