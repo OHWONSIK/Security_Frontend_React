@@ -16,10 +16,10 @@ const Product = () => {
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
               <a href="createaccount02">
-              <img
-                className={styles.item}
-                src="img/item1.png"
-                alt="Second slide"
+                <img
+                  className={styles.item}
+                  src="img/item1.png"
+                  alt="Second slide"
                 />
               </a>
             </Card.Body>
@@ -30,10 +30,10 @@ const Product = () => {
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
               <a href="createaccount02">
-              <img
-                className={styles.item}
-                src="img/item2.png"
-                alt="Second slide"
+                <img
+                  className={styles.item}
+                  src="img/item2.png"
+                  alt="Second slide"
                 />
               </a>
             </Card.Body>
@@ -44,11 +44,11 @@ const Product = () => {
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
               <a href="createaccount02">
-              <img
-                className={styles.item}
-                src="img/item3.png"
-                alt="Second slide"
-              />
+                <img
+                  className={styles.item}
+                  src="img/item3.png"
+                  alt="Second slide"
+                />
               </a>
             </Card.Body>
           </Card>
@@ -58,10 +58,10 @@ const Product = () => {
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
               <a href="createaccount02">
-              <img
-                className={styles.item}
-                src="img/item4.jpg"
-                alt="Second slide"
+                <img
+                  className={styles.item}
+                  src="img/item4.jpg"
+                  alt="Second slide"
                 />
               </a>
             </Card.Body>
@@ -69,7 +69,7 @@ const Product = () => {
         </Col>
         {/* ))} */}
       </Row>
-      <Row>
+      {/* <Row>
         <div className={styles.pd_text}>원하는 상품이 없나요?</div>
       </Row>
       <Row>
@@ -94,7 +94,7 @@ const Product = () => {
             상품4
           </Button>{" "}
         </Col>
-      </Row>
+      </Row> */}
     </Row>
   );
 };
