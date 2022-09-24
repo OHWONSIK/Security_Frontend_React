@@ -26,27 +26,33 @@ const CreateAccount_2 = () => {
   };
 
   const onClickCreate = () => {
-    if (selectInquiryType === '' || selectInquiryType === '계좌 종류를 선택해주세요') {
+    if (
+      selectInquiryType === "" ||
+      selectInquiryType === "계좌 종류를 선택해주세요"
+    ) {
       alert("계좌 종류를 선택해주세요");
       console.log("프론트 오류처리");
-    }
-    else if (inputPw.length === 0) {
+    } else if (inputPw.length === 0) {
       alert("계좌 비밀번호를 입력해주세요");
       console.log("프론트 오류처리");
     } else if (inputPw.length !== 6) {
       alert("계좌 비밀번호는 숫자 6자리로 구성되어야 합니다");
       console.log("프론트 오류처리");
     } else {
-      Axios.post("/api/v1/user/accounts/add", {
-        accountPassword: inputPw,
-        accountType: selectInquiryType,
-        loginId: sessionStorage.getItem("loginId"),
-      }, {
-        headers: {
-          Authorization: localStorage.getItem('jwtToken'),
-          "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+      Axios.post(
+        "/api/v1/user/accounts/add",
+        {
+          accountPassword: inputPw,
+          accountType: selectInquiryType,
+          loginId: sessionStorage.getItem("loginId"),
+        },
+        {
+          headers: {
+            Authorization: localStorage.getItem("jwtToken"),
+            "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+          },
         }
-      })
+      )
         .then((res) => {
           if (res.data.checker === true)
             document.location.href = "/createaccount03";
@@ -54,8 +60,7 @@ const CreateAccount_2 = () => {
         })
 
         .catch((error) => {
-          alert(error.response.data.message)
-
+          alert(error.response.data.message);
         });
     }
   };
@@ -84,46 +89,44 @@ const CreateAccount_2 = () => {
         </Col>
       </Row> */}
       <Row>
-        <Col sm={1}></Col>
-        <Col sm={10}>
-
-          <img
-            className={styles.item}
-            src="img/item1.png"
-          />
-          
-
-
-          <img
-            className={styles.item}
-            src="img/item2.png"
-
-          />
-
-
-          <img
-            className={styles.item}
-            src="img/item3.png"
-          />
-
-
-          <img
-            className={styles.item}
-            src="img/item4.jpg"
-          />
-          <h4 className={styles.inquiryName}>
-            상명청춘적금계좌&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            상명꽃길적금계좌 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            상명희망채움예금계좌 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              상명희망적금계좌
-          </h4>
-          
-
+        <Col sm={2}></Col>
+        <Col sm={2}>
+          <Row>
+            <img className={styles.item} src="img/item1.png" />
+          </Row>
+          <Row>
+            <h4>상명청춘적금계좌</h4>
+          </Row>
         </Col>
-        <Col sm={1}></Col>
 
+        <Col sm={2}>
+          <Row>
+            <img className={styles.item} src="img/item2.png" />
+          </Row>
+          <Row>
+            <h4>상명꽃길적금계좌</h4>
+          </Row>
+        </Col>
 
+        <Col sm={2}>
+          <Row>
+            <img className={styles.item} src="img/item3.png" />
+          </Row>
+          <Row>
+            <h4>상명희망채움예금계좌</h4>
+          </Row>
+        </Col>
 
+        <Col sm={2}>
+          <Row>
+            <img className={styles.item} src="img/item4.jpg" />
+          </Row>
+          <Row>
+            <h4>상명희망적금계좌</h4>
+          </Row>
+        </Col>
+
+        <Col sm={2}></Col>
       </Row>
       <Row>
         <Col lg={1}></Col>
@@ -142,7 +145,6 @@ const CreateAccount_2 = () => {
             <option value="2">상명꽃길적금게좌</option>
             <option value="3">상명희망채움예금게좌</option>
             <option value="4">상명희망적금계좌</option>
-
           </Form.Select>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
