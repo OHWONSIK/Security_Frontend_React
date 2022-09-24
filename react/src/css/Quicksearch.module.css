@@ -3,6 +3,15 @@
 
 .accountInput{ margin-bottom:226px; }
 
+.nobullet{
+    text-align:left;
+    margin-top : 50px;
+    margin-bottom : 20px;
+    float:left;
+    list-style:none;
+    font-size:30px;
+}
+
 .qs_text2{
     text-align: left;
     color:black;

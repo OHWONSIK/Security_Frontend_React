@@ -10,39 +10,35 @@ import Button from "react-bootstrap/Button";
 const Quicksearch = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [sname, setSName] = React.useState("");
 
   const Component = () => {
     return (
       <div>
         <Row>
-          <div className={styles.qs_text2}>
-            {inquireNum}건의 조회내역이 있습니다.{" "}
-          </div>
+          <Col lg={6}>
+            <div className={styles.nobullet}>
+              최근 10건의 거래내역을 보여드립니다.
+            </div>
+          </Col>
+          <Col lg={6}></Col>
         </Row>
         <Row>
           <Col lg={6}>
-            <ul className={styles.nobullet}>
-              <li>계좌번호 : {accountNum} </li>
-            </ul>
+            <div className={styles.nobullet}>계좌번호 : {accountNum}</div>
           </Col>
           <Col lg={6}>
-            <ul className={styles.nobullet}>
-              <li> 예금주 : {name} </li>
-            </ul>
+            <div className={styles.nobullet}>예금주 : {name}</div>
           </Col>
         </Row>
 
         <Row>
           <Col lg={6}>
-            <ul className={styles.nobullet}>
-              <li>상명예금</li>
-            </ul>
+            <div className={styles.nobullet}>상명예금</div>
           </Col>
 
           <Col lg={6}>
-            <ul className={styles.nobullet}>
-              <li>잔액 : {balanceNum} 원</li>
-            </ul>
+            <div className={styles.nobullet}>잔액 : {balanceNum} 원</div>
           </Col>
         </Row>
 
@@ -56,7 +52,7 @@ const Quicksearch = () => {
                 <th>출금(원)</th>
                 <th>입금(원)</th>
                 {/* <th>내용(입금자명)</th> */}
-                <th>메모</th>
+
                 <th>거래점</th>
               </tr>
             </thead>
@@ -94,12 +90,18 @@ const Quicksearch = () => {
   };
 
   useEffect(() => {
-    Axios.get("/users/accounts/inquiry", {
-      params: { userId: sessionStorage.getItem("loginId") },
+    Axios.get("/api/v1/user/accounts/inquiry", {
+      params: { loginId: sessionStorage.getItem("loginId") },
+      headers: {
+        Authorization: localStorage.getItem("jwtToken"),
+        "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+      },
     })
       .then((res) => setInfo2(res.data.data))
       // .then(res => console.log(res.data.data))
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
   }, []);
 
   const onClickTransfer = () => {
@@ -112,14 +114,21 @@ const Quicksearch = () => {
   };
 
   const onClickInquiry = () => {
+    setShow(true);
     setAccountNum(accountNumber);
     // setIsRender(isRender + 1)
 
     {
       Axios.get(
-        "/users/accounts/inquiry",
+        "/api/v1/user/accounts/inquiry",
         // { params: { userId: sessionStorage.getItem('loginId') } }
-        { params: { userId: sessionStorage.getItem("loginId") } }
+        {
+          params: { loginId: sessionStorage.getItem("loginId") },
+          headers: {
+            Authorization: localStorage.getItem("jwtToken"),
+            "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+          },
+        }
       )
         .then((res) => {
           for (i = 0; i < res.data.data.length; i++) {
@@ -129,17 +138,25 @@ const Quicksearch = () => {
           }
           setBalanceNum(balance);
         })
-        .catch();
+        .catch((error) => {
+          alert(error.response.data.message);
+        });
     }
 
     {
-      Axios.get("/users/", {
+      Axios.get("/api/v1/user/", {
         params: { loginId: sessionStorage.getItem("loginId") },
+        headers: {
+          Authorization: localStorage.getItem("jwtToken"),
+          "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+        },
       })
         .then((res) => {
           setName(res.data.data.name);
         })
-        .catch();
+        .catch((error) => {
+          alert(error.data.message);
+        });
     }
 
     if (
@@ -148,21 +165,34 @@ const Quicksearch = () => {
     ) {
       // Axios.get('/users/transactions/' + account,
       // )
-      Axios.post("/users/transactions/inquiry", {
-        accountNumber: accountNumber,
-        startDate: startDate,
-        endDate: endDate,
-      })
+      Axios.post(
+        "/api/v1/user/transactions/inquiry",
+        {
+          accountNumber: accountNumber,
+          endDate: endDate,
+          startDate: startDate,
+        },
+        {
+          headers: {
+            Authorization: localStorage.getItem("jwtToken"),
+            "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
+          },
+        }
+      )
         .then((res) => {
           if (Object.keys(res.data.data).length === 0) {
-            console.log("거래내역이 존재하지 않습니다.");
-            console.log(startDate);
-            console.log(endDate);
+            // console.log("거래내역이 존재하지 않습니다.");
+            // console.log(startDate);
+            // console.log(endDate);
             setInquireNum(0);
             tempInfoTest = [];
             setInfo(tempInfoTest);
           } else {
             for (i = 0; i < res.data.data.length; i++) {
+              if (i > 9) {
+                // i = 0;
+                break;
+              }
               // for (i = 0; i < res.data.data.length - (res.data.data.length-10); i++) {
 
               // console.log(res.data.data[i].sendMoney)
@@ -191,6 +221,36 @@ const Quicksearch = () => {
                 senderAccount = res.data.data[i].senderAccount;
                 depositAmount = amount;
                 withdrawAmount = "-";
+
+                Axios.get("/api/v1/user/accounts/name", {
+                  params: { accountNumber: senderAccount },
+
+                  headers: {
+                    Authorization: localStorage.getItem("jwtToken"),
+                    "Authorization-refresh":
+                      localStorage.getItem("jwtRefreshToken"),
+                  },
+                })
+                  .then((res) => {
+                    if (res.data.checker === true) {
+                      // console.log("진입");
+                      setSName(res.data.data[0].name);
+                      // // sendername = res.data.data[0].name;
+                      // console.log(sendername);
+                      // console.log(sname);
+                    } else alert("오류, 다시진행해주세요");
+
+                    // } else {
+                    //   // console.log("isAccount ?? :: ", isAccount);
+                    //   // account = res.data.data[0].accountNumber
+                    //   // balance = res.data.data[0].balance
+                    //   setMyAccount(res.data.data[0].accountNumber);
+                    // setIsAccount(true);
+                    // }
+                  })
+                  .catch((error) => {
+                    alert(error.response.data.message);
+                  });
 
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toReceiverMessage
                 // )
@@ -225,10 +285,6 @@ const Quicksearch = () => {
                 tempInfoTest.push(infoTest);
               }
               setInfo(tempInfoTest);
-
-              if (res.data.data.length > 10) {
-                break;
-              }
 
               // console.log(i + 1 + '번째 거래내역 = ' + ' 거래날짜:' + transactionDate + '보낸사람계좌:'
               //   + res.data.data[i].senderAccount + ' 받은사람계좌:' + res.data.data[i].receiverAccount + ' 거래금액:' + res.data.data[i].sendMoney + '받는통장 메모:' + res.data.data[i].toReceiverMessage + '보낸통장 메모:' + res.data.data[i].toSenderMessage
@@ -293,7 +349,6 @@ const Quicksearch = () => {
           <td>{item.transactionTime}</td>
           <td>{item.withdrawAmount}</td>
           <td>{item.depositAmount}</td>
-          <td>{item.memo}</td>
           <td>상명은행</td>
         </tr>
       </>

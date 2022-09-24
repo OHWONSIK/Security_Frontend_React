@@ -41,7 +41,7 @@ const Bankstatement = () => {
         <Row>
           <Col lg={6}>
             <ul className={styles.nobullet}>
-              <li>상명예금</li>
+              <li>{atype}</li>
             </ul>
           </Col>
 
@@ -62,7 +62,7 @@ const Bankstatement = () => {
                   {/* <th>적요</th> */}
                   <th>출금(원)</th>
                   <th>입금(원)</th>
-                  <th>보낸이</th>
+                  <th>보낸이 계좌</th>
                   {/* <th>내용(입금자명)</th> */}
                   <th>메모</th>
                   {/* <th>잔액(원)</th> */}
@@ -101,6 +101,7 @@ const Bankstatement = () => {
   const [accountNum, setAccountNum] = React.useState("");
   const [name, setName] = React.useState("");
   const [balanceNum, setBalanceNum] = React.useState("");
+  const [atype, setAtype] = React.useState("");
   const [inquireNum, setInquireNum] = React.useState(0);
   const [info, setInfo] = React.useState([]);
   const [info2, setInfo2] = React.useState([]);
@@ -167,6 +168,9 @@ const Bankstatement = () => {
   let withdrawAmount;
   let infoTest = [];
   let tempInfoTest = [];
+  let inquireNumber = 0;
+  let type;
+  let tempname;
 
   const onClickInquiry = () => {
     setShow(true);
@@ -190,9 +194,11 @@ const Bankstatement = () => {
           for (i = 0; i < res.data.data.length; i++) {
             if (accountNumber == res.data.data[i].accountNumber) {
               balance = res.data.data[i].balance;
+              type = res.data.data[i].accountType;
             }
           }
           setBalanceNum(balance);
+          setAtype(type);
         })
         .catch((err) => {
           alert(err.data.message);
@@ -246,6 +252,7 @@ const Bankstatement = () => {
               // console.log(temp);
               // setInquireNum(temp);
               // console.log(inquireNum + "더한값");
+              inquireNumber = inquireNumber + 1;
 
               transactionDate = res.data.data[i].transactionDate.substring(
                 0,
@@ -274,7 +281,9 @@ const Bankstatement = () => {
                   .then((res) => {
                     if (res.data.checker === true) {
                       // console.log("진입");
+
                       setSName(res.data.data[0].name);
+
                       // // sendername = res.data.data[0].name;
                       // console.log(sendername);
                       // console.log(sname);
@@ -288,8 +297,8 @@ const Bankstatement = () => {
                     // setIsAccount(true);
                     // }
                   })
-                  .catch((err) => {
-                    alert(err.data.message);
+                  .catch((error) => {
+                    alert(error.response.data.message);
                   });
 
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toReceiverMessage
@@ -300,7 +309,7 @@ const Bankstatement = () => {
                   transactionTime: transactionTime,
                   withdrawAmount: withdrawAmount,
                   depositAmount: depositAmount,
-                  sendername: sname,
+                  senderAccount: senderAccount,
                   memo: res.data.data[i].toReceiverMessage,
                 };
                 tempInfoTest.push(infoTest);
@@ -331,6 +340,7 @@ const Bankstatement = () => {
               // )
             } // 거래내역 찍히게 변경해야함, 이체금액 - 떼고 줘야됨
 
+            setInquireNum(inquireNumber);
             // console.log(transactionDate)
             // console.log(`${res.data.data[i].sendMoney}`)
 
@@ -338,7 +348,7 @@ const Bankstatement = () => {
           }
         })
         .catch((err) => {
-          alert(err.data.message);
+          alert(err.response.data.message);
         });
     } else if (
       /*isAccount === true &&*/ accountNumber === undefined ||
@@ -412,7 +422,7 @@ const Bankstatement = () => {
           <td>{item.transactionTime}</td>
           <td>{item.withdrawAmount}</td>
           <td>{item.depositAmount}</td>
-          <td>{item.sendername}</td>
+          <td>{item.senderAccount}</td>
           <td>{item.memo}</td>
           <td>상명은행</td>
         </tr>
