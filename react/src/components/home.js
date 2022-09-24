@@ -88,7 +88,7 @@ function Home() {
             </div>
           </Col>
           <Col lg={3}>
-            <img className={styles.cardImage} alt="card" src="img/card_2.png" />
+            <img className={styles.cardImage} alt="card" src="img/card_2.PNG" />
             <div className="d-grid gap-2">
               <Button
                 className={styles.loginButton}

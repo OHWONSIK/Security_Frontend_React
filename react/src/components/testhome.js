@@ -150,7 +150,7 @@ function Testhome() {
           </Col>
           <Col lg={3}>
             <div className={styles.cardContainer}>
-              <img className={styles.cardImage} alt="card" src="img/card_2.png" />
+              <img className={styles.cardImage} alt="card" src="img/card_2.PNG" />
               <h4 className={styles.cardType}> {cardType} </h4>
               <h4 className={styles.cardNumber}> {cardNumber} </h4>
               <h4 className={styles.cardExpireDate}> Expire {cardExpireDate} </h4>
