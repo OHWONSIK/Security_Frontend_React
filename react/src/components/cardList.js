@@ -66,7 +66,6 @@ function CardList() {
                             <h4 className={styles.cardExpireDate}> Expire {data.expireDate} </h4>
                         </div>
                     ))}
-
                 </Row>
             </Container>
         </div>

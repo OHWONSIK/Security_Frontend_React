@@ -97,7 +97,6 @@ const Signup = () => {
       inputAge.length === 0 ||
       addEmail.length === 1 ||
       addPhonenumber.length === 1 ||
-      selectQuestion.length === 0 ||
       inputAnswer.length === 0
     ) {
       alert("회원가입의 항목중 비어있는 항목이 있습니다");
@@ -121,6 +120,10 @@ const Signup = () => {
       console.log("프론트 오류처리");
     } else if (addPhonenumber.length !== 13) {
       alert("전화번호를 다시 확인해주세요");
+      console.log("프론트 오류처리");
+    }
+    else if (selectQuestion === '' || selectQuestion==='질문을 선택해주세요') {
+      alert("비밀번호찾기 질문을 선택해주세요");
       console.log("프론트 오류처리");
     } else
       Axios.post("/api/v1/user/register", {
@@ -154,7 +157,7 @@ const Signup = () => {
         <Row>
           <Col lg={3}></Col>
           <Col lg={1}>
-            <h2 className={styles.informationinput}>정보입력</h2>
+            <h2 className={styles.informationinput}>회원가입</h2>
             <h5 className={styles.id}>아이디</h5>
             <h5 className={styles.password}>비밀번호</h5>
             <h5 className={styles.confirmpassword}>비밀번호확인</h5>
@@ -257,6 +260,10 @@ const Signup = () => {
                   <option value="1">naver.com</option>
                   <option value="2">daum.net</option>
                   <option value="3">gmail.com</option>
+                  <option value="4">yahoo.co.kr</option>
+                  <option value="5">hanmail.net</option>
+                  <option value="6">nate.com</option>
+                  <option value="7">korea.com</option>
                 </Form.Select>
               </Col>
             </Row>
@@ -302,9 +309,18 @@ const Signup = () => {
               onChange={handleQuestion}
             >
               <option>질문을 선택해주세요</option>
-              <option value="1">질문테스트</option>
-              <option value="2">질문2</option>
-              <option value="3">질문3</option>
+              <option value="1">기억에 남는 추억의 장소는?</option>
+              <option value="2">자신의 인생 좌우명은?</option>
+              <option value="3">자신의 보물 제1호는?</option>
+              <option value="4">가장 기억에 남는 선생님 성함은?</option>
+              <option value="5">추억하고 싶은 날짜가 있다면?</option>
+              <option value="6">받았던 선물 중 기억에 남는 독특한 선물은?</option>
+              <option value="7">유년시절 가장 생각나는 친구 이름은?</option>
+              <option value="8">인상 깊게 읽은 책 이름은?</option>
+              <option value="9">자신이 첫번째로 존경하는 인물은?</option>
+              <option value="10">내가 좋아하는 노래는?</option>
+              <option value="11">내가 좋아하는 영화 이름은?</option>
+
             </Form.Select>
             <Form.Control
               className={styles.findpasswordanswerinput}

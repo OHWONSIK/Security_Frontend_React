@@ -9,6 +9,7 @@ import Axios from "axios";
 
 const CreateAccount_2 = () => {
   const [inputPw, setInputPw] = React.useState("");
+  const [selectInquiryType, setSelectInquiryType] = React.useState("");
 
   const handleInputPw = (e) => {
     setInputPw(e.target.value);
@@ -20,8 +21,16 @@ const CreateAccount_2 = () => {
     }
   };
 
+  const handleInquiryType = (e) => {
+    setSelectInquiryType(e.target.options[e.target.selectedIndex].text);
+  };
+
   const onClickCreate = () => {
-    if (inputPw.length === 0) {
+    if (selectInquiryType === '' || selectInquiryType === '계좌 종류를 선택해주세요') {
+      alert("계좌 종류를 선택해주세요");
+      console.log("프론트 오류처리");
+    }
+    else if (inputPw.length === 0) {
       alert("계좌 비밀번호를 입력해주세요");
       console.log("프론트 오류처리");
     } else if (inputPw.length !== 6) {
@@ -30,7 +39,7 @@ const CreateAccount_2 = () => {
     } else {
       Axios.post("/api/v1/user/accounts/add", {
         accountPassword: inputPw,
-        accountType: "상명계좌",
+        accountType: selectInquiryType,
         loginId: sessionStorage.getItem("loginId"),
       }, {
         headers: {
@@ -74,13 +83,67 @@ const CreateAccount_2 = () => {
           </Form>
         </Col>
       </Row> */}
+      <Row>
+        <Col sm={1}></Col>
+        <Col sm={10}>
 
+          <img
+            className={styles.item}
+            src="img/item1.png"
+          />
+          
+
+
+          <img
+            className={styles.item}
+            src="img/item2.png"
+
+          />
+
+
+          <img
+            className={styles.item}
+            src="img/item3.png"
+          />
+
+
+          <img
+            className={styles.item}
+            src="img/item4.jpg"
+          />
+          <h4 className={styles.inquiryName}>
+            상명청춘적금계좌&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+            상명꽃길적금계좌 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            상명희망채움예금계좌 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              상명희망적금계좌
+          </h4>
+          
+
+        </Col>
+        <Col sm={1}></Col>
+
+
+
+      </Row>
       <Row>
         <Col lg={1}></Col>
         <Col lg={3}>
+          <div className={styles.ca_2_ntext}>계좌 종류</div>
           <div className={styles.ca_2_ntext}>계좌 비밀번호</div>
         </Col>
         <Col lg={4}>
+          <Form.Select
+            className={styles.inquiryType}
+            aria-label="Default select example"
+            onChange={handleInquiryType}
+          >
+            <option>계좌 종류를 선택해주세요</option>
+            <option value="1">상명청춘적금계좌</option>
+            <option value="2">상명꽃길적금게좌</option>
+            <option value="3">상명희망채움예금게좌</option>
+            <option value="4">상명희망적금계좌</option>
+
+          </Form.Select>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label></Form.Label>
@@ -99,14 +162,14 @@ const CreateAccount_2 = () => {
       </Row>
       <Row>
         <Col sm={12}>
-        <Button
-          variant="primary"
-          className={styles.ca_2_button}
-          onClick={onClickCreate}
-        >
-          확인
-        </Button>{" "}
-      </Col>
+          <Button
+            variant="primary"
+            className={styles.ca_2_button}
+            onClick={onClickCreate}
+          >
+            확인
+          </Button>{" "}
+        </Col>
       </Row>
     </div>
   );

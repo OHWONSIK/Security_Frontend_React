@@ -15,11 +15,13 @@ const Product = () => {
           <Card className={styles.p_card}>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
+              <a href="createaccount02">
               <img
                 className={styles.item}
                 src="img/item1.png"
                 alt="Second slide"
-              />
+                />
+              </a>
             </Card.Body>
           </Card>
         </Col>
@@ -27,11 +29,13 @@ const Product = () => {
           <Card className={styles.p_card}>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
+              <a href="createaccount02">
               <img
                 className={styles.item}
                 src="img/item2.png"
                 alt="Second slide"
-              />
+                />
+              </a>
             </Card.Body>
           </Card>
         </Col>
@@ -39,11 +43,13 @@ const Product = () => {
           <Card className={styles.p_card}>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
+              <a href="createaccount02">
               <img
                 className={styles.item}
                 src="img/item3.png"
                 alt="Second slide"
               />
+              </a>
             </Card.Body>
           </Card>
         </Col>
@@ -51,11 +57,13 @@ const Product = () => {
           <Card className={styles.p_card}>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body className={styles.cardbody}>
+              <a href="createaccount02">
               <img
                 className={styles.item}
                 src="img/item4.jpg"
                 alt="Second slide"
-              />
+                />
+              </a>
             </Card.Body>
           </Card>
         </Col>

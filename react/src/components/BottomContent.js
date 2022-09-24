@@ -15,7 +15,7 @@ const BottomContent = () => {
             </Link>
           </Col>
           <Col lg={1} className={styles.bottomCont}>
-            <Link to="/" className={styles.noaction}>
+            <Link to="/certificationcenter" className={styles.noaction}>
               인증센터
             </Link>
           </Col>

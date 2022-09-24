@@ -12,7 +12,7 @@ const PasswordChangeComplete = () => {
   }
 
   return (
-    <div className={styles.Event}>
+    <div className={styles.passwordChangeComplete}>
       <Row>
         <Col sm={2}></Col>
         <Col sm={8}>
@@ -25,11 +25,11 @@ const PasswordChangeComplete = () => {
           <h4 className={styles.pc_completemessage}>
             비밀번호가 변경되었습니다.{" "}
           </h4>
-          <h4 className={styles.pc_completemessage}>
+          <h4 className={styles.pc_completemessage_1}>
             새 비밀번호로 로그인 해주세요.{" "}
           </h4>
-          <Button className={styles.pc_checkbutton} variant="primary">
-            <Link to onClick={onLogout}>확인</Link>
+          <Button className={styles.pc_checkbutton} variant="primary" onClick={onLogout}>
+            확인
           </Button>{" "}
         </Col>
         <Col sm={2}></Col>

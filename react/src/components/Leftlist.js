@@ -51,7 +51,7 @@ const leftList = () => {
           </li>
         </a>
 
-        <a href="/" className={styles.nocolor}>
+        <a href="/certificationcenter" className={styles.nocolor}>
         <li className={styles.leftCont}>
             인증센터
           <div className={styles.divideLineC}></div>

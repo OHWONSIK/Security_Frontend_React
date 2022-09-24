@@ -24,10 +24,12 @@ function Idguide() {
                             <Col lg={6}>
                                 <h4 className={styles.idvalue}>{location.state} </h4>  
                             </Col>        
-                        </Row>    
+                        </Row> 
+                        <a href="/login">
                         <Button className={styles.loginbutton} variant="primary" size="lg">
-                            <Link to="/login">로그인 하러가기</Link>
+                            로그인 하러가기
                         </Button>
+                        </a>
                     </Col>
                     <Col lg={3}></Col>
 

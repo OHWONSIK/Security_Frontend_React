@@ -1,5 +1,6 @@
 
 .c_text{
+    font-weight: bold;
     margin-top:50px;
     font-size:30px;
 }
@@ -7,13 +8,21 @@
 .i_text{
     margin-top:40px;
     font-size:20px;
+    margin-bottom:50px;
 
 }
 
 
-.m_text{
+/* .m_text{
     border:1px solid black;
     height:600px;
     margin-left: 200px;
     width:1200px;
+} */
+
+.image{
+    height:780px;
+    width: 1200px;
+    margin-bottom:100px;
+    border: 1px solid black;
 }

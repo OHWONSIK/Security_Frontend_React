@@ -89,9 +89,17 @@ const Findpassword = () => {
               aria-label="Default select example"
             >
               <option>질문을 선택해주세요</option>
-              <option value="1">질문테스트</option>
-              <option value="2">질문2</option>
-              <option value="3">질문3</option>
+              <option value="1">기억에 남는 추억의 장소는?</option>
+              <option value="2">자신의 인생 좌우명은?</option>
+              <option value="3">자신의 보물 제1호는?</option>
+              <option value="4">가장 기억에 남는 선생님 성함은?</option>
+              <option value="5">추억하고 싶은 날짜가 있다면?</option>
+              <option value="6">받았던 선물 중 기억에 남는 독특한 선물은?</option>
+              <option value="7">유년시절 가장 생각나는 친구 이름은?</option>
+              <option value="8">인상 깊게 읽은 책 이름은?</option>
+              <option value="9">자신이 첫번째로 존경하는 인물은?</option>
+              <option value="10">내가 좋아하는 노래는?</option>
+              <option value="11">내가 좋아하는 영화 이름은?</option>
             </Form.Select>
             <Form.Control
               className={styles.inputanswer}

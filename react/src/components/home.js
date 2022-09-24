@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
   Row,
@@ -14,6 +14,9 @@ import Axios from "axios";
 
 function Home() {
   const [info, setInfo] = useState([]);
+
+  const navigate = useNavigate();
+  const onClickTitle = (params, e) => { e.preventDefault(); navigate("/newnews_detail", { state: [{ params: params }], }); };
 
   useEffect(() => {
     Axios.get("/api/v1/guest/cont/news")
@@ -35,13 +38,7 @@ function Home() {
     );
   };
 
-  const Td = ({ item }) => {
-    return (
-      <>
-        <ListGroup.Item className={styles.List1}>{item.title}</ListGroup.Item>
-      </>
-    );
-  };
+  const Td = ({ item }) => { return (<> <ListGroup.Item className={styles.List1}> <Link to="/newnews_detail" onClick={(e) => { onClickTitle(item.id, e); }} > {item.title} </Link> </ListGroup.Item> </>); };
 
   return (
     <div className={styles.Home}>
@@ -52,31 +49,46 @@ function Home() {
             <div className={styles.og_box2}>
               <Carousel>
                 <Carousel.Item>
+                  <a href="/ongoingevent_detail">
                   <img
                     className={styles.item}
                     src="img/event3_001.jpg"
                     alt="First slide"
-                  />
+                    />
+                  </a>
                 </Carousel.Item>
                 <Carousel.Item>
+                  <a href="/ongoingevent2_detail">
                   <img
                     className={styles.item}
                     src="img/event02_001.jpg"
                     alt="Second slide"
-                  />
+                    />
+                  </a>
                 </Carousel.Item>
                 <Carousel.Item>
+                  <a href="/ongoingevent3_detail">
                   <img
                     className={styles.item}
                     src="img/event1_001.png"
                     alt="Third slide"
-                  />
+                    />
+                  </a>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <a href="/ongoingevent4_detail">
+                  <img
+                    className={styles.item}
+                    src="img/event0001_001.png"
+                    alt="Fourth slide"
+                    />
+                  </a>
                 </Carousel.Item>
               </Carousel>
             </div>
           </Col>
           <Col lg={3}>
-            <img className={styles.cardImage} alt="card" src="img/card.png" />
+            <img className={styles.cardImage} alt="card" src="img/card_2.png" />
             <div className="d-grid gap-2">
               <Button
                 className={styles.loginButton}

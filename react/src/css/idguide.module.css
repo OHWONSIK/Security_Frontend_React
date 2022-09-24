@@ -1,3 +1,8 @@
+
+.Idguide{
+    height:624px;
+}
+
 .idguide{
     margin-top: 100px;
     margin-bottom: 70px;
@@ -19,7 +24,7 @@
 }
 
 .loginbutton{
-    height:75px;
+    height:50px;
     width:200px;
     margin-bottom: 100px;
 }
