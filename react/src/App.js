@@ -11,6 +11,7 @@ import Bankstatementpage from "./page/Bankstatementpage";
 import Quicksearchpage from "./page/Quicksearchpage";
 import Customerservicepage from "./page/Customerservicepage";
 import Winnerannouncement_detailpage from "./page/Winnerannouncement_detailpage";
+import Customerservice_detailpage from "./page/Customerservice_detailpage";
 import Newnews_detailpage from "./page/Newnews_detailpage";
 import Netsec_detailpage from "./page/Netsec_detailpage";
 import Eventfinished_detailpage from "./page/Eventfinished_detailpage";
@@ -52,6 +53,11 @@ import Mypagepage from "./page/Mypagepage.js";
 import MyInfomationpage from "./page/myInfomationpage";
 import CardListpage from "./page/cardListpage";
 import LoanListpage from "./page/loanListpage";
+import OngoingEvent_detailpage from "./page/ongoingEvent_detailpage";
+import OngoingEvent_detailpage_2 from "./page/ongoingEvent_detailpage_2";
+import OngoingEvent_detailpage_3 from "./page/ongoingEvent_detailpage_3";
+import OngoingEvent_detailpage_4 from "./page/ongoingEvent_detailpage_4";
+import CertificationCenterpage from "./page/certificationCenterpage";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -121,6 +127,10 @@ function App() {
               element={<Transfercompletepage />}
             />
             <Route
+              path="/customerservice_detail"
+              element={<Customerservice_detailpage />}
+            />
+            <Route
               path="/winnerannouncement_detail"
               element={<Winnerannouncement_detailpage />}
             />
@@ -150,12 +160,10 @@ function App() {
               path="/winnerannouncement"
               element={<Winnerannouncementpage />}
             ></Route>
-
             <Route
               path="/incidentnotification"
               element={<Incidentnotificationpage />}
             ></Route>
-
             <Route
               path="/passwordchange"
               element={<Passwordchangepage />}
@@ -184,24 +192,52 @@ function App() {
               path="/selectaccount02"
               element={<SelectAccountpage2 />}
             ></Route>
-
             <Route path="/mypage" element={<Mypagepage />}></Route>
             <Route path="/qa" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>
             <Route path="/cardlist" element={<CardListpage />}></Route>
             <Route path="/loanlist" element={<LoanListpage />}></Route>
+            <Route
+              path="/ongoingevent_detail"
+              element={<OngoingEvent_detailpage />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent2_detail"
+              element={<OngoingEvent_detailpage_2 />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent3_detail"
+              element={<OngoingEvent_detailpage_3 />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent4_detail"
+              element={<OngoingEvent_detailpage_4 />}
+            ></Route>{" "}
+            <Route
+              path="/certificationcenter"
+              element={<CertificationCenterpage />}
+            ></Route>{" "}
+            <Route path="/signup" element={<Testhomepage />}></Route>
           </Routes>
         </BrowserRouter>
       ) : isLogin ? (
         <BrowserRouter>
           <Testtopcontent />
           <Routes>
+            <Route
+              path="/transfercomplete"
+              element={<Transfercompletepage />}
+            />
             <Route path="/" element={<Testhomepage />} />
             <Route path="/cardissuance" element={<CreateAccountpage />} />
             <Route path="/eventpage" element={<Eventpage />} />
             <Route path="/ongoingevent" element={<OngoingEventpage />} />
             <Route path="/loanapply" element={<CreateAccountpage />} />
             <Route path="/transfer" element={<CreateAccountpage />} />
+            <Route
+              path="/customerservice_detail"
+              element={<Customerservice_detailpage />}
+            />
             <Route
               path="/winnerannouncement_detail"
               element={<Winnerannouncement_detailpage />}
@@ -232,7 +268,6 @@ function App() {
               path="/winnerannouncement"
               element={<Winnerannouncementpage />}
             ></Route>
-
             <Route
               path="/incidentnotification"
               element={<Incidentnotificationpage />}
@@ -268,12 +303,37 @@ function App() {
             <Route path="/mypage" element={<Mypagepage />}></Route>
             <Route path="/qa" element={<InquiryWritepage />}></Route>
             <Route path="/myinfo" element={<MyInfomationpage />}></Route>
+            <Route
+              path="/ongoingevent_detail"
+              element={<OngoingEvent_detailpage />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent2_detail"
+              element={<OngoingEvent_detailpage_2 />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent3_detail"
+              element={<OngoingEvent_detailpage_3 />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent4_detail"
+              element={<OngoingEvent_detailpage_4 />}
+            ></Route>{" "}
+            <Route
+              path="/certificationcenter"
+              element={<CertificationCenterpage />}
+            ></Route>{" "}
+            <Route path="/signup" element={<Testhomepage />}></Route>
           </Routes>
         </BrowserRouter>
       ) : (
         <BrowserRouter>
           <Topcontent />
           <Routes>
+            <Route
+              path="/transfercomplete"
+              element={<Transfercompletepage />}
+            />
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Loginpage />} />
             <Route path="/signup" element={<Signuppage />} />
@@ -283,6 +343,10 @@ function App() {
             <Route path="/ongoingevent" element={<OngoingEventpage />} />
             <Route path="/loanapply" element={<NoLoginpage />} />
             <Route path="/transfer" element={<NoLoginpage />} />
+            <Route
+              path="/customerservice_detail"
+              element={<Customerservice_detailpage />}
+            />
             <Route
               path="/winnerannouncement_detail"
               element={<Winnerannouncement_detailpage />}
@@ -307,7 +371,6 @@ function App() {
               path="/winnerannouncement"
               element={<Winnerannouncementpage />}
             ></Route>
-
             <Route
               path="/incidentnotification"
               element={<Incidentnotificationpage />}
@@ -335,6 +398,26 @@ function App() {
             <Route path="/myinfo" element={<NoLoginpage />}></Route>
             <Route path="/createaccount02" element={<NoLoginpage />}></Route>
             <Route path="/selectaccount02" element={<NoLoginpage />}></Route>
+            <Route
+              path="/ongoingevent_detail"
+              element={<OngoingEvent_detailpage />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent2_detail"
+              element={<OngoingEvent_detailpage_2 />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent3_detail"
+              element={<OngoingEvent_detailpage_3 />}
+            ></Route>{" "}
+            <Route
+              path="/ongoingevent4_detail"
+              element={<OngoingEvent_detailpage_4 />}
+            ></Route>{" "}
+            <Route
+              path="/certificationcenter"
+              element={<NoLoginpage />}
+            ></Route>
           </Routes>
         </BrowserRouter>
       )}
