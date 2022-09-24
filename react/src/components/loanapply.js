@@ -22,6 +22,13 @@ function Loanapply() {
     const [interestType, setInterestType] = React.useState([]);
     let i
 
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let date2 = date.getDate();
+    let loanApplyDate;
+
+
     useEffect(() => {
 
         // console.log(accountNumber, loanType, loanIndex)
@@ -108,6 +115,13 @@ function Loanapply() {
         // if (loanType === undefined || loanType === '대출종류를 선택해주세요')
         //     alert('대출종류를 선택해주세요')
 
+        if (month < 10) month = "0" + month;
+        else month = month;
+        if (date2 < 10) date = "0" + date2;
+        else date2 = date2;
+
+        loanApplyDate = year + '-' + month + '-' + date2
+
         console.log(Number(accountNumber), inputAmount, loanType)
         if (inputAmount.length === 0)
             alert('대출금액이 비어있습니다')
@@ -139,7 +153,8 @@ function Loanapply() {
                                         loanType: loanIndex,
                                         loginId: sessionStorage.getItem('loginId'),
                                         interestRate: interestRate,
-                                        interestType: interestType
+                                        interestType: interestType,
+                                        loanApplyDate: loanApplyDate
                                     }
                                 ]
                             }

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
   Row,
@@ -13,6 +13,9 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 function Testhome() {
+
+  const navigate = useNavigate();
+  const onClickTitle = (params, e) => { e.preventDefault(); navigate("/newnews_detail", { state: [{ params: params }], }); };
   const onLogout = () => {
     Axios.post("/api/v1/user/logout", {},
       {
@@ -60,13 +63,7 @@ function Testhome() {
     );
   };
 
-  const Td = ({ item }) => {
-    return (
-      <>
-        <ListGroup.Item className={styles.List1}>{item.title}</ListGroup.Item>
-      </>
-    );
-  };
+  const Td = ({ item }) => { return (<> <ListGroup.Item className={styles.List1}> <Link to="/newnews_detail" onClick={(e) => { onClickTitle(item.id, e); }} > {item.title} </Link> </ListGroup.Item> </>); };
 
   const [cardNumber, setCardNumber] = useState([]);
   const [cardType, setCardType] = useState([]);
@@ -113,32 +110,47 @@ function Testhome() {
             <div className={styles.og_box2}>
               <Carousel>
                 <Carousel.Item>
+                  <a href="/ongoingevent_detail">
                   <img
                     className={styles.item}
                     src="img/event3_001.jpg"
                     alt="First slide"
-                  />
+                    />
+                  </a>
                 </Carousel.Item>
                 <Carousel.Item>
+                  <a href="/ongoingevent2_detail">
                   <img
                     className={styles.item}
                     src="img/event02_001.jpg"
                     alt="Second slide"
-                  />
+                    />
+                  </a>
                 </Carousel.Item>
                 <Carousel.Item>
+                  <a href="/ongoingevent3_detail">
                   <img
                     className={styles.item}
                     src="img/event1_001.png"
                     alt="Third slide"
-                  />
+                    />
+                  </a>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <a href="/ongoingevent4_detail">
+                  <img
+                    className={styles.item}
+                    src="img/event0001_001.png"
+                    alt="Fourth slide"
+                    />
+                  </a>
                 </Carousel.Item>
               </Carousel>
             </div>
           </Col>
           <Col lg={3}>
             <div className={styles.cardContainer}>
-              <img className={styles.cardImage} alt="card" src="img/card.png" />
+              <img className={styles.cardImage} alt="card" src="img/card_2.png" />
               <h4 className={styles.cardType}> {cardType} </h4>
               <h4 className={styles.cardNumber}> {cardNumber} </h4>
               <h4 className={styles.cardExpireDate}> Expire {cardExpireDate} </h4>
@@ -157,9 +169,9 @@ function Testhome() {
                 className={styles.signupButton}
                 variant="primary"
                 size="lg"
-                href="/"
+                href="/certificationcenter"
               >
-                <Link to="/">인증센터</Link>
+                인증센터
               </Button>
             </div>
           </Col>

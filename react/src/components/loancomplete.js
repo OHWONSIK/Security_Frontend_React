@@ -7,19 +7,16 @@ import Axios from "axios";
 
 function Loancomplete() {
   const location = useLocation();
-
-  const [createDate, setCreateDate] = React.useState("");
   const [loanList, setLoanList] = React.useState("");
   let loanType = location.state[0].loanType;
   let inputAmount = location.state[0].inputAmount;
   let interestRate = location.state[0].interestRate;
   let interestType = location.state[0].interestType;
-  let i;
+  let loanApplyDate = location.state[0].loanApplyDate;
 
   useEffect(() => {
     Axios.get(
       "/api/v1/guest/loanlist/" + loanType
-      // { params: { loginId: sessionStorage.getItem('loginId') } }
     )
       .then((res) => {
         setLoanList(res.data.data.title);
@@ -28,23 +25,6 @@ function Loancomplete() {
         alert(error.response.data.message);
       });
 
-    Axios.get("api/v1/user/loans/loanlist", {
-      params: { loginId: sessionStorage.getItem("loginId") },
-      headers: {
-        Authorization: localStorage.getItem("jwtToken"),
-        "Authorization-refresh": localStorage.getItem("jwtRefreshToken"),
-      },
-    })
-      .then((res) => {
-        for (i = 0; i < res.data.data.length; i++) {
-          if (loanType == res.data.data[i].id) {
-            setCreateDate(res.data.data[i].createDate);
-          }
-        }
-      })
-      .catch((error) => {
-        alert(error.response.data.message);
-      });
   }, []);
 
   return (
@@ -65,7 +45,7 @@ function Loancomplete() {
               </thead>
               <tbody>
                 <tr>
-                  <td>{createDate}</td>
+                  <td>{loanApplyDate}</td>
                   <td>{loanList}</td>
                   <td>{inputAmount}원</td>
                   <td>

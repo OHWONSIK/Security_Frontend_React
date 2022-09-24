@@ -15,7 +15,11 @@ const Incidentnotification = () => {
       <Row>
         <div className={styles.m_text}>
           <Row></Row>
-
+          <img
+            className={styles.image}
+            src="img/notify.jpeg"
+            alt="Second slide"
+          />
           <Row></Row>
         </div>
       </Row>
