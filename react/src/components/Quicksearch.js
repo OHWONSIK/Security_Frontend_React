@@ -34,7 +34,7 @@ const Quicksearch = () => {
 
         <Row>
           <Col lg={6}>
-            <div className={styles.nobullet}>상명예금</div>
+            <div className={styles.nobullet}>{type}</div>
           </Col>
 
           <Col lg={6}>
@@ -69,6 +69,7 @@ const Quicksearch = () => {
   const [inquireNum, setInquireNum] = React.useState("");
   const [info, setInfo] = React.useState([]);
   const [info2, setInfo2] = React.useState([]);
+  const [type, SetType] = React.useState("");
 
   let accountNumber;
   let balance;
@@ -84,6 +85,7 @@ const Quicksearch = () => {
   let tempInfoTest = [];
   let startDate = "2022-01-01-13:00:00";
   let endDate = "2022-12-31-23:59:59";
+  let ttype;
 
   const handleAccountNum = (e) => {
     accountNumber = e.target.options[e.target.selectedIndex].value;
@@ -114,7 +116,6 @@ const Quicksearch = () => {
   };
 
   const onClickInquiry = () => {
-    setShow(true);
     setAccountNum(accountNumber);
     // setIsRender(isRender + 1)
 
@@ -134,9 +135,11 @@ const Quicksearch = () => {
           for (i = 0; i < res.data.data.length; i++) {
             if (accountNumber == res.data.data[i].accountNumber) {
               balance = res.data.data[i].balance;
+              ttype = res.data.data[i].accountType;
             }
           }
           setBalanceNum(balance);
+          SetType(ttype);
         })
         .catch((error) => {
           alert(error.response.data.message);
@@ -184,10 +187,12 @@ const Quicksearch = () => {
             // console.log("거래내역이 존재하지 않습니다.");
             // console.log(startDate);
             // console.log(endDate);
+            alert("거래내역이 존재하지 않습니다.");
             setInquireNum(0);
             tempInfoTest = [];
             setInfo(tempInfoTest);
           } else {
+            setShow(true);
             for (i = 0; i < res.data.data.length; i++) {
               if (i > 9) {
                 // i = 0;
@@ -260,6 +265,7 @@ const Quicksearch = () => {
                   transactionTime: transactionTime,
                   withdrawAmount: withdrawAmount,
                   depositAmount: depositAmount,
+                  type: type,
 
                   memo: res.data.data[i].toReceiverMessage,
                 };
@@ -279,6 +285,7 @@ const Quicksearch = () => {
                   transactionTime: transactionTime,
                   withdrawAmount: withdrawAmount,
                   depositAmount: depositAmount,
+                  type: type,
 
                   memo: res.data.data[i].toSenderMessage,
                 };
