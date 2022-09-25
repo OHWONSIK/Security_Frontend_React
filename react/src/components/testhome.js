@@ -17,18 +17,21 @@ function Testhome() {
   const navigate = useNavigate();
   const onClickTitle = (params, e) => { e.preventDefault(); navigate("/newnews_detail", { state: [{ params: params }], }); };
   const onLogout = () => {
-    Axios.post("/api/v1/user/logout", {},
+    Axios.post("/api/v1/user/logout", null,
       {
         headers: {
           Authorization: localStorage.getItem('jwtToken'),
           "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
-        }
-      })
+        },
+      }
+    )
       .then((res) => {
         if (res.data.checker === true) {
+          
           localStorage.removeItem('jwtToken')
           localStorage.removeItem('jwtRefreshToken')
-          
+          document.location.href = '/'
+
         }
         else alert(res.data.message);
       })
@@ -38,7 +41,6 @@ function Testhome() {
 
       });
     sessionStorage.removeItem('loginId')
-    document.location.href = '/'
   };
 
   const [info, setInfo] = useState([]);
@@ -87,7 +89,7 @@ function Testhome() {
         number = res.data.data[0].cardNumber.toString()
         number = number.substring(0, 4) + '-' + number.substring(4, 8) + '-' + number.substring(8, 12) + '-' + number.substring(12, 16)
         date = res.data.data[0].expireDate.toString()
-        date = date.substring(5, 7) + '/' + date.substring(0,2)
+        date = date.substring(5, 7) + '/' + date.substring(0, 2)
         setCardType(res.data.data[0].cardType)
         setCardExpireDate(date)
         setCardNumber(number)
@@ -111,37 +113,37 @@ function Testhome() {
               <Carousel>
                 <Carousel.Item>
                   <a href="/ongoingevent_detail">
-                  <img
-                    className={styles.item}
-                    src="img/event3_001.jpg"
-                    alt="First slide"
+                    <img
+                      className={styles.item}
+                      src="img/event3_001.jpg"
+                      alt="First slide"
                     />
                   </a>
                 </Carousel.Item>
                 <Carousel.Item>
                   <a href="/ongoingevent2_detail">
-                  <img
-                    className={styles.item}
-                    src="img/event02_001.jpg"
-                    alt="Second slide"
+                    <img
+                      className={styles.item}
+                      src="img/event02_001.jpg"
+                      alt="Second slide"
                     />
                   </a>
                 </Carousel.Item>
                 <Carousel.Item>
                   <a href="/ongoingevent3_detail">
-                  <img
-                    className={styles.item}
-                    src="img/event1_001.png"
-                    alt="Third slide"
+                    <img
+                      className={styles.item}
+                      src="img/event1_001.png"
+                      alt="Third slide"
                     />
                   </a>
                 </Carousel.Item>
                 <Carousel.Item>
                   <a href="/ongoingevent4_detail">
-                  <img
-                    className={styles.item}
-                    src="img/event0001_001.png"
-                    alt="Fourth slide"
+                    <img
+                      className={styles.item}
+                      src="img/event0001_001.png"
+                      alt="Fourth slide"
                     />
                   </a>
                 </Carousel.Item>
@@ -155,7 +157,7 @@ function Testhome() {
               <h4 className={styles.cardNumber}> {cardNumber} </h4>
               <h4 className={styles.cardExpireDate}> Expire {cardExpireDate} </h4>
             </div>
-            
+
             <div className="d-grid gap-2">
               <Button
                 className={styles.loginButton}
@@ -163,7 +165,7 @@ function Testhome() {
                 size="lg"
                 onClick={onLogout}
               >
-                  로그아웃
+                로그아웃
               </Button>
               <Button
                 className={styles.signupButton}
@@ -183,42 +185,42 @@ function Testhome() {
           <Col lg={10}>
             <div>
               <a href="/product">
-              <Button
-                className={styles.depositButton}
-                variant="secondary"
-                size="lg"
-              >
-                예적금
+                <Button
+                  className={styles.depositButton}
+                  variant="secondary"
+                  size="lg"
+                >
+                  예적금
                 </Button>
               </a>
 
               <a href="/quicksearch">
-              <Button
-                className={styles.historyButton}
-                variant="secondary"
-                size="lg"
-              >
-              빠른거래내역
+                <Button
+                  className={styles.historyButton}
+                  variant="secondary"
+                  size="lg"
+                >
+                  빠른거래내역
                 </Button>
               </a>
 
               <a href="/selectaccount02">
-              <Button
-                className={styles.loanButton}
-                variant="secondary"
-                size="lg"
-              >
-              대출
+                <Button
+                  className={styles.loanButton}
+                  variant="secondary"
+                  size="lg"
+                >
+                  대출
                 </Button>
               </a>
 
               <a href="/netsec">
-              <Button
-                className={styles.productButton}
-                variant="secondary"
-                size="lg"
-              >
-                보안공지
+                <Button
+                  className={styles.productButton}
+                  variant="secondary"
+                  size="lg"
+                >
+                  보안공지
                 </Button>
               </a>
             </div>
