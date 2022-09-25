@@ -8,29 +8,30 @@ import Axios from "axios";
 function TesttopContent() {
 
     const onLogout = () => {
-        Axios.post("/api/v1/user/logout", {},
+        Axios.post("/api/v1/user/logout", null,
             {
-            headers: {
-                Authorization: localStorage.getItem('jwtToken'),
-                "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+                headers: {
+                    Authorization: localStorage.getItem('jwtToken'),
+                    "Authorization-refresh": localStorage.getItem('jwtRefreshToken'),
+                },
             }
-        })
+        )
             .then((res) => {
-                if (res.data.checker === true)
-                {
+                if (res.data.checker === true) {
+
                     localStorage.removeItem('jwtToken')
                     localStorage.removeItem('jwtRefreshToken')
+                    document.location.href = '/'
+
                 }
                 else alert(res.data.message);
             })
 
             .catch((error) => {
                 alert(error.response.data.message)
-            });
-        sessionStorage.removeItem('loginId')
-        document.location.href = '/'
 
-        
+            });
+        sessionStorage.removeItem('loginId')    
     }
 
     return (
