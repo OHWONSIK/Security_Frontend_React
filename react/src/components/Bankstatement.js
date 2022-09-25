@@ -173,7 +173,6 @@ const Bankstatement = () => {
   let tempname;
 
   const onClickInquiry = () => {
-    setShow(true);
     setCurrentPage(1);
     setAccountNum(accountNumber);
     // setIsRender(isRender + 1)
@@ -246,6 +245,7 @@ const Bankstatement = () => {
             tempInfoTest = [];
             setInfo(tempInfoTest);
           } else {
+            setShow(true);
             for (i = 0; i < res.data.data.length; i++) {
               // console.log(inquireNum + " 초기값");
               // let temp = inquireNum + 1;
