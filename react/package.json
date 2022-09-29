@@ -2,7 +2,7 @@
   "name": "smbank",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://15.165.161.109:9000",
+  "proxy": "https://52.79.251.102:9000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
@@ -23,7 +23,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "HTTPS=true SSL_CRT_FILE=_wildcard.example.com+2.pem SSL_KEY_FILE=_wildcard.example.com+2-key.pem react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
