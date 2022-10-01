@@ -20,7 +20,7 @@ const Bankstatement = () => {
         <Row>
           <Col lg={6}>
             <ul className={styles.nobullet}>
-              <li>{inquireNum}건의 조회내역이 있습니다</li>
+              <li>{inquireNum.num}건의 조회내역이 있습니다</li>
             </ul>
           </Col>
         </Row>
@@ -102,7 +102,7 @@ const Bankstatement = () => {
   const [name, setName] = React.useState("");
   const [balanceNum, setBalanceNum] = React.useState("");
   const [atype, setAtype] = React.useState("");
-  const [inquireNum, setInquireNum] = React.useState(0);
+  const [inquireNum, setInquireNum] = React.useState({ num: 0 });
   const [info, setInfo] = React.useState([]);
   const [info2, setInfo2] = React.useState([]);
   const [sdate, setSDate] = React.useState(isdate);
@@ -241,7 +241,7 @@ const Bankstatement = () => {
         .then((res) => {
           if (Object.keys(res.data.data).length === 0) {
             alert("거래내역이 존재하지 않습니다.");
-            setInquireNum(0);
+            setInquireNum({ ...inquireNum, num: 0 });
             tempInfoTest = [];
             setInfo(tempInfoTest);
           } else {
@@ -269,37 +269,37 @@ const Bankstatement = () => {
                 depositAmount = amount;
                 withdrawAmount = "-";
 
-                Axios.get("/api/v1/user/accounts/name", {
-                  params: { accountNumber: senderAccount },
+                // Axios.get("/api/v1/user/accounts/name", {
+                //   params: { accountNumber: senderAccount },
 
-                  headers: {
-                    Authorization: localStorage.getItem("jwtToken"),
-                    "Authorization-refresh":
-                      localStorage.getItem("jwtRefreshToken"),
-                  },
-                })
-                  .then((res) => {
-                    if (res.data.checker === true) {
-                      // console.log("진입");
+                //   headers: {
+                //     Authorization: localStorage.getItem("jwtToken"),
+                //     "Authorization-refresh":
+                //       localStorage.getItem("jwtRefreshToken"),
+                //   },
+                // })
+                //   .then((res) => {
+                //     if (res.data.checker === true) {
+                //       console.log("진입");
 
-                      setSName(res.data.data[0].name);
+                //       setSName(res.data.data[0].name);
 
-                      // // sendername = res.data.data[0].name;
-                      // console.log(sendername);
-                      // console.log(sname);
-                    } else alert("오류, 다시진행해주세요");
+                //       // // sendername = res.data.data[0].name;
+                //       // console.log(sendername);
+                //       // console.log(sname);
+                //     } else alert("오류, 다시진행해주세요");
 
-                    // } else {
-                    //   // console.log("isAccount ?? :: ", isAccount);
-                    //   // account = res.data.data[0].accountNumber
-                    //   // balance = res.data.data[0].balance
-                    //   setMyAccount(res.data.data[0].accountNumber);
-                    // setIsAccount(true);
-                    // }
-                  })
-                  .catch((error) => {
-                    alert(error.response.data.message);
-                  });
+                //     // } else {
+                //     //   // console.log("isAccount ?? :: ", isAccount);
+                //     //   // account = res.data.data[0].accountNumber
+                //     //   // balance = res.data.data[0].balance
+                //     //   setMyAccount(res.data.data[0].accountNumber);
+                //     // setIsAccount(true);
+                //     // }
+                //   })
+                //   .catch((error) => {
+                //     alert(error.response.data.message);
+                //   });
 
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toReceiverMessage
                 // )
@@ -313,6 +313,7 @@ const Bankstatement = () => {
                   memo: res.data.data[i].toReceiverMessage,
                 };
                 tempInfoTest.push(infoTest);
+                setInquireNum({ ...inquireNum, num: inquireNumber });
 
                 // .push(transactionDate, transactionTime, withdrawAmount, depositAmount, res.data.data[i].toReceiverMessage)
                 // console.log(tempInfoTest)
@@ -320,6 +321,7 @@ const Bankstatement = () => {
                 senderAccount = "-";
                 depositAmount = "-";
                 withdrawAmount = Math.abs(amount);
+
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toSenderMessage
                 // )
                 infoTest = {
@@ -332,6 +334,7 @@ const Bankstatement = () => {
                   memo: res.data.data[i].toSenderMessage,
                 };
                 tempInfoTest.push(infoTest);
+                setInquireNum({ ...inquireNum, num: inquireNumber });
               }
               setInfo(tempInfoTest);
 
@@ -340,7 +343,7 @@ const Bankstatement = () => {
               // )
             } // 거래내역 찍히게 변경해야함, 이체금액 - 떼고 줘야됨
 
-            setInquireNum(inquireNumber);
+            // setSName("render");
             // console.log(transactionDate)
             // console.log(`${res.data.data[i].sendMoney}`)
 
@@ -353,12 +356,10 @@ const Bankstatement = () => {
     } else if (
       /*isAccount === true &&*/ accountNumber === undefined ||
       accountNumber === "계좌를 선택해주세요"
-    )
-    {
+    ) {
       alert("계좌번호를 선택해주세요");
       setShow(false);
-    }
-    else document.location.href = "createaccount";
+    } else document.location.href = "createaccount";
   };
 
   const onClickTransfer = () => {
