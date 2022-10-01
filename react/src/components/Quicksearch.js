@@ -18,7 +18,7 @@ const Quicksearch = () => {
         <Row>
           <Col lg={6}>
             <div className={styles.nobullet}>
-              최근 10건의 거래내역을 보여드립니다.
+              최근{inquireNum.num}건의 조회내역을 보여드립니다.(최대10건)
             </div>
           </Col>
           <Col lg={6}></Col>
@@ -66,7 +66,7 @@ const Quicksearch = () => {
   const [accountNum, setAccountNum] = React.useState("");
   const [name, setName] = React.useState("");
   const [balanceNum, setBalanceNum] = React.useState("");
-  const [inquireNum, setInquireNum] = React.useState("");
+  const [inquireNum, setInquireNum] = React.useState({ num: 0 });
   const [info, setInfo] = React.useState([]);
   const [info2, setInfo2] = React.useState([]);
   const [type, SetType] = React.useState("");
@@ -188,7 +188,7 @@ const Quicksearch = () => {
             // console.log(startDate);
             // console.log(endDate);
             alert("거래내역이 존재하지 않습니다.");
-            setInquireNum(0);
+            setInquireNum({ ...inquireNum, num: 0 });
             tempInfoTest = [];
             setInfo(tempInfoTest);
           } else {
@@ -198,6 +198,8 @@ const Quicksearch = () => {
                 // i = 0;
                 break;
               }
+              inquireNumber = inquireNumber + 1;
+
               // for (i = 0; i < res.data.data.length - (res.data.data.length-10); i++) {
 
               // console.log(res.data.data[i].sendMoney)
@@ -211,7 +213,7 @@ const Quicksearch = () => {
               //   console.log(amount)
               // }
               // amount = (res.data.data[i].sendMoney >= 0) ? res.data.data[i].sendMoney : Math.abs(res.data.data[i].sendMoney)
-              inquireNumber = inquireNumber + 1;
+
               transactionDate = res.data.data[i].transactionDate.substring(
                 0,
                 10
@@ -227,35 +229,35 @@ const Quicksearch = () => {
                 depositAmount = amount;
                 withdrawAmount = "-";
 
-                Axios.get("/api/v1/user/accounts/name", {
-                  params: { accountNumber: senderAccount },
+                // Axios.get("/api/v1/user/accounts/name", {
+                //   params: { accountNumber: senderAccount },
 
-                  headers: {
-                    Authorization: localStorage.getItem("jwtToken"),
-                    "Authorization-refresh":
-                      localStorage.getItem("jwtRefreshToken"),
-                  },
-                })
-                  .then((res) => {
-                    if (res.data.checker === true) {
-                      // console.log("진입");
-                      setSName(res.data.data[0].name);
-                      // // sendername = res.data.data[0].name;
-                      // console.log(sendername);
-                      // console.log(sname);
-                    } else alert("오류, 다시진행해주세요");
+                //   headers: {
+                //     Authorization: localStorage.getItem("jwtToken"),
+                //     "Authorization-refresh":
+                //       localStorage.getItem("jwtRefreshToken"),
+                //   },
+                // })
+                //   .then((res) => {
+                //     if (res.data.checker === true) {
+                //       // console.log("진입");
+                //       setSName(res.data.data[0].name);
+                //       // // sendername = res.data.data[0].name;
+                //       // console.log(sendername);
+                //       // console.log(sname);
+                //     } else alert("오류, 다시진행해주세요");
 
-                    // } else {
-                    //   // console.log("isAccount ?? :: ", isAccount);
-                    //   // account = res.data.data[0].accountNumber
-                    //   // balance = res.data.data[0].balance
-                    //   setMyAccount(res.data.data[0].accountNumber);
-                    // setIsAccount(true);
-                    // }
-                  })
-                  .catch((error) => {
-                    alert(error.response.data.message);
-                  });
+                //     // } else {
+                //     //   // console.log("isAccount ?? :: ", isAccount);
+                //     //   // account = res.data.data[0].accountNumber
+                //     //   // balance = res.data.data[0].balance
+                //     //   setMyAccount(res.data.data[0].accountNumber);
+                //     // setIsAccount(true);
+                //     // }
+                //   })
+                //   .catch((error) => {
+                //     alert(error.response.data.message);
+                //   });
 
                 // console.log(i + 1 + '번째 거래내역 = ' + ' 거래일자:' + transactionDate + ' 거래시간' + transactionTime + ' 출금(원):' + withdrawAmount + ' 입금(원)' + depositAmount + ' 메모:' + res.data.data[i].toReceiverMessage
                 // )
@@ -270,6 +272,7 @@ const Quicksearch = () => {
                   memo: res.data.data[i].toReceiverMessage,
                 };
                 tempInfoTest.push(infoTest);
+                setInquireNum({ ...inquireNum, num: inquireNumber });
 
                 // .push(transactionDate, transactionTime, withdrawAmount, depositAmount, res.data.data[i].toReceiverMessage)
                 // console.log(tempInfoTest)
@@ -292,6 +295,7 @@ const Quicksearch = () => {
                 tempInfoTest.push(infoTest);
               }
               setInfo(tempInfoTest);
+              setInquireNum({ ...inquireNum, num: inquireNumber });
 
               // console.log(i + 1 + '번째 거래내역 = ' + ' 거래날짜:' + transactionDate + '보낸사람계좌:'
               //   + res.data.data[i].senderAccount + ' 받은사람계좌:' + res.data.data[i].receiverAccount + ' 거래금액:' + res.data.data[i].sendMoney + '받는통장 메모:' + res.data.data[i].toReceiverMessage + '보낸통장 메모:' + res.data.data[i].toSenderMessage
@@ -300,7 +304,6 @@ const Quicksearch = () => {
 
             // console.log(transactionDate)
             // console.log(`${res.data.data[i].sendMoney}`)
-            setInquireNum(inquireNumber);
 
             //여기구분선
           }
@@ -312,8 +315,7 @@ const Quicksearch = () => {
     ) {
       alert("계좌번호를 선택해주세요");
       setShow(false);
-    }
-    else document.location.href = "CreateAccountpage";
+    } else document.location.href = "CreateAccountpage";
   };
 
   const Tr2 = ({ info }) => {
