@@ -142,7 +142,7 @@ const CreateAccount_2 = () => {
           >
             <option>계좌 종류를 선택해주세요</option>
             <option value="1">상명청춘적금계좌</option>
-            <option value="2">상명꽃길적금게좌</option>
+            <option value="2">상명꽃길적금계좌</option>
             <option value="3">상명희망채움예금게좌</option>
             <option value="4">상명희망적금계좌</option>
           </Form.Select>
